@@ -31,6 +31,7 @@
 - **Permissions intelligentes** avec vérifications
 - **Keep-alive automatique** avec serveur Flask intégré
 - **Commandes de simulation** (fakeban, fakemute)
+- **et bien d'autre encore**
 
 ## 🚀 Déploiement
 
@@ -52,6 +53,8 @@
 1. **Fork ce projet** sur Replit
 2. **Ajoutez votre token** dans les Secrets (🔒)
 3. **Lancez** avec le bouton Run
+
+### Option 3: Fais ce que tu veux ....
 
 ## 🔧 Configuration Discord
 
