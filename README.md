@@ -226,7 +226,6 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 - **Discord.py** - Librairie Python pour Discord
 - **Flask** - Serveur web léger pour keep-alive
 - **Replit** - Plateforme de déploiement
-- **psutil** et **aiohttp** - Librairie Python
 - Communauté Discord pour les retours et suggestions
 
 ---

@@ -20,7 +20,6 @@ def generate_invite_link():
     permissions.moderate_members = True     # For timeout commands
     permissions.send_messages = True        # To send responses
     permissions.embed_links = True          # To send embeds
-    permissions.use_slash_commands = True   # For slash commands
     
     # Generate correct invite URL (without response_type=code to avoid code grant requirement)
     standard_url = f"https://discord.com/api/oauth2/authorize?client_id={client_id}&permissions={permissions.value}&scope=bot%20applications.commands"
@@ -50,8 +49,8 @@ if __name__ == "__main__":
     print("🎨 LIEN PERSONNALISÉ (Interface améliorée):")
     print(invite_links['custom'])
     print()
-    print("💎 LIEN PREMIUM (Expérience optimisée):")
-    print(invite_links['premium'])
+    print("💎 LIEN SIMPLE (Expérience optimisée):")
+    print(invite_links['simple'])
     print()
     print("🛡️ PERMISSIONS AUTOMATIQUES :")
     print("  ✓ Bannir des membres - Accès à la liste des bannis")
