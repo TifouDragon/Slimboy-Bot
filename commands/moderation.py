@@ -975,13 +975,13 @@ class ModerationCommands(commands.Cog):
 
     @app_commands.command(
         name="fakeban",
-        description="Simuler un bannissement (affichage seulement)"
+        description="Bannir un utilisateur du serveur"
     )
     @app_commands.describe(
-        reason="Raison du faux bannissement"
+        reason="Raison du bannissement"
     )
-    async def fake_ban(self, interaction: discord.Interaction, reason: str = "Simulation de bannissement"):
-        """Simulate a ban (display only)"""
+    async def fake_ban(self, interaction: discord.Interaction, reason: str = "Aucune raison fournie"):
+        """Bannir un utilisateur du serveur"""
 
         user = interaction.user
 
@@ -990,26 +990,17 @@ class ModerationCommands(commands.Cog):
 
             # Create fake ban embed
             embed = discord.Embed(
-                title="🔨 Utilisateur Banni (SIMULATION)",
-                description=f"**{user.display_name}** a été banni du serveur.\n\n⚠️ **CECI EST UNE SIMULATION** - Aucun bannissement réel n'a été appliqué.",
+                title="🔨 Utilisateur Banni",
+                description=f"**{user.display_name}** a été banni du serveur.",
                 color=discord.Color.red(),
                 timestamp=datetime.utcnow()
             )
 
             embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
-            embed.add_field(name="Type", value="🎭 Simulation", inline=True)
-            embed.add_field(name="Statut réel", value="✅ Toujours membre", inline=True)
-            embed.add_field(name="Raison (simulée)", value=reason, inline=False)
+            embed.add_field(name="Raison", value=reason, inline=False)
 
             embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
-            embed.set_footer(text="Créé par @Ninja Iyed • SIMULATION UNIQUEMENT")
-
-            # Add warning banner
-            embed.add_field(
-                name="🎭 Avertissement", 
-                value="Cette commande est purement cosmétique. L'utilisateur n'est PAS réellement banni.", 
-                inline=False
-            )
+            embed.set_footer(text="Créé par @Ninja Iyed")
 
             await interaction.followup.send(embed=embed)
 
@@ -1021,22 +1012,22 @@ class ModerationCommands(commands.Cog):
 
     @app_commands.command(
         name="fakemute",
-        description="Simuler un timeout (affichage seulement)"
+        description="Mettre un utilisateur en timeout"
     )
     @app_commands.describe(
-        duration="Durée simulée du timeout (ex: 10m, 1h, 2d)",
-        reason="Raison du faux timeout"
+        duration="Durée du timeout (ex: 10m, 1h, 2d)",
+        reason="Raison du timeout"
     )
-    async def fake_mute(self, interaction: discord.Interaction, duration: str, reason: str = "Simulation de timeout"):
-        """Simulate a timeout (display only)"""
+    async def fake_mute(self, interaction: discord.Interaction, duration: str, reason: str = "Aucune raison fournie"):
+        """Mettre un utilisateur en timeout"""
 
         user = interaction.user
 
         # Parse duration for display
-        duration_seconds = self.parse_duration(duration)
+        duration_seconds = self.parse_unlimited_duration(duration)
         if duration_seconds is None:
             await interaction.response.send_message(
-                "❌ Format de durée invalide. Utilisez: 10m, 1h, 2d, etc.",
+                "❌ Format de durée invalide. Utilisez: 10m, 1h, 2d, permanent, etc.",
                 ephemeral=True
             )
             return
@@ -1045,32 +1036,31 @@ class ModerationCommands(commands.Cog):
             await interaction.response.defer()
 
             # Calculate fake timeout end time
-            fake_timeout_until = datetime.utcnow() + timedelta(seconds=duration_seconds)
+            if duration_seconds == float('inf'):
+                fake_timeout_until = None
+                duration_display = "♾️ Permanent"
+            else:
+                fake_timeout_until = datetime.utcnow() + timedelta(seconds=duration_seconds)
+                duration_display = duration
 
             # Create fake mute embed
             embed = discord.Embed(
-                title="🔇 Utilisateur en Timeout (SIMULATION)",
-                description=f"**{user.display_name}** a été mis en timeout.\n\n⚠️ **CECI EST UNE SIMULATION** - Aucun timeout réel n'a été appliqué.",
+                title="🔇 Utilisateur en Timeout",
+                description=f"**{user.display_name}** a été mis en timeout.",
                 color=discord.Color.dark_orange(),
                 timestamp=datetime.utcnow()
             )
 
             embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
-            embed.add_field(name="Type", value="🎭 Simulation", inline=True)
-            embed.add_field(name="Durée (simulée)", value=duration, inline=True)
-            embed.add_field(name="Fin simulée", value=f"<t:{int(fake_timeout_until.timestamp())}:F>", inline=True)
-            embed.add_field(name="Statut réel", value="✅ Peut toujours parler", inline=True)
-            embed.add_field(name="Raison (simulée)", value=reason, inline=False)
+            embed.add_field(name="Durée", value=duration_display, inline=True)
+            if fake_timeout_until:
+                embed.add_field(name="Fin du timeout", value=f"<t:{int(fake_timeout_until.timestamp())}:F>", inline=True)
+            else:
+                embed.add_field(name="Fin du timeout", value="♾️ Jamais (permanent)", inline=True)
+            embed.add_field(name="Raison", value=reason, inline=False)
 
             embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
-            embed.set_footer(text="Créé par @Ninja Iyed • SIMULATION UNIQUEMENT")
-
-            # Add warning banner
-            embed.add_field(
-                name="🎭 Avertissement", 
-                value="Cette commande est purement cosmétique. L'utilisateur n'est PAS réellement en timeout.", 
-                inline=False
-            )
+            embed.set_footer(text="Créé par @Ninja Iyed")
 
             await interaction.followup.send(embed=embed)
 

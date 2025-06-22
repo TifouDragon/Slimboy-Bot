@@ -9,6 +9,7 @@
 
 > Un bot Discord de modération avancé avec interface française et pagination interactive pour la gestion des bannis. Optimisé pour Railway et Replit.
 
+![SlimBoy Banner](https://via.placeholder.com/800x200/7289da/ffffff?text=SlimBoy+Discord+Bot)
 
 ## ✨ Fonctionnalités
 
@@ -31,7 +32,6 @@
 - **Permissions intelligentes** avec vérifications
 - **Keep-alive automatique** avec serveur Flask intégré
 - **Commandes de simulation** (fakeban, fakemute)
-- **et bien d'autre encore**
 
 ## 🚀 Déploiement
 
@@ -53,8 +53,6 @@
 1. **Fork ce projet** sur Replit
 2. **Ajoutez votre token** dans les Secrets (🔒)
 3. **Lancez** avec le bouton Run
-
-### Option 3: Fais ce que tu veux ....
 
 ## 🔧 Configuration Discord
 
@@ -290,6 +288,7 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 **Ninja Iyed** - *Développeur Principal*
 - Discord : @Ninja Iyed
 - GitHub : [@TifouDragon](https://github.com/TifouDragon)
+- Email : contact@ninja-iyed.dev
 
 ## 🙏 Remerciements
 
