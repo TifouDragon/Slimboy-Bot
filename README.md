@@ -9,7 +9,6 @@
 
 > Un bot Discord de modération avancé avec interface française et pagination interactive pour la gestion des bannis. Optimisé pour Railway et Replit.
 
-![SlimBoy Banner](https://via.placeholder.com/800x200/7289da/ffffff?text=SlimBoy+Discord+Bot)
 
 ## ✨ Fonctionnalités
 
