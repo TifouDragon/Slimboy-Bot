@@ -16,7 +16,11 @@ class DiscordBot(commands.Bot):
     def __init__(self):
         # Configure bot intents - only use basic intents
         intents = discord.Intents.default()
+        intents.message_content = True
         intents.guilds = True
+        intents.members = True
+        intents.bans = True
+        intents.moderation = True
 
         super().__init__(
             command_prefix=BOT_CONFIG['command_prefix'],
@@ -96,4 +100,3 @@ class DiscordBot(commands.Bot):
                     "❌ An error occurred while executing the command.",
                     ephemeral=True
                 )
-        
