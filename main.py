@@ -1,3 +1,4 @@
+
 """
 Discord Bot Entry Point
 Main file to run the Discord bot for displaying banned server members
@@ -5,7 +6,9 @@ Main file to run the Discord bot for displaying banned server members
 import asyncio
 import logging
 import os
+import threading
 from bot import DiscordBot
+from keep_alive import keep_alive
 
 logging.basicConfig(
     level=logging.INFO,
@@ -21,6 +24,7 @@ async def main():
         
         if not bot_token:
             logger.error("DISCORD_BOT_TOKEN environment variable is not set")
+            logger.error("Please add your Discord bot token in Railway environment variables")
             return
         
         # Create and start the bot
@@ -35,6 +39,9 @@ async def main():
         logger.info("Bot shutdown complete")
 
 if __name__ == "__main__":
+    # Start the keep-alive server for Railway
+    keep_alive()
+    
     try:
         asyncio.run(main())
     except KeyboardInterrupt:

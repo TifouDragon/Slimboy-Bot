@@ -67,10 +67,14 @@ FEATURES = {
 VERSION_INFO = {
     "major": 1,
     "minor": 2,
-    "patch": 0,
-    "version_string": "1.2.0",
+    "patch": 1,
+    "version_string": "1.2.1",
     "release_date": "2024-12-22",
+    "platform": "Replit",
     "changelog": [
+        "Adaptation complète pour Replit",
+        "Serveur keep-alive intégré",
+        "Optimisation pour l'environnement Replit",
         "Ajout commandes de modération temporaire",
         "Système de ban IP avec suppression messages",
         "Commandes de simulation fakeban/fakemute",
