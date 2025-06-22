@@ -1,0 +1,10 @@
+
+# Discord Bot Dependencies
+discord.py>=2.5.2
+
+# Web Server for Keep Alive
+Flask>=3.1.1
+
+# Additional utilities (optionnel)
+asyncio
+logging
