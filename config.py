@@ -17,7 +17,7 @@ BOT_CONFIG = {
     "error_color": 0xFF0000,  # Red color for error embeds
     
     # Pagination settings
-    "pagination_timeout": 300,  # 5 minutes
+    "pagination_timeout": 600,  # 10 minutes
     
     # Permission settings
     "required_permissions": ["ban_members"],
@@ -58,4 +58,24 @@ FEATURES = {
     "ban_reason_parsing": True,
     "bot_detection": True,
     "account_age_display": True,
+    "temp_ban": True,
+    "ip_ban": True,
+    "fake_moderation": True,
+}
+
+# Version info
+VERSION_INFO = {
+    "major": 1,
+    "minor": 2,
+    "patch": 0,
+    "version_string": "1.2.0",
+    "release_date": "2024-12-22",
+    "changelog": [
+        "Ajout commandes de modération temporaire",
+        "Système de ban IP avec suppression messages",
+        "Commandes de simulation fakeban/fakemute",
+        "Timeout pagination étendu à 10 minutes",
+        "Amélioration gestion d'erreurs",
+        "Interface utilisateur enrichie"
+    ]
 }

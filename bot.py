@@ -14,11 +14,9 @@ class DiscordBot(commands.Bot):
     """Main Discord bot class"""
 
     def __init__(self):
-        # Configure bot intents - including members to appear properly in member list
+        # Configure bot intents - only use basic intents
         intents = discord.Intents.default()
         intents.guilds = True
-        intents.members = True
-        intents.message_content = True  # Évite le warning des intents privilégiés
 
         super().__init__(
             command_prefix=BOT_CONFIG['command_prefix'],
@@ -32,14 +30,14 @@ class DiscordBot(commands.Bot):
             # Load ban list commands
             from commands.ban_list import BanListCommand
             await self.add_cog(BanListCommand(self))
-
+            
             # Load moderation commands
             from commands.moderation import ModerationCommands
             await self.add_cog(ModerationCommands(self))
-
-            #Load diagnostic commands
-            from commands.diagnostic import DiagnosticCommands
-            await self.add_cog(DiagnosticCommands(self))
+            
+            # Load version command
+            from commands.version import VersionCommand
+            await self.add_cog(VersionCommand(self))
 
             logger.info("Commands loaded successfully")
 
