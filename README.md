@@ -287,7 +287,6 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 **Ninja Iyed** - *Développeur Principal*
 - Discord : @Ninja Iyed
 - GitHub : [@TifouDragon](https://github.com/TifouDragon)
-- Email : contact@ninja-iyed.dev
 
 ## 🙏 Remerciements
 
