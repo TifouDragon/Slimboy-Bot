@@ -148,7 +148,7 @@ Le bot inclut un serveur Flask intégré pour le monitoring :
 
 Compatible avec [UptimeRobot](https://uptimerobot.com) pour maintenir le bot en ligne 24/7.
 
-# ⚠️Vérifier il se peut qu'il est des problemes
+### ⚠️Vérifier il se peut qu'il est des problemes
 
 ## 📊 Fonctionnalités Détaillées
 
