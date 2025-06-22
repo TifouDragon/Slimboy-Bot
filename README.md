@@ -213,7 +213,7 @@ Les contributions sont les bienvenues ! Pour contribuer :
 
 ## 📄 Licence
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE.txt](LICENSE) pour plus de détails.
+Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
 
 ## 👨‍💻 Auteur
 

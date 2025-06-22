@@ -619,6 +619,83 @@ class ModerationCommands(commands.Cog):
             )
     
     @app_commands.command(
+        name="unwarn",
+        description="Retirer un avertissement d'un utilisateur"
+    )
+    @app_commands.describe(
+        user="L'utilisateur à qui retirer l'avertissement",
+        reason="Raison du retrait de l'avertissement"
+    )
+    async def unwarn_user(self, interaction: discord.Interaction, user: discord.Member, reason: str = "Aucune raison fournie"):
+        """Remove a warning from a user"""
+        
+        # Check permissions
+        if not self.has_moderation_permission(interaction.user):
+            await interaction.response.send_message(
+                "❌ Vous n'avez pas les permissions de modération nécessaires.",
+                ephemeral=True
+            )
+            return
+        
+        # Can't unwarn yourself or bot
+        if user.id == interaction.user.id:
+            await interaction.response.send_message(
+                "❌ Vous ne pouvez pas vous retirer un avertissement à vous-même.",
+                ephemeral=True
+            )
+            return
+        
+        if user.id == self.bot.user.id:
+            await interaction.response.send_message(
+                "❌ Je ne peux pas me retirer un avertissement à moi-même.",
+                ephemeral=True
+            )
+            return
+        
+        try:
+            await interaction.response.defer()
+            
+            # Create unwarn embed
+            embed = discord.Embed(
+                title="✅ Avertissement Retiré",
+                description=f"Un avertissement a été retiré à **{user.display_name}**.",
+                color=discord.Color.green(),
+                timestamp=datetime.utcnow()
+            )
+            
+            embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
+            embed.add_field(name="Modérateur", value=interaction.user.mention, inline=True)
+            embed.add_field(name="Raison", value=reason, inline=False)
+            
+            embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
+            embed.set_footer(text="Créé par @Ninja Iyed")
+            
+            await interaction.followup.send(embed=embed)
+            
+            # Try to send DM to user
+            try:
+                dm_embed = discord.Embed(
+                    title="✅ Avertissement retiré",
+                    description=f"Un de vos avertissements a été retiré sur **{interaction.guild.name}**.",
+                    color=discord.Color.green(),
+                    timestamp=datetime.utcnow()
+                )
+                dm_embed.add_field(name="Modérateur", value=interaction.user.display_name, inline=True)
+                dm_embed.add_field(name="Raison", value=reason, inline=False)
+                dm_embed.set_footer(text="Continuez à respecter les règles du serveur")
+                
+                await user.send(embed=dm_embed)
+            except discord.Forbidden:
+                # User has DMs disabled, that's okay
+                pass
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ Erreur lors du retrait de l'avertissement: {str(e)}",
+                ephemeral=True
+            )
+    
+    @app_commands.command(
         name="userinfo",
         description="Afficher les informations d'un utilisateur"
     )
@@ -805,6 +882,200 @@ class ModerationCommands(commands.Cog):
         except Exception as e:
             await interaction.followup.send(
                 f"❌ Erreur lors de la modification du mode lent: {str(e)}",
+                ephemeral=True
+            )
+
+    @app_commands.command(
+        name="automute",
+        description="Se mettre soi-même en timeout (auto-modération)"
+    )
+    @app_commands.describe(
+        duration="Durée du timeout (ex: 10m, 1h, 2d)",
+        reason="Raison de l'auto-mute"
+    )
+    async def automute(self, interaction: discord.Interaction, duration: str, reason: str = "Auto-modération"):
+        """Allow users to timeout themselves"""
+        
+        user = interaction.user
+        
+        # Check if user is already timed out
+        if user.is_timed_out():
+            await interaction.response.send_message(
+                "❌ Vous êtes déjà en timeout.",
+                ephemeral=True
+            )
+            return
+        
+        # Parse duration
+        duration_seconds = self.parse_duration(duration)
+        if duration_seconds is None:
+            await interaction.response.send_message(
+                "❌ Format de durée invalide. Utilisez: 10m, 1h, 2d, etc.",
+                ephemeral=True
+            )
+            return
+        
+        # Discord timeout limit is 28 days
+        if duration_seconds > 28 * 24 * 60 * 60:
+            await interaction.response.send_message(
+                "❌ La durée maximale du timeout est de 28 jours.",
+                ephemeral=True
+            )
+            return
+        
+        # Minimum 1 minute
+        if duration_seconds < 60:
+            await interaction.response.send_message(
+                "❌ La durée minimale du timeout est de 1 minute.",
+                ephemeral=True
+            )
+            return
+        
+        try:
+            await interaction.response.defer()
+            
+            # Calculate timeout end time
+            timeout_until = datetime.utcnow() + timedelta(seconds=duration_seconds)
+            
+            # Apply timeout to self
+            await user.timeout(
+                timeout_until,
+                reason=f"Auto-mute par {user} - {reason}"
+            )
+            
+            # Create success embed
+            embed = discord.Embed(
+                title="🔇 Auto-Mute Appliqué",
+                description=f"**{user.display_name}** s'est mis en timeout.",
+                color=discord.Color.orange(),
+                timestamp=datetime.utcnow()
+            )
+            
+            embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
+            embed.add_field(name="Durée", value=duration, inline=True)
+            embed.add_field(name="Fin du timeout", value=f"<t:{int(timeout_until.timestamp())}:F>", inline=True)
+            embed.add_field(name="Raison", value=reason, inline=False)
+            
+            embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
+            embed.set_footer(text="Créé par @Ninja Iyed • Auto-modération")
+            
+            await interaction.followup.send(embed=embed)
+            
+        except discord.Forbidden:
+            await interaction.followup.send(
+                "❌ Je n'ai pas les permissions nécessaires pour vous mettre en timeout.",
+                ephemeral=True
+            )
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ Erreur lors de l'auto-mute: {str(e)}",
+                ephemeral=True
+            )
+    
+    @app_commands.command(
+        name="fakeban",
+        description="Simuler un bannissement (affichage seulement)"
+    )
+    @app_commands.describe(
+        reason="Raison du faux bannissement"
+    )
+    async def fake_ban(self, interaction: discord.Interaction, reason: str = "Simulation de bannissement"):
+        """Simulate a ban (display only)"""
+        
+        user = interaction.user
+        
+        try:
+            await interaction.response.defer()
+            
+            # Create fake ban embed
+            embed = discord.Embed(
+                title="🔨 Utilisateur Banni (SIMULATION)",
+                description=f"**{user.display_name}** a été banni du serveur.\n\n⚠️ **CECI EST UNE SIMULATION** - Aucun bannissement réel n'a été appliqué.",
+                color=discord.Color.red(),
+                timestamp=datetime.utcnow()
+            )
+            
+            embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
+            embed.add_field(name="Type", value="🎭 Simulation", inline=True)
+            embed.add_field(name="Statut réel", value="✅ Toujours membre", inline=True)
+            embed.add_field(name="Raison (simulée)", value=reason, inline=False)
+            
+            embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
+            embed.set_footer(text="Créé par @Ninja Iyed • SIMULATION UNIQUEMENT")
+            
+            # Add warning banner
+            embed.add_field(
+                name="🎭 Avertissement", 
+                value="Cette commande est purement cosmétique. L'utilisateur n'est PAS réellement banni.", 
+                inline=False
+            )
+            
+            await interaction.followup.send(embed=embed)
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ Erreur lors de la simulation: {str(e)}",
+                ephemeral=True
+            )
+    
+    @app_commands.command(
+        name="fakemute",
+        description="Simuler un timeout (affichage seulement)"
+    )
+    @app_commands.describe(
+        duration="Durée simulée du timeout (ex: 10m, 1h, 2d)",
+        reason="Raison du faux timeout"
+    )
+    async def fake_mute(self, interaction: discord.Interaction, duration: str, reason: str = "Simulation de timeout"):
+        """Simulate a timeout (display only)"""
+        
+        user = interaction.user
+        
+        # Parse duration for display
+        duration_seconds = self.parse_duration(duration)
+        if duration_seconds is None:
+            await interaction.response.send_message(
+                "❌ Format de durée invalide. Utilisez: 10m, 1h, 2d, etc.",
+                ephemeral=True
+            )
+            return
+        
+        try:
+            await interaction.response.defer()
+            
+            # Calculate fake timeout end time
+            fake_timeout_until = datetime.utcnow() + timedelta(seconds=duration_seconds)
+            
+            # Create fake mute embed
+            embed = discord.Embed(
+                title="🔇 Utilisateur en Timeout (SIMULATION)",
+                description=f"**{user.display_name}** a été mis en timeout.\n\n⚠️ **CECI EST UNE SIMULATION** - Aucun timeout réel n'a été appliqué.",
+                color=discord.Color.dark_orange(),
+                timestamp=datetime.utcnow()
+            )
+            
+            embed.add_field(name="Utilisateur", value=f"{user} (`{user.id}`)", inline=True)
+            embed.add_field(name="Type", value="🎭 Simulation", inline=True)
+            embed.add_field(name="Durée (simulée)", value=duration, inline=True)
+            embed.add_field(name="Fin simulée", value=f"<t:{int(fake_timeout_until.timestamp())}:F>", inline=True)
+            embed.add_field(name="Statut réel", value="✅ Peut toujours parler", inline=True)
+            embed.add_field(name="Raison (simulée)", value=reason, inline=False)
+            
+            embed.set_thumbnail(url=user.avatar.url if user.avatar else user.default_avatar.url)
+            embed.set_footer(text="Créé par @Ninja Iyed • SIMULATION UNIQUEMENT")
+            
+            # Add warning banner
+            embed.add_field(
+                name="🎭 Avertissement", 
+                value="Cette commande est purement cosmétique. L'utilisateur n'est PAS réellement en timeout.", 
+                inline=False
+            )
+            
+            await interaction.followup.send(embed=embed)
+            
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ Erreur lors de la simulation: {str(e)}",
                 ephemeral=True
             )
 
