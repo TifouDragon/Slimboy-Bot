@@ -30,14 +30,14 @@ class DiscordBot(commands.Bot):
             # Load ban list commands
             from commands.ban_list import BanListCommand
             await self.add_cog(BanListCommand(self))
-            
+
             # Load moderation commands
             from commands.moderation import ModerationCommands
             await self.add_cog(ModerationCommands(self))
-            
-            # Load version command
-            from commands.version import VersionCommand
-            await self.add_cog(VersionCommand(self))
+
+            # Load diagnostic commands
+            from commands.diagnostic import DiagnosticCommands
+            await self.add_cog(DiagnosticCommands(self))
 
             logger.info("Commands loaded successfully")
 
@@ -96,3 +96,4 @@ class DiscordBot(commands.Bot):
                     "❌ An error occurred while executing the command.",
                     ephemeral=True
                 )
+        

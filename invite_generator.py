@@ -1,6 +1,7 @@
+
 """
 Discord Bot Invite Link Generator
-Generates an invite link for the ban list bot with required permissions
+Generates an invite link for the ban list bot with all permissions
 """
 
 import discord
@@ -11,23 +12,42 @@ def generate_invite_link():
     # Bot's client ID (SlimBoy)
     client_id = "1384568465326866585"
     
-    # Required permissions for the bot
+    # ALL permissions for the bot
     permissions = discord.Permissions()
-    permissions.ban_members = True          # To view the ban list
-    permissions.view_audit_log = True       # To see who banned each user
-    permissions.kick_members = True         # For kick command
-    permissions.manage_messages = True      # For clear/purge commands
-    permissions.moderate_members = True     # For timeout commands
-    permissions.send_messages = True        # To send responses
-    permissions.embed_links = True          # To send embeds
+    permissions.administrator = True            # Admin - donne toutes les permissions
+    permissions.ban_members = True              # Bannir des membres
+    permissions.view_audit_log = True           # Voir les logs d'audit
+    permissions.kick_members = True             # Expulser des membres
+    permissions.manage_messages = True          # Gérer les messages
+    permissions.moderate_members = True         # Modérer les membres (timeout)
+    permissions.send_messages = True            # Envoyer des messages
+    permissions.embed_links = True              # Intégrer des liens
+    permissions.manage_channels = True          # Gérer les canaux
+    permissions.manage_guild = True             # Gérer le serveur
+    permissions.manage_roles = True             # Gérer les rôles
+    permissions.manage_nicknames = True         # Gérer les pseudos
+    permissions.manage_webhooks = True          # Gérer les webhooks
+    permissions.read_messages = True            # Lire les messages
+    permissions.send_messages_in_threads = True # Messages dans threads
+    permissions.create_public_threads = True    # Créer threads publics
+    permissions.create_private_threads = True   # Créer threads privés
+    permissions.manage_threads = True           # Gérer les threads
+    permissions.use_slash_commands = True       # Utiliser les commandes slash
+    permissions.mention_everyone = True         # Mentionner @everyone
+    permissions.add_reactions = True            # Ajouter des réactions
+    permissions.attach_files = True             # Joindre des fichiers
+    permissions.read_message_history = True     # Lire l'historique
+    permissions.use_external_emojis = True      # Utiliser emojis externes
+    permissions.connect = True                  # Se connecter aux vocaux
+    permissions.speak = True                    # Parler en vocal
+    permissions.mute_members = True             # Couper le micro
+    permissions.deafen_members = True           # Mettre en sourdine
+    permissions.move_members = True             # Déplacer les membres
+    permissions.use_voice_activation = True     # Activation vocale
     
-    # Generate correct invite URL (without response_type=code to avoid code grant requirement)
+    # Generate invite URLs with ALL permissions
     standard_url = f"https://discord.com/api/oauth2/authorize?client_id={client_id}&permissions={permissions.value}&scope=bot%20applications.commands"
-    
-    # Alternative URL format
     custom_url = f"https://discord.com/oauth2/authorize?client_id={client_id}&scope=bot%20applications.commands&permissions={permissions.value}"
-    
-    # Simple bot invite (most compatible)
     simple_url = f"https://discord.com/api/oauth2/authorize?client_id={client_id}&scope=bot&permissions={permissions.value}"
     
     return {
@@ -40,33 +60,41 @@ if __name__ == "__main__":
     invite_links = generate_invite_link()
     
     print("=" * 70)
-    print("🚀 BOT BANLIST - LIENS D'INVITATION PERSONNALISÉS")
+    print("🚀 BOT BANLIST - LIENS D'INVITATION AVEC TOUTES LES PERMISSIONS")
     print("=" * 70)
     print()
     print("📋 LIEN STANDARD (Recommandé):")
     print(invite_links['standard'])
     print()
-    print("🎨 LIEN PERSONNALISÉ (Interface améliorée):")
+    print("🎨 LIEN PERSONNALISÉ:")
     print(invite_links['custom'])
     print()
-    print("💎 LIEN SIMPLE (Expérience optimisée):")
+    print("💎 LIEN SIMPLE:")
     print(invite_links['simple'])
     print()
-    print("🛡️ PERMISSIONS AUTOMATIQUES :")
-    print("  ✓ Bannir des membres - Accès à la liste des bannis")
-    print("  ✓ Voir les logs d'audit - Identification des modérateurs")
-    print("  ✓ Commandes slash - Interface moderne")
+    print("🛡️ PERMISSIONS ACCORDÉES :")
+    print("  ✓ 👑 ADMINISTRATEUR - Toutes les permissions")
+    print("  ✓ Bannir/Débannir des membres")
+    print("  ✓ Expulser des membres")
+    print("  ✓ Modérer les membres (timeout)")
+    print("  ✓ Gérer les messages/canaux/rôles")
+    print("  ✓ Voir les logs d'audit")
+    print("  ✓ Gérer le serveur complet")
     print()
-    print("⚡ FONCTIONNALITÉS AVANCÉES :")
-    print("  • Interface 100% française avec watermark @Ninja Iyed")
-    print("  • Détection intelligente de 20+ bots populaires") 
-    print("  • Pagination fluide (5 utilisateurs par page)")
-    print("  • Recherche instantanée par pseudo/nom/ID")
-    print("  • Navigation intuitive avec boutons")
+    print("⚡ FONCTIONNALITÉS COMPLÈTES :")
+    print("  • Interface 100% française")
+    print("  • Modération avancée avec durées illimitées")
+    print("  • Gestion complète des bannis et timeouts")
+    print("  • Commandes de simulation réalistes")
+    print("  • Diagnostic système complet")
     print()
-    print("📱 COMMANDES DISPONIBLES :")
-    print("  /banlist - Liste complète des bannis")
-    print("  /banlist search:pseudo - Recherche ciblée")
+    print("📱 TOUTES LES COMMANDES DISPONIBLES :")
+    print("  /banlist - Liste des bannis avec recherche")
+    print("  /ban /tempban /ipban /unban - Gestion bans")
+    print("  /timeout /untimeout /automute - Gestion timeouts")
+    print("  /kick /warn /clear - Modération standard")
+    print("  /fakeban /fakemute - Simulations")
+    print("  /userinfo /slowmode /diagnostic - Utilitaires")
     print()
-    print("🔥 Choisissez le lien qui vous convient le mieux !")
+    print("🔥 Le bot aura TOUS les droits administrateur !")
     print("=" * 70)

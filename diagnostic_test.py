@@ -7,12 +7,14 @@ import discord
 from discord.ext import commands
 import asyncio
 import os
+import psutil
+import sys
+import platform
 
 class DiagnosticBot(commands.Bot):
     def __init__(self):
         intents = discord.Intents.default()
         intents.guilds = True
-        intents.bans = True
         super().__init__(command_prefix='!', intents=intents)
 
     async def on_ready(self):
@@ -49,19 +51,30 @@ class DiagnosticBot(commands.Bot):
                     print(f"  ❌ Impossible d'accéder aux logs d'audit: {e}")
                     
             except Exception as e:
-                print(f"  ❌ Erreur: {e}")
+                print(f"  ❌ Erreur d'accès aux bannis: {e}")
         
+        # Informations système
+        print(f"\n💻 Système:")
+        print(f"  OS: {platform.system()} {platform.release()}")
+        print(f"  Python: {sys.version.split()[0]}")
+        print(f"  Discord.py: {discord.__version__}")
+        print(f"  CPU: {psutil.cpu_percent()}%")
+        print(f"  RAM: {psutil.virtual_memory().percent}%")
+        
+        print("\n✅ Diagnostic terminé!")
         await self.close()
 
 async def run_diagnostic():
     token = os.getenv('DISCORD_BOT_TOKEN')
     if not token:
         print("❌ Token Discord manquant")
+        print("Ajoutez votre token dans les Secrets de Replit avec la clé 'DISCORD_BOT_TOKEN'")
         return
     
     bot = DiagnosticBot()
     
     try:
+        print("🔍 Démarrage du diagnostic...")
         await bot.start(token)
     except KeyboardInterrupt:
         await bot.close()
@@ -70,5 +83,4 @@ async def run_diagnostic():
         await bot.close()
 
 if __name__ == "__main__":
-    print("🔍 Démarrage du diagnostic...")
     asyncio.run(run_diagnostic())
