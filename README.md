@@ -692,19 +692,6 @@ Le développeur n'est pas responsable de :
 
 ---
 
-
-<div align="center">
-
-# 🚀 SlimBoy - Prêt à Révolutionner votre Discord ?
-
-## ⚡ Déployez maintenant sur Replit en 2 minutes !
-
-[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
-
-### 🎯 **Modération Intelligente • 📝 Logs Avancés • 🔔 Notifications Auto • 🎮 Bonus Fun**
-
----
-
 ## ⭐ Soutenez le projet - Star sur GitHub ! ⭐
 
 [![GitHub stars](https://img.shields.io/github/stars/TifouDragon/slimboy-discord-bot?style=social)](https://github.com/TifouDragon/slimboy-discord-bot)
