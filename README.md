@@ -1,16 +1,15 @@
-
-# 🤖 SlimBoy - Bot Discord de Modération Avancée - Version 2.2
+# 🤖 SlimBoy - Bot Discord de Modération Avancée
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Discord.py](https://img.shields.io/badge/discord.py-2.5.2+-green.svg)](https://discordpy.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Replit](https://img.shields.io/badge/Replit-Ready-orange.svg)](https://replit.com)
-[![Version](https://img.shields.io/badge/Version-2.2.0-red.svg)](CHANGELOG.md)
 
-> 🚀 **Version 2.2** - Bot Discord révolutionnaire avec modération intelligente, système de logs configurable, notifications GitHub automatiques et commandes bonus ! Interface française premium avec pagination interactive optimisée pour Replit.
+> 🚀 Bot Discord révolutionnaire avec modération intelligente, système de logs configurable, notifications automatiques et commandes bonus ! Interface française premium avec pagination interactive optimisée pour Replit.
 
 <div align="center">
 
+[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
 **🎯 Modération Avancée • 📝 Logs Intelligents • 🔔 Notifications Auto • 🎮 Commandes Bonus**
 
@@ -18,33 +17,27 @@
 
 ---
 
-## ✨ Nouveautés Révolutionnaires Version 2.2
 
-### 🔥 Systèmes Intelligents (NOUVEAU)
-- **📝 Logs Configurables** - Enregistrement automatique de toutes les actions avec choix des événements
-- **🔔 Notifications GitHub** - Alertes Discord automatiques pour nouvelles versions et mises à jour
-- **🎯 Commandes Bonus** - Système extensible pour jeux, utilitaires et fonctionnalités fun
-- **🌐 Dashboard Web** - Interface de gestion moderne intégrée (en développement pour le futur)
-- **🤖 IA Modération** - Détection intelligente prévue dans les prochaines versions
+## ✨ Fonctionnalités Principales
 
 ### 🛡️ Modération Nouvelle Génération
-- **📋 Liste Bannis Ultra-Avancée** - Pagination 5 par page avec recherche intelligente
-- **🔍 Recherche Multi-Critères** - Par pseudo, nom, ID, correspondance partielle insensible casse
-- **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées illimitées
-- **🛠️ Modération Premium** - Kick, timeout, clear avec système de permissions avancé
-- **👤 Profils Utilisateurs** - Informations détaillées avec âge compte et historique
+- **📋 Liste Bannis Ultra-Avancée** - Pagination avec recherche intelligente
+- **🔍 Recherche Multi-Critères** - Par pseudo, nom, ID, correspondance partielle
+- **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées personnalisées
+- **🛠️ Modération Premium** - Kick, timeout, clear avec système de permissions
+- **👤 Profils Utilisateurs** - Informations détaillées avec historique
 
-### 🎨 Interface Premium 2.0
-- **🎭 Embeds Designer** - Nouveau système d'embeds avec design professionnel uniforme
-- **🎮 Navigation Interactive** - Boutons intelligents pour expérience utilisateur fluide
-- **📱 Messages Contextuels** - Erreurs informatives avec suggestions de résolution
-- **🏷️ Branding Intégré** - Watermark créateur sur tous embeds avec style cohérent
-
-### 🔧 Architecture Technique Avancée
-- **📊 Monitoring Temps Réel** - Endpoints API pour surveillance et métriques
-- **🔄 Keep-Alive Optimisé** - Serveur Flask intégré Version II pour 24/7 uptime
+### 🔥 Systèmes Intelligents
+- **📝 Logs Configurables** - Enregistrement automatique avec choix des événements
+- **🔔 Notifications GitHub** - Alertes Discord automatiques pour mises à jour
+- **🎯 Commandes Bonus** - Système extensible pour jeux et utilitaires
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
-- **📈 Performance** - Cache intelligent, chargement 60% plus rapide
+
+### 🎨 Interface Premium
+- **🎭 Embeds Designer** - Design professionnel uniforme
+- **🎮 Navigation Interactive** - Boutons intelligents pour UX fluide
+- **📱 Messages Contextuels** - Erreurs informatives avec suggestions
+- **🏷️ Branding Intégré** - Style cohérent sur tous les embeds
 
 ---
 
@@ -72,8 +65,44 @@ Pour les utilisateurs préférant Railway :
 
 **💡 Note** : SlimBoy est optimisé Replit mais 100% compatible Railway.
 
-###Option 3 : autre moyen d'hebergement (flask intégré)
+### 🌍 Option 3 : Autre moyen d'hébergement (Flask intégré)
 
+Le bot intègre un serveur Flask pour le keep-alive, compatible avec la plupart des plateformes d'hébergement gratuites ou payantes supportant Python.
+
+---
+
+## 🎨 Personnalisation du Nom du Bot
+
+### 🤖 Nom par Défaut : "SlimBoy"
+
+Le bot utilise **"SlimBoy"** comme nom par défaut, mais vous pouvez facilement le personnaliser selon vos préférences !
+
+### ✏️ Comment Changer le Nom
+
+#### **Méthode 1 : Via Discord Developer Portal (Recommandée)**
+1. **Accédez** au [Discord Developer Portal](https://discord.com/developers/applications)
+2. **Sélectionnez** votre application bot
+3. **Onglet "General Information"** → Modifiez le champ **"Name"**
+4. **Sauvegardez** et redémarrez votre bot
+
+#### **Méthode 2 : Modification du Code (Avancée)**
+Dans le fichier `config.py`, vous pouvez personnaliser :
+```python
+BOT_CONFIG = {
+    "bot_name": "VotreNomPersonnalisé",  # Changez ici
+    "bot_description": "Votre description personnalisée",
+    # ... autres configurations
+}
+```
+
+### 🎭 Personnalisations Populaires
+- **ModBot** - Pour un bot axé modération
+- **GuardianBot** - Pour un gardien de serveur
+- **AdminAssist** - Pour un assistant administrateur
+- **YourServerBot** - Avec le nom de votre serveur
+- **CustomMod** - Bot de modération personnalisé
+
+### 💡 **Important :** Le nom dans le code source reste "SlimBoy" pour maintenir la compatibilité, mais l'affichage Discord utilisera votre nom personnalisé !
 
 ---
 
@@ -86,7 +115,7 @@ Pour les utilisateurs préférant Railway :
 **Source** : Discord Developer Portal
 ```
 1. https://discord.com/developers/applications
-2. New Application → "SlimBoy Version 2.2"
+2. New Application → "Votre Nom de Bot Personnalisé"
 3. Onglet Bot → Reset Token → Copier
 4. Replit Secrets → DISCORD_BOT_TOKEN = votre_token
 ```
@@ -399,9 +428,8 @@ GET /version                     # Informations version détaillées
 
 ### ⚡ Keep-Alive Automatique
 
-Le bot inclut un serveur Flask intégré Version II qui :
-- 🔄 Maintient la connexion 24/7 sur Replit
-- 📊 Fournit dashboard web moderne
+Le bot inclut un serveur Flask intégré qui :
+- 🔄 Maintient la connexion 24/7 sur Replit ou autre
 - 🔍 Endpoints monitoring pour surveillance
 - 📈 Métriques performances temps réel
 
@@ -464,8 +492,8 @@ KNOWN_BOTS = [
 
 ## 🗺️ Roadmap Développement
 
-### 🎯 Version ?????
-- [ ] 🎲 **Commandes Fun Complètes** - divertissements
+### 🎯 Versions Futures
+- [ ] 🎲 **Commandes Fun Complètes** - Divertissements variés
 - [ ] 📊 **Analytics Graphiques** - Visualisation données avec charts
 - [ ] 🤖 **IA Modération V1** - Détection contenu inapproprié automatique
 - [ ] 🌍 **Multi-langues** - Support anglais, espagnol, allemand
@@ -565,7 +593,7 @@ Symptôme: Boutons pagination inactifs
 
 ## 🤝 Contribution & Développement
 
-### 🌟 Guidelines Contribution Version 2.2
+### 🌟 Guidelines Contribution
 
 **Processus contribution :**
 1. **🍴 Fork** projet et créer branche feature/nom-feature
@@ -573,7 +601,6 @@ Symptôme: Boutons pagination inactifs
 3. **📝 Documenter** toutes fonctions avec docstrings
 4. **🧪 Tester** sur serveur développement privé
 5. **📬 Soumettre** Pull Request avec description détaillée
-
 
 ### 💻 Setup Environnement Dev
 
@@ -649,7 +676,7 @@ python main.py
 Ce projet est distribué sous licence MIT. Utilisation libre avec attribution obligatoire.
 
 ```
-MIT License - Copyright (c) 2024 SlimBoy Version 2.2
+MIT License - Copyright (c) 2025 SlimBoy
 
 Permission accordée d'utiliser, copier, modifier, distribuer ce logiciel
 avec attribution appropriée à l'auteur original.
@@ -662,12 +689,14 @@ avec attribution appropriée à l'auteur original.
 - Modification code source
 - Distribution et redistribution
 - Création bots dérivés
+- **🎯 Personnalisation du nom du bot**
 
 **❌ Interdit :**
 - Suppression attributions auteur
-- Utilisation nom "SlimBoy" sans permission
 - Revente sans valeur ajoutée significative
 - Usage pour activités illégales
+
+**💡 Note spéciale :** Vous pouvez changer le nom du bot, mais merci de conserver l'attribution à l'auteur original dans les crédits.
 
 ### 🛡️ Limitation Responsabilité
 
@@ -698,9 +727,9 @@ Le développeur n'est pas responsable de :
 
 **🏆 Communautés & Projets :**
 - **Discord.py Team** - Framework exceptionnel et support technique
-- **Replit Platform** - Hébergement gratuit et outils développement
+- **Replit Platform** - Hébergement et outils développement
+- **Railway Hébergement** - Hébergement gratuit
 - **GitHub Community** - Plateforme collaboration open source
-- **Beta Testers** - Feedback constructif et signalement bugs
 
 **🌟 Inspiration & Ressources :**
 - **Communauté Discord FR** - Suggestions fonctionnalités
@@ -710,9 +739,10 @@ Le développeur n'est pas responsable de :
 
 ---
 
+
 <div align="center">
 
-# 🚀 SlimBoy Version 2.2 - Prêt à Révolutionner votre Discord ?
+# 🚀 SlimBoy - Prêt à Révolutionner votre Discord ?
 
 ## ⚡ Déployez maintenant sur Replit en 2 minutes !
 
@@ -730,12 +760,9 @@ Le développeur n'est pas responsable de :
 
 ---
 
-### 🎊 **Version 2.2 - L'évolution continue...** 
+**💡 Personnalisez le nom de votre bot selon vos préférences - "SlimBoy" n'est que le nom par défaut !**
 
-**🔮 Prochainement : IA Modération • Dashboard Web • App Mobile • Et bien plus !**
-
----
-
-**© 2024 SlimBoy Version 2.2 - Tous droits réservés • Licence MIT**
+**© 2025 SlimBoy Discord Bot - Tous droits réservés • Licence MIT**
 
 </div>
+
