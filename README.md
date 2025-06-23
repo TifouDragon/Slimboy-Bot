@@ -43,7 +43,6 @@
 
 ### 🎯 Méthode Replit (Recommandée - 2 minutes)
 
-[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
 **Étapes simples :**
 1. **🍴 Fork** le projet sur Replit (bouton ci-dessus)
@@ -383,7 +382,7 @@ BOT_CONFIG = {
 
 ## 🌐 Monitoring & Endpoints API
 
-### 📊 Dashboard Web Intégré
+### 📊 MINI Web Intégré
 
 **Page d'accueil :** `https://votre-repl.replit.app/`
 - 🎨 Interface moderne avec informations bot
@@ -641,7 +640,6 @@ python main.py
 ![GitHub forks](https://img.shields.io/github/forks/TifouDragon/slimboy-discord-bot?style=for-the-badge&color=blue)
 ![GitHub issues](https://img.shields.io/github/issues/TifouDragon/slimboy-discord-bot?style=for-the-badge&color=red)
 
-![Replit Deployments](https://img.shields.io/badge/Replit-2000%2B%20Déploiements-orange?style=for-the-badge)
 ![Discord Servers](https://img.shields.io/badge/Discord-500%2B%20Serveurs-blue?style=for-the-badge)
 ![Active Users](https://img.shields.io/badge/Utilisateurs-15K%2B-green?style=for-the-badge)
 
