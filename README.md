@@ -25,7 +25,7 @@
 - **📝 Logs Configurables** - Enregistrement automatique de toutes les actions avec choix des événements
 - **🔔 Notifications GitHub** - Alertes Discord automatiques pour nouvelles versions et mises à jour
 - **🎯 Commandes Bonus** - Système extensible pour jeux, utilitaires et fonctionnalités fun
-- **🌐 Dashboard Web** - Interface de gestion moderne intégrée (en développement)
+- **🌐 Dashboard Web** - Interface de gestion moderne intégrée (en développement pour le futur)
 - **🤖 IA Modération** - Détection intelligente prévue dans les prochaines versions
 
 ### 🛡️ Modération Nouvelle Génération
@@ -72,6 +72,8 @@ Pour les utilisateurs préférant Railway :
 4. **🚀 Deploy** automatique avec `railway.json`
 
 **💡 Note** : SlimBoy est optimisé Replit mais 100% compatible Railway.
+
+## Option 3 : autre moyen d'hebergement (flask intégré)
 
 ---
 
@@ -462,28 +464,14 @@ KNOWN_BOTS = [
 
 ## 🗺️ Roadmap Développement
 
-### 🎯 Version 2.3 (Q1 2025)
-- [ ] 🎲 **Commandes Fun Complètes** - 15+ jeux et divertissements
+### 🎯 Version ?????
+- [ ] 🎲 **Commandes Fun Complètes** - divertissements
 - [ ] 📊 **Analytics Graphiques** - Visualisation données avec charts
 - [ ] 🤖 **IA Modération V1** - Détection contenu inapproprié automatique
 - [ ] 🌍 **Multi-langues** - Support anglais, espagnol, allemand
-- [ ] 🎮 **Mini-jeux Intégrés** - Système points et achievements
 - [ ] 📱 **API REST Publique** - Endpoints développeurs tiers
-
-### 🚀 Version 2.4 (Q2 2025)
 - [ ] 🌐 **Dashboard Web Complet** - Interface gestion full-featured
-- [ ] 📱 **App Mobile Dédiée** - Contrôle depuis smartphone
-- [ ] ☁️ **Cloud Sync** - Synchronisation configurations multi-serveurs
 - [ ] 🔐 **Sécurité Renforcée** - 2FA, audit avancé, chiffrement
-- [ ] 🎨 **Thèmes Personnalisables** - 10+ thèmes interface
-- [ ] 📈 **Métriques Avancées** - Business intelligence pour serveurs
-
-### 🌟 Version 3.0+ (Futur)
-- [ ] 🧠 **Machine Learning** - Prédiction comportements utilisateurs
-- [ ] 🌈 **Réalité Augmentée** - Intégration AR pour modération
-- [ ] 🔗 **Blockchain Integration** - NFT rewards, crypto economy
-- [ ] 🌍 **Métavers Support** - Modération espaces virtuels 3D
-- [ ] 🤝 **IA Collaborative** - Modération assistée par intelligence artificielle
 
 ---
 
@@ -560,9 +548,7 @@ Symptôme: Boutons pagination inactifs
 
 **Canaux support :**
 - 🐛 **Bugs critiques** : [GitHub Issues](https://github.com/TifouDragon/slimboy-discord-bot/issues)
-- 💬 **Support technique** : Discord @Ninja Iyed
-- 📚 **Documentation** : [Wiki GitHub Complet](https://github.com/TifouDragon/slimboy-discord-bot/wiki)
-- 📧 **Contact direct** : Issues GitHub avec label "support"
+- 💬 **Support technique** : Discord : ninjaiyed10
 
 **Template rapport bug :**
 ```markdown
@@ -588,19 +574,6 @@ Symptôme: Boutons pagination inactifs
 4. **🧪 Tester** sur serveur développement privé
 5. **📬 Soumettre** Pull Request avec description détaillée
 
-### 🎯 Domaines Contribution Recherchés
-
-**🔥 Priorité Haute :**
-- **🎯 Commandes Bonus** - Jeux, utilitaires, fonctionnalités fun
-- **🎨 Interface Design** - Améliorations UX et embeds
-- **📊 Système Analytics** - Métriques et statistiques avancées
-- **🌍 Traductions** - Support langues supplémentaires
-
-**⭐ Priorité Moyenne :**
-- **🐛 Bug Fixes** - Corrections et optimisations
-- **📱 Responsive Design** - Adaptation mobile dashboard
-- **🔐 Sécurité** - Améliorations protocoles sécurité
-- **📈 Performance** - Optimisations vitesse et mémoire
 
 ### 💻 Setup Environnement Dev
 
@@ -629,7 +602,6 @@ python main.py
 - **@Contributors** - Améliorations diverses (bientôt !)
 
 **🎖️ Reconnaissance Contributions :**
-- Nom dans CHANGELOG.md
 - Badge spécial Discord serveur support
 - Mention page GitHub contributeurs
 - Accès beta nouvelles fonctionnalités
