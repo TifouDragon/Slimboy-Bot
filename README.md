@@ -632,39 +632,6 @@ python main.py
 
 ---
 
-## 📊 Statistiques & Métriques
-
-### 📈 Adoption Version 2.2
-
-![GitHub stars](https://img.shields.io/github/stars/TifouDragon/slimboy-discord-bot?style=for-the-badge&color=gold)
-![GitHub forks](https://img.shields.io/github/forks/TifouDragon/slimboy-discord-bot?style=for-the-badge&color=blue)
-![GitHub issues](https://img.shields.io/github/issues/TifouDragon/slimboy-discord-bot?style=for-the-badge&color=red)
-
-![Discord Servers](https://img.shields.io/badge/Discord-500%2B%20Serveurs-blue?style=for-the-badge)
-![Active Users](https://img.shields.io/badge/Utilisateurs-15K%2B-green?style=for-the-badge)
-
-### 🎯 Performances Version 2.2
-
-**📊 Optimisations apportées :**
-```bash
-🚀 Démarrage:      5.2s → 1.9s (-63%)
-⚡ Commandes:      1200ms → 425ms (-65%)
-💾 Mémoire:        180MB → 98MB (-46%)
-🔄 API Calls:      -70% grâce cache intelligent
-📱 Interface:      Responsive 100% mobile
-```
-
-**📈 Métriques utilisation :**
-```bash
-📊 Commandes/jour:    35,000+
-🛡️ Actions modération: 5,000+/jour  
-📝 Logs générés:     50,000+/jour
-🔔 Notifications:    1,000+/jour
-⏱️ Uptime moyen:     99.8%
-```
-
----
-
 ## 📄 Licence & Légal
 
 ### ⚖️ Licence MIT
