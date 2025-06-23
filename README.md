@@ -266,18 +266,10 @@ Les contributions sont les bienvenues ! Pour contribuer :
 
 ## 📈 Roadmap
 
-### Version 1.3.0 (Prévue)
+### Version ????? (Prévue)
 - [ ] Dashboard web pour gestion à distance
 - [ ] Système de logs avancé avec base de données
-- [ ] Commandes de modération par lots
-- [ ] Intégration webhooks pour notifications
-- [ ] Système de réputation des utilisateurs
 
-### Version 1.4.0 (Future)
-- [ ] API REST pour intégration externe
-- [ ] Système de plugins modulaire
-- [ ] Interface multi-langues
-- [ ] Analytics et statistiques avancées
 
 ## 📄 Licence
 
