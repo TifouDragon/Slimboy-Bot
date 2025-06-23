@@ -11,7 +11,6 @@
 
 <div align="center">
 
-[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
 **🎯 Modération Avancée • 📝 Logs Intelligents • 🔔 Notifications Auto • 🎮 Commandes Bonus**
 
