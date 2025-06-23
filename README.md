@@ -3,13 +3,11 @@
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Discord.py](https://img.shields.io/badge/discord.py-2.5.2+-green.svg)](https://discordpy.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Replit](https://img.shields.io/badge/Replit-Ready-orange.svg)](https://replit.com)
 
 > 🚀 Bot Discord révolutionnaire avec modération intelligente, système de logs configurable, notifications automatiques et commandes bonus ! Interface française premium avec pagination interactive optimisée pour Replit.
 
 <div align="center">
 
-[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
 **🎯 Modération Avancée • 📝 Logs Intelligents • 🔔 Notifications Auto • 🎮 Commandes Bonus**
 
