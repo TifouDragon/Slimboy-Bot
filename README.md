@@ -575,16 +575,6 @@ Symptôme: Boutons pagination inactifs
 - 🐛 **Bugs critiques** : [GitHub Issues](https://github.com/TifouDragon/slimboy-discord-bot/issues)
 - 💬 **Support technique** : Discord : ninjaiyed10
 
-**Template rapport bug :**
-```markdown
-**Version SlimBoy :** 2.2.0
-**Plateforme :** Replit
-**Problème :** [Description détaillée]
-**Étapes reproduction :** [1, 2, 3...]
-**Comportement attendu :** [Description]
-**Logs erreur :** [Console Replit]
-**Configuration :** [Secrets, permissions]
-```
 
 ---
 
