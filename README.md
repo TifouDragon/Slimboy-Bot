@@ -66,7 +66,7 @@
 ### 2. Inviter le bot
 Utilisez ce lien en remplaçant `YOUR_CLIENT_ID` par l'ID de votre application :
 ```
-https://discord.com/api/oauth2/authorize?client_id=YOUR_CLIENT_ID&permissions=1374389502966&scope=bot%20applications.commands
+https://discord.com/oauth2/authorize?client_id=1384568465326866585&scope=bot%20applications.commands&permissions=8
 ```
 
 ### 3. Permissions requises
