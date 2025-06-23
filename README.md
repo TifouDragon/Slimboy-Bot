@@ -7,9 +7,8 @@
 [![Railway](https://img.shields.io/badge/Deploy-Railway-purple.svg)](https://railway.app)
 [![Replit](https://img.shields.io/badge/Replit-Ready-orange.svg)](https://replit.com)
 
-> Un bot Discord de modération avancé avec interface française et pagination interactive pour la gestion des bannis. Optimisé pour Railway et Replit.
+> Un bot Discord de modération avancé avec interface française et pagination interactive pour la gestion des bannis. Optimisé pour Railway et Replit. + petit bonus.
 
-![SlimBoy Banner](https://via.placeholder.com/800x200/7289da/ffffff?text=SlimBoy+Discord+Bot)
 
 ## ✨ Fonctionnalités
 
