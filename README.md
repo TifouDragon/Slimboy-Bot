@@ -23,7 +23,7 @@
 - **Embeds Discord** avec design professionnel
 - **Boutons interactifs** pour la navigation
 - **Messages d'erreur** informatifs en français
-- **Watermark** @Ninja Iyed sur tous les embeds
+> Watermark du createur sur tous les embeds
 
 ### 🔍 Fonctionnalités Avancées
 - **Détection automatique** de 20+ bots populaires
@@ -31,6 +31,7 @@
 - **Permissions intelligentes** avec vérifications
 - **Keep-alive automatique** avec serveur Flask intégré
 - **Commandes de simulation** (fakeban, fakemute)
+- **+ des ajouts**
 
 ## 🚀 Déploiement
 
@@ -287,7 +288,6 @@ Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de 
 **Ninja Iyed** - *Développeur Principal*
 - Discord : @Ninja Iyed
 - GitHub : [@TifouDragon](https://github.com/TifouDragon)
-- Email : contact@ninja-iyed.dev
 
 ## 🙏 Remerciements
 
