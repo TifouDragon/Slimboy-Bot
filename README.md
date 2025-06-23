@@ -5,7 +5,6 @@
 [![Discord.py](https://img.shields.io/badge/discord.py-2.5.2+-green.svg)](https://discordpy.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Replit](https://img.shields.io/badge/Replit-Ready-orange.svg)](https://replit.com)
-[![Version](https://img.shields.io/badge/Version-2.2.0-red.svg)](CHANGELOG.md)
 
 > 🚀 **Version 2.2** - Bot Discord de modération avancé avec système de logs, notifications GitHub et commandes bonus ! Interface française complète avec pagination interactive optimisée pour Replit.
 
