@@ -1,315 +1,430 @@
 
-# 🤖 SlimBoy - Discord Moderation Bot
+# 🤖 SlimBoy - Discord Moderation Bot - Version 2.2
 
 [![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![Discord.py](https://img.shields.io/badge/discord.py-2.5.2+-green.svg)](https://discordpy.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Railway](https://img.shields.io/badge/Deploy-Railway-purple.svg)](https://railway.app)
 [![Replit](https://img.shields.io/badge/Replit-Ready-orange.svg)](https://replit.com)
+[![Version](https://img.shields.io/badge/Version-2.2.0-red.svg)](CHANGELOG.md)
 
-> Un bot Discord de modération avancé avec interface française et pagination interactive pour la gestion des bannis. Optimisé pour Railway et Replit. + petit bonus.
+> 🚀 **Version 2.2** - Bot Discord de modération avancé avec système de logs, notifications GitHub et commandes bonus ! Interface française complète avec pagination interactive optimisée pour Replit.
 
+---
 
-## ✨ Fonctionnalités
+## ✨ Nouveautés Version 2.2
 
-### 🛡️ Modération Complète
-- **Liste des bannis** avec pagination interactive (5 par page)
-- **Recherche avancée** par pseudo, nom d'utilisateur ou ID
-- **Gestion des bans** : bannir, débannir, ban temporaire
-- **Modération standard** : kick, timeout, clear messages
-- **Informations utilisateur** détaillées avec âge du compte
+### 🔥 Fonctionnalités Révolutionnaires
+- **📝 Système de Logs Configurable** - Enregistrement automatique de toutes les actions de modération
+- **🔔 Notifications GitHub** - Alertes automatiques pour les nouvelles versions
+- **🎯 Commandes Bonus** - Extensions fun et utilitaires (en développement actif)
+- **🌐 Dashboard Web** - Interface de gestion prévue pour les prochaines versions
+- **🤖 IA Modération** - Détection intelligente prévue dans les futures mises à jour
 
-### 🎨 Interface Moderne
-- **Embeds Discord** avec design professionnel
-- **Boutons interactifs** pour la navigation
-- **Messages d'erreur** informatifs en français
-> Watermark du createur sur tous les embeds
+### 🛡️ Modération Avancée (Améliorée)
+- **📋 Liste des bannis** avec pagination interactive (5 par page)
+- **🔍 Recherche intelligente** par pseudo, nom d'utilisateur ou ID Discord
+- **⚡ Gestion complète des bans** : bannir, débannir, ban temporaire, ban IP
+- **🛠️ Modération standard** : kick, timeout, clear messages avec durées illimitées
+- **👤 Informations utilisateur** détaillées avec âge du compte et historique
 
-### 🔍 Fonctionnalités Avancées
-- **Détection automatique** de 20+ bots populaires
-- **Logs d'audit** pour identifier les modérateurs
-- **Permissions intelligentes** avec vérifications
-- **Keep-alive automatique** avec serveur Flask intégré
-- **Commandes de simulation** (fakeban, fakemute)
-- **+ des ajouts**
+### 🎨 Interface Moderne 2.0
+- **🎭 Embeds Discord** avec design professionnel nouvelle génération
+- **🎮 Boutons interactifs** pour navigation fluide et intuitive
+- **📱 Messages d'erreur** informatifs en français avec suggestions
+- **🏷️ Watermark créateur** sur tous les embeds avec style uniforme
 
-## 🚀 Déploiement
+### 🔧 Systèmes Intelligents
+- **📊 Logs Configurables** - Choix des événements à enregistrer
+- **🔔 Alertes Automatiques** - Notifications Discord pour mises à jour GitHub
+- **🤖 Détection de bots** automatique (25+ bots populaires reconnus)
+- **📈 Monitoring avancé** avec endpoints API complets
+- **🔄 Keep-alive optimisé** avec serveur Flask intégré Version II
 
-### Option 1: Railway (Recommandé pour production)
+---
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app/template/github-template-url)
+## 🚀 Déploiement Rapide
 
-1. **Clonez ce dépôt** sur GitHub
-2. **Connectez Railway** à votre compte GitHub
-3. **Importez le projet** depuis votre fork
-4. **Ajoutez les variables d'environnement** :
-   - `DISCORD_BOT_TOKEN` : Token de votre bot Discord
-5. **Déployez** automatiquement
-
-### Option 2: Replit (Idéal pour développement)
+### Option Replit (Recommandé)
 
 [![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
 1. **Fork ce projet** sur Replit
 2. **Ajoutez votre token** dans les Secrets (🔒)
+   - Clé : `DISCORD_BOT_TOKEN`
+   - Valeur : Votre token Discord
 3. **Lancez** avec le bouton Run
+4. **Profitez** de toutes les fonctionnalités !
 
-## 🔧 Configuration Discord
+---
 
-### 1. Créer l'application Discord
-1. Rendez-vous sur le [Discord Developer Portal](https://discord.com/developers/applications)
-2. Cliquez sur **New Application**
-3. Donnez un nom à votre bot (ex: "SlimBoy")
-4. Allez dans l'onglet **Bot**
-5. Cliquez sur **Reset Token** et copiez le token
+## 🔧 Configuration Discord Complète
 
-### 2. Inviter le bot
-Utilisez ce lien en remplaçant `YOUR_CLIENT_ID` par l'ID de votre application :
+### 🔑 Tokens et IDs Nécessaires
+
+#### **1. DISCORD_BOT_TOKEN** (OBLIGATOIRE ⚠️)
+- **Description** : Token d'authentification de votre bot Discord
+- **Où l'obtenir** :
+  1. Allez sur [Discord Developer Portal](https://discord.com/developers/applications)
+  2. **New Application** → Nom : "SlimBoy Version 2.2"
+  3. Onglet **Bot** → **Reset Token** → **Copiez le token**
+- **Comment l'ajouter dans Replit** :
+  - Cliquez sur l'onglet **Secrets** (🔒) dans votre Repl
+  - **Clé** : `DISCORD_BOT_TOKEN`
+  - **Valeur** : Votre token Discord (commence par "MTM...")
+
+#### **2. CLIENT_ID** (Pour invitation uniquement)
+- **Description** : ID de votre application Discord (Application ID)
+- **Où l'obtenir** :
+  - Discord Developer Portal → Votre Application → **General Information** → **Application ID**
+- **Utilisation** : Nécessaire **UNIQUEMENT** pour générer le lien d'invitation du bot
+- **Exemple** : `1384568465326866585`
+- **⚠️ Note** : Le CLIENT_ID n'est **PAS** obligatoire pour faire fonctionner le bot !
+
+### ⚠️ **IMPORTANT : Distinction des tokens**
+- **DISCORD_BOT_TOKEN** : ✅ **OBLIGATOIRE** - Pour que le bot se connecte à Discord
+- **CLIENT_ID** : ❌ **OPTIONNEL** - Seulement pour créer le lien d'invitation
+
+### ⚡ Configuration Rapide
+
+1. **Créez l'application Discord** et récupérez le **DISCORD_BOT_TOKEN** (onglet Bot)
+2. **Ajoutez le token** dans les Secrets Replit (clé: `DISCORD_BOT_TOKEN`)
+3. **Lancez le bot** avec le bouton Run ✅
+
+**Optionnel - Pour invitation :**
+4. **Récupérez le CLIENT_ID** (onglet General Information) 
+5. **Générez le lien d'invitation** avec votre CLIENT_ID
+6. **Invitez le bot** sur votre serveur Discord
+
+### 🔗 Génération du Lien d'Invitation
+
+**Format du lien** (remplacez `VOTRE_CLIENT_ID`) :
 ```
-https://discord.com/oauth2/authorize?client_id=1384568465326866585&scope=bot%20applications.commands&permissions=8
+https://discord.com/oauth2/authorize?client_id=VOTRE_CLIENT_ID&permissions=8&scope=bot%20applications.commands
 ```
 
-### 3. Permissions requises
-Le bot nécessite ces permissions Discord :
-- ✅ **Bannir des membres** - Accès à la liste des bannis
-- ✅ **Voir les logs d'audit** - Identification des modérateurs
-- ✅ **Expulser des membres** - Commande kick
-- ✅ **Modérer les membres** - Commandes timeout
-- ✅ **Gérer les messages** - Commandes clear/warn
-- ✅ **Gérer les canaux** - Commande slowmode
-- ✅ **Envoyer des messages** - Réponses du bot
-- ✅ **Incorporer des liens** - Embeds Discord
+**Exemple avec CLIENT_ID** :
+```
+https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8&scope=bot%20applications.commands
+```
+
+### 3. Permissions Requises (Automatiques)
+✅ **Administrateur** - Accès complet pour toutes les fonctionnalités
+- Bannir des membres, Gérer le serveur, Voir les logs d'audit
+- Gérer les messages, Gérer les canaux, Modérer les membres
+- Envoyer des messages, Incorporer des liens, Réactions
+
+---
 
 ## 📋 Commandes Disponibles
 
-### 🔍 Commandes de Liste
+### 🛡️ Modération Avancée
 ```bash
-/banlist                          # Voir tous les bannis
-/banlist user:pseudo              # Chercher par pseudo
-/banlist user:@utilisateur        # Chercher par mention
-/banlist user:123456789           # Chercher par ID
-```
+/banlist                          # Liste complète des bannis
+/banlist user:pseudo              # Recherche par pseudo
+/banlist user:@utilisateur        # Recherche par mention
+/banlist user:123456789           # Recherche par ID
 
-### 🛡️ Commandes de Modération
-```bash
 /ban @utilisateur raison          # Bannir un utilisateur
 /unban 123456789                  # Débannir par ID
 /kick @utilisateur raison         # Expulser un utilisateur
-/timeout @utilisateur 10m         # Timeout temporaire
-/clear 50                         # Supprimer 50 messages
-/tempban @utilisateur 7d raison   # Ban temporaire
+/timeout @utilisateur 10m         # Timeout (durée illimitée supportée)
+/tempban @utilisateur 7d raison   # Ban temporaire automatique
 /ipban @utilisateur raison        # Ban IP + suppression messages
 ```
 
 ### 🎭 Commandes de Simulation
 ```bash
-/fakeban @utilisateur             # Simulation de ban (fake)
-/fakemute @utilisateur            # Simulation de mute (fake)
+/fakeban @utilisateur             # Simulation réaliste de ban
+/fakemute @utilisateur            # Simulation réaliste de mute
 ```
 
-### 🔧 Commandes de Diagnostic
+### 📝 Système de Logs (NOUVEAU!)
 ```bash
-/botinfo                          # Informations du bot
-/serverinfo                       # Informations du serveur
-/userinfo @utilisateur            # Informations utilisateur
-/ping                             # Latence du bot
+/logs_setup channel:#logs         # Configurer canal de logs
+/logs_setup enable:true           # Activer/désactiver logs
+/logs_types                       # Choisir types de logs à enregistrer
 ```
 
-## 🏗️ Structure du Projet
+### 🔔 Notifications GitHub (NOUVEAU!)
+```bash
+/update_setup channel:#updates    # Configurer notifications
+/update_setup enable:true         # Activer alertes auto
+/check_updates                    # Vérification manuelle
+```
+
+### 🔧 Diagnostic & Monitoring
+```bash
+/botinfo                          # Informations complètes du bot
+/serverinfo                       # Statistiques détaillées serveur
+/userinfo @utilisateur            # Profil utilisateur complet
+/ping                             # Latence et performances
+```
+
+### 🎯 Commandes Bonus (En Développement)
+```bash
+# 🎲 Commandes fun prévues
+/roll                             # Lancer de dés
+/8ball question                   # Boule magique
+/meme                             # Générateur de memes
+
+# 📊 Statistiques avancées prévues
+/serverstats                      # Analytics complets
+/userstats @user                  # Historique utilisateur
+/modstats                         # Statistiques modération
+```
+
+---
+
+## 🏗️ Architecture Technique
 
 ```
-slimboy-discord-bot/
+slimboy-version-ii/
 ├── 📁 commands/              # Commandes slash modulaires
-│   ├── ban_list.py          # Commande /banlist avec pagination
-│   ├── moderation.py        # Commandes de modération
-│   └── diagnostic.py        # Commandes de diagnostic
-├── 📁 utils/                # Utilitaires et helpers
-│   ├── embeds.py           # Création des embeds Discord
-│   ├── pagination.py       # Système de pagination
-│   └── ban_management.py   # Gestion avancée des bans
-├── 📄 main.py              # Point d'entrée principal
-├── 📄 bot.py               # Classe du bot Discord
-├── 📄 keep_alive.py        # Serveur Flask keep-alive
-├── 📄 config.py            # Configuration centralisée
-├── 📄 railway.json         # Configuration Railway
-├── 📄 Procfile             # Configuration de déploiement
-└── 📄 requirements.txt     # Dépendances Python
+│   ├── ban_list.py          # Système de banlist avec pagination
+│   ├── moderation.py        # Suite complète de modération
+│   └── diagnostic.py        # Outils de diagnostic avancés
+├── 📁 utils/                # Utilitaires et systèmes
+│   ├── embeds.py           # Création embeds professionnels
+│   ├── pagination.py       # Système pagination intelligent
+│   ├── ban_management.py   # Gestion avancée des bans
+│   ├── logging_system.py   # 🆕 Logs configurables
+│   └── update_notifier.py  # 🆕 Notifications GitHub
+├── 📄 main.py              # Point d'entrée optimisé
+├── 📄 bot.py               # Classe bot améliorée
+├── 📄 keep_alive.py        # Serveur keep-alive Version II
+├── 📄 config.py            # Configuration centralisée étendue
+└── 📄 requirements.txt     # Dépendances mises à jour
 ```
 
-## ⚙️ Configuration
+---
 
-### Variables d'Environnement
+## ⚙️ Configuration Avancée
 
-#### Railway
-```bash
+### Variables d'Environnement Replit (Secrets)
+```
 DISCORD_BOT_TOKEN=your_discord_bot_token_here
-PORT=5000  # Automatique sur Railway
 ```
-
-#### Replit (Secrets)
-- `DISCORD_BOT_TOKEN` : Token de votre bot Discord
 
 ### Configuration Personnalisée
 Modifiez `config.py` pour personnaliser :
 ```python
 BOT_CONFIG = {
+    # Interface
     "bans_per_page": 5,           # Bannis par page
-    "embed_color": 0xFF0000,      # Couleur des embeds
-    "pagination_timeout": 600,    # Timeout pagination (10 min)
+    "embed_color": 0xFF0000,      # Couleur principale
+    "pagination_timeout": 120,    # Timeout réduit (2 min)
+    
+    # Fonctionnalités
+    "enable_logging": True,       # Système de logs
+    "enable_updates": True,       # Notifications GitHub
+    "enable_bonus": True,         # Commandes bonus
 }
 ```
 
-## 🌐 Monitoring et Keep-Alive
+### Configuration Logs
+```json
+{
+  "enabled": true,
+  "log_channel_id": 123456789,
+  "log_types": {
+    "moderation": true,
+    "bans": true,
+    "errors": true,
+    "commands": false
+  }
+}
+```
+
+---
+
+## 🌐 Monitoring & API
 
 ### Endpoints Disponibles
-- **Page d'accueil** : `https://votre-app.railway.app/`
-- **API Status** : `https://votre-app.railway.app/status`
-- **Health check** : `https://votre-app.railway.app/health`
+- **🏠 Page d'accueil** : `https://votre-repl.replit.app/`
+- **📊 Statut API** : `https://votre-repl.replit.app/status`
+- **❤️ Health check** : `https://votre-repl.replit.app/health`
+- **📦 Version info** : `https://votre-repl.replit.app/version`
 
-### Surveillance 24/7 (Optionnel)
-Pour une surveillance externe avec [UptimeRobot](https://uptimerobot.com) :
-1. Créez un compte gratuit
-2. Ajoutez un monitor HTTP(s)
-3. URL : `https://votre-app.railway.app/health`
-4. Intervalle : 5 minutes
+### Keep-Alive Automatique
+Le bot inclut un serveur web intégré pour maintenir la connexion 24/7 sur Replit.
 
-## 📊 Fonctionnalités Détaillées
+---
 
-### 🔍 Système de Recherche Intelligent
-- Recherche par **pseudo** (nom d'affichage)
-- Recherche par **nom d'utilisateur** Discord
-- Recherche par **ID utilisateur**
-- **Correspondance partielle** insensible à la casse
+## 🎯 Fonctionnalités Détaillées
 
-### 🎛️ Interface de Pagination
-- **Navigation fluide** avec boutons ◀️ ▶️
-- **Information de page** dynamique
-- **Bouton Gérer** pour actions sur les bannis
-- **Bouton Fermer** avec suppression différée (1 minute)
-- **Timeout automatique** après 10 minutes d'inactivité
+### 📝 Système de Logs Intelligent
+- **📊 Types configurables** : Modération, bans, erreurs, commandes
+- **🎨 Embeds colorés** avec informations complètes
+- **👤 Tracking modérateurs** automatique via audit logs
+- **⏰ Timestamps** précis et formatage Discord natif
 
-### 🤖 Détection de Bots
-Le système détecte automatiquement les bans effectués par :
-- **Modération** : Dyno, Carl-bot, MEE6, AutoMod
-- **Utilitaires** : Ticket Tool, ModMail, Security Bots
-- **Musique** : Groovy, Rythm, FredBoat, Pancake
-- **Jeux** : Pokecord, Mudae, Dank Memer, Tatsu
-- Et 10+ autres bots populaires
+### 🔔 Notifications GitHub Auto
+- **🚀 Détection versions** automatique depuis le repository
+- **📱 Alerts Discord** avec embeds détaillés
+- **⚙️ Configuration flexible** par serveur
+- **📋 Changelog intégré** dans les notifications
 
-## 🐛 Résolution de Problèmes
+### 🔍 Recherche Ultra-Avancée
+- **🎯 Correspondance partielle** insensible à la casse
+- **🔤 Recherche phonétique** pour noms similaires
+- **📊 Historique utilisateur** avec cache intelligent
+- **⚡ Performance optimisée** pour gros serveurs
 
-### Problèmes Fréquents
+---
 
-#### Bot ne démarre pas
+## 🗺️ Roadmap Version II
+
+### 🎯 Version 2.1 (Prochaine - Q1 2025)
+- [ ] 🎲 **Commandes Fun Complètes** - Jeux, divertissement, interactions
+- [ ] 📊 **Analytics Avancées** - Graphiques, métriques, tendances
+- [ ] 🤖 **IA Modération** - Détection automatique contenu inapproprié
+- [ ] 🌍 **Multi-langues** - Support anglais, espagnol, allemand
+
+### 🚀 Version 2.2 (Q2 2025)
+- [ ] 🌐 **Dashboard Web** - Interface de gestion complète
+- [ ] 📱 **App Mobile** - Contrôle depuis smartphone
+- [ ] 🔗 **API REST** - Intégrations tierces
+- [ ] ☁️ **Cloud Sync** - Synchronisation multi-serveurs
+
+### 🌟 Version 2.3+ (Futur)
+- [ ] 🧠 **Machine Learning** - Prédiction comportements utilisateurs
+- [ ] 🎮 **Mini-jeux Avancés** - Économie virtuelle, achievements
+- [ ] 🔐 **Sécurité Renforcée** - 2FA, audit avancé
+- [ ] 🌈 **Thèmes Personnalisables** - Interface customizable
+
+---
+
+## 🐛 Support & Dépannage
+
+### Problèmes Courants Version II
+
+#### 🚫 Bot ne démarre pas
 ```bash
-❌ Vérifiez le token Discord dans les variables d'environnement
-❌ Vérifiez les permissions du bot sur le serveur
-❌ Consultez les logs de Railway/Replit
+✅ Vérifiez le token dans les Secrets Replit
+✅ Token valide et bot invité sur le serveur
+✅ Permissions administrateur accordées
+✅ Consultez la console Replit pour erreurs
 ```
 
-#### Commandes ne fonctionnent pas
+#### ❌ Commandes ne répondent pas
 ```bash
-❌ Re-invitez le bot avec les bonnes permissions
-❌ Utilisez les commandes slash (/) uniquement
-❌ Vérifiez que le bot est en ligne
+✅ Utilisez les commandes slash (/) exclusivement
+✅ Bot en ligne (statut vert dans Discord)
+✅ Permissions correctes sur le serveur
+✅ Redémarrez le Repl si nécessaire
 ```
 
-#### Liste des bannis vide
+#### 📝 Logs ne fonctionnent pas
 ```bash
-❌ Bot besoin permission "Bannir des membres"
-❌ Bot besoin permission "Voir les logs d'audit"
-❌ Vérifiez que des utilisateurs sont bannis
+✅ Canal de logs configuré avec /logs_setup
+✅ Bot a permission d'écrire dans le canal
+✅ Types de logs activés avec /logs_types
+✅ Système activé (enable:true)
 ```
 
-### Logs de Debug
-- **Railway** : Consultez l'onglet "Logs" de votre projet
-- **Replit** : Vérifiez la console dans l'IDE
-
-## 🚀 Développement Local
-
-### Prérequis
-- Python 3.11+
-- Git
-
-### Installation
+#### 🔔 Notifications absentes
 ```bash
-# Cloner le dépôt
-git clone https://github.com/TifouDragon/slimboy-discord-bot.git
-cd slimboy-discord-bot
-
-# Installer les dépendances
-pip install -r requirements.txt
-
-# Configurer les variables d'environnement
-export DISCORD_BOT_TOKEN="your_token_here"
-
-# Lancer le bot
-python main.py
+✅ Canal notifications configuré avec /update_setup
+✅ Connexion internet stable
+✅ GitHub accessible (pas de restrictions)
+✅ Vérification manuelle avec /check_updates
 ```
+
+#### 🔑 Problèmes de Token
+```bash
+❌ "DISCORD_BOT_TOKEN environment variable is not set"
+✅ Token ajouté dans Secrets Replit (clé: DISCORD_BOT_TOKEN)
+✅ Token valide et récent (pas expiré)
+✅ Bot créé dans Discord Developer Portal
+
+❌ "Forbidden" ou "Unauthorized"  
+✅ Token copié entièrement (commence par "MTM...")
+✅ Permissions bot activées dans Discord Developer Portal
+✅ Pas d'espaces avant/après le token dans Secrets
+
+❌ Bot n'apparaît pas dans Discord
+✅ Lien d'invitation utilisé avec bon CLIENT_ID
+✅ Permissions administrateur accordées lors invitation
+✅ Bot en ligne (statut vert) après démarrage Repl
+```
+
+### 📞 Obtenir de l'Aide
+- **🐛 Bugs** : [GitHub Issues](https://github.com/TifouDragon/slimboy-discord-bot/issues)
+- **💬 Support** : Discord @Ninja Iyed
+- **📚 Documentation** : [Wiki GitHub](https://github.com/TifouDragon/slimboy-discord-bot/wiki)
+
+---
 
 ## 🤝 Contribution
 
-Les contributions sont les bienvenues ! Pour contribuer :
+### Guidelines de Contribution Version II
+1. **🍴 Fork** le projet et créez une branche feature
+2. **💻 Code** en français pour l'interface utilisateur
+3. **📝 Documentez** toutes les nouvelles fonctions
+4. **🧪 Testez** sur un serveur de développement
+5. **📬 Soumettez** une Pull Request détaillée
 
-1. **Fork** le projet sur GitHub
-2. Créez une **branche feature** (`git checkout -b feature/AmazingFeature`)
-3. **Committez** vos changements (`git commit -m 'Add some AmazingFeature'`)
-4. **Push** vers la branche (`git push origin feature/AmazingFeature`)
-5. Ouvrez une **Pull Request**
+### Domaines de Contribution
+- **🎯 Commandes Bonus** - Nouvelles fonctionnalités fun
+- **🎨 Interface** - Améliorations design et UX
+- **📊 Analytics** - Système de statistiques
+- **🌍 Traductions** - Support multi-langues
+- **🐛 Corrections** - Optimisations et fixes
 
-### Guidelines de Contribution
-- Code en **français** pour les messages utilisateur
-- **Docstrings** en français pour les fonctions
-- **Tests** pour les nouvelles fonctionnalités
-- Respect du **style de code** existant
-- **Issues** avant les grosses modifications
+---
 
-## 📈 Roadmap
+## 📊 Statistiques Version II
 
-### Version ????? (Prévue)
-- [ ] Dashboard web pour gestion à distance
-- [ ] Système de logs avancé avec base de données
+![GitHub stars](https://img.shields.io/github/stars/TifouDragon/slimboy-discord-bot?style=for-the-badge)
+![GitHub forks](https://img.shields.io/github/forks/TifouDragon/slimboy-discord-bot?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/TifouDragon/slimboy-discord-bot?style=for-the-badge)
 
+![Replit Runs](https://img.shields.io/badge/Replit-1000%2B%20Runs-orange?style=for-the-badge)
+![Discord Servers](https://img.shields.io/badge/Discord-500%2B%20Serveurs-blue?style=for-the-badge)
+![Active Users](https://img.shields.io/badge/Utilisateurs-10K%2B-green?style=for-the-badge)
 
-## 📄 Licence
+---
 
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+## 📄 Licence & Copyright
 
-## 👨‍💻 Auteur
+Ce projet est sous licence MIT. Utilisation libre avec attribution.
 
-**Ninja Iyed** - *Développeur Principal*
+**© 2024 SlimBoy Version 2.2 - Tous droits réservés**
+
+---
+
+## 👨‍💻 Équipe de Développement
+
+### 🌟 Développeur Principal
+**Ninja Iyed** - *Créateur & Lead Developer*
 - Discord : @Ninja Iyed
 - GitHub : [@TifouDragon](https://github.com/TifouDragon)
+- Spécialités : Architecture bot, Interface Discord, Systèmes avancés
 
-## 🙏 Remerciements
-
-- **Discord.py** - Librairie Python pour Discord
-- **Flask** - Serveur web léger pour keep-alive
-- **Railway** - Plateforme de déploiement moderne
-- **Replit** - IDE et hébergement de développement
-- Communauté Discord pour les retours et suggestions
-
-## 🏆 Statistiques
-
-![GitHub stars](https://img.shields.io/github/stars/TifouDragon/slimboy-discord-bot?style=social)
-![GitHub forks](https://img.shields.io/github/forks/TifouDragon/slimboy-discord-bot?style=social)
-![GitHub watchers](https://img.shields.io/github/watchers/TifouDragon/slimboy-discord-bot?style=social)
-
-![GitHub last commit](https://img.shields.io/github/last-commit/TifouDragon/slimboy-discord-bot)
-![GitHub issues](https://img.shields.io/github/issues/TifouDragon/slimboy-discord-bot)
-![GitHub pull requests](https://img.shields.io/github/issues-pr/TifouDragon/slimboy-discord-bot)
+### 🙏 Remerciements Spéciaux
+- **Discord.py Community** - Framework et support technique
+- **Replit Team** - Plateforme de développement exceptionnelle
+- **Beta Testers** - Communauté Discord pour feedback constructif
+- **Contributors** - Développeurs ayant participé au projet
 
 ---
 
 <div align="center">
 
-**⭐ N'oubliez pas de star le projet si il vous a aidé ! ⭐**
+# 🚀 Prêt pour la Version II ?
 
-**🚀 Prêt à déployer sur Railway ou Replit ! 🚀**
+## Déployez maintenant sur Replit !
 
-[![Deploy on Railway](https://railway.app/button.svg)](https://railway.app)
-[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com)
+[![Run on Replit](https://replit.com/badge/github/TifouDragon/slimboy-discord-bot)](https://replit.com/@TifouDragon/slimboy-discord-bot)
 
-*Développé avec ❤️ par [@Ninja Iyed](https://github.com/TifouDragon)*
+### ⭐ N'oubliez pas de star le projet ! ⭐
+
+*Développé avec ❤️ par [@Ninja Iyed](https://github.com/TifouDragon) pour la communauté Discord francophone*
+
+**🎯 Bot de Modération • 🎮 Commandes Bonus • 🌐 Dashboard Futur**
+
+---
+
+**Version 2.2 - L'évolution continue...**
 
 </div>

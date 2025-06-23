@@ -43,7 +43,15 @@ class DiscordBot(commands.Bot):
             from commands.diagnostic import DiagnosticCommands
             await self.add_cog(DiagnosticCommands(self))
 
-            logger.info("Commands loaded successfully")
+            # Load logging system
+            from utils.logging_system import LoggingCommands
+            await self.add_cog(LoggingCommands(self))
+
+            # Load update notifier
+            from utils.update_notifier import UpdateCommands
+            await self.add_cog(UpdateCommands(self))
+
+            logger.info("All commands loaded successfully")
 
             # Sync slash commands
             synced = await self.tree.sync()

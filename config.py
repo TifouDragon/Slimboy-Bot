@@ -65,21 +65,20 @@ FEATURES = {
 
 # Version info
 VERSION_INFO = {
-    "major": 1,
+    "major": 2,
     "minor": 2,
-    "patch": 1,
-    "version_string": "1.2.1",
+    "patch": 0,
+    "version_string": "2.2.0",
     "release_date": "2024-12-22",
     "platform": "Replit",
     "changelog": [
-        "Adaptation complète pour Replit",
-        "Serveur keep-alive intégré",
-        "Optimisation pour l'environnement Replit",
-        "Ajout commandes de modération temporaire",
-        "Système de ban IP avec suppression messages",
-        "Commandes de simulation fakeban/fakemute",
-        "Timeout pagination étendu à 10 minutes",
-        "Amélioration gestion d'erreurs",
-        "Interface utilisateur enrichie"
+        "Système de logs configurable",
+        "Notifications de mise à jour GitHub",
+        "Commandes bonus intégrées",
+        "Interface modernisée Version 2.2",
+        "Keep-alive optimisé",
+        "Modération avancée améliorée",
+        "Dashboard web planifié",
+        "Architecture modulaire repensée"
     ]
 }
