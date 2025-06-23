@@ -72,7 +72,8 @@ Pour les utilisateurs préférant Railway :
 
 **💡 Note** : SlimBoy est optimisé Replit mais 100% compatible Railway.
 
-## Option 3 : autre moyen d'hebergement (flask intégré)
+###Option 3 : autre moyen d'hebergement (flask intégré)
+
 
 ---
 
