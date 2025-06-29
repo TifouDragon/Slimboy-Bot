@@ -18,7 +18,7 @@
 
 ## ✨ Fonctionnalités Principales
 
-### 🛡️ Modération Nouvelle Génération
+### 🛡️ Modération 
 - **📋 Liste Bannis Ultra-Avancée** - Pagination avec recherche intelligente
 - **🔍 Recherche Multi-Critères** - Par pseudo, nom, ID, correspondance partielle
 - **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées personnalisées
@@ -33,7 +33,7 @@
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
 - **🔒 Modération Invisible** - 🆕 Commandes discrètes pour staff
 
-### 🎨 Interface Premium
+### 🎨 Interface
 - **🎭 Embeds Designer** - Design professionnel uniforme
 - **🎮 Navigation Interactive** - Boutons intelligents pour UX fluide
 - **📱 Messages Contextuels** - Erreurs informatives avec suggestions
