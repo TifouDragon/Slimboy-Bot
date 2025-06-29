@@ -67,18 +67,18 @@ FEATURES = {
 VERSION_INFO = {
     "major": 2,
     "minor": 2,
-    "patch": 0,
-    "version_string": "2.2.0",
-    "release_date": "2024-12-22",
+    "patch": 1,
+    "version_string": "2.2.1",
+    "release_date": "2024-12-29",
     "platform": "Replit",
     "changelog": [
+        "Système Guardian de protection utilisateur",
+        "Commandes de jeux et mini-jeux intégrées",
+        "Interface Flask simplifiée et optimisée",
+        "Correction erreurs 404 et amélioration stabilité",
+        "Modération avancée avec Guardian",
         "Système de logs configurable",
         "Notifications de mise à jour GitHub",
-        "Commandes bonus intégrées",
-        "Interface modernisée Version 2.2",
-        "Keep-alive optimisé",
-        "Modération avancée améliorée",
-        "Dashboard web planifié",
         "Architecture modulaire repensée"
     ]
 }

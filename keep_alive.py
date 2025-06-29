@@ -1,246 +1,338 @@
+
 """
 Keep Alive Server
 Flask server to keep the bot running on Replit and provide monitoring endpoints
 """
 
-from flask import Flask, jsonify
-import threading
+from flask import Flask, jsonify, render_template_string
+from threading import Thread
 import logging
-import os
+import psutil
+import platform
+from datetime import datetime
 
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 
+# Template HTML moderne pour la page d'accueil
+HTML_TEMPLATE = """
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlimBoy Bot - Interface de Monitoring</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .status-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .status-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .stat-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .stat-label {
+            font-weight: bold;
+            color: #666;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-top: 5px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+        
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            border-color: #667eea;
+            transform: scale(1.02);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .online-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background: #28a745;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+        
+        .api-endpoints {
+            background: #343a40;
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .endpoint {
+            background: rgba(255,255,255,0.1);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 SlimBoy Bot</h1>
+            <p>Interface de Monitoring & Contrôle</p>
+        </div>
+        
+        <div class="status-card">
+            <h2><span class="online-indicator"></span>Statut du Bot</h2>
+            <div class="status-grid">
+                <div class="stat-item">
+                    <div class="stat-label">Statut</div>
+                    <div class="stat-value" style="color: #28a745;">🟢 En ligne</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Version</div>
+                    <div class="stat-value">{{ version }}</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-label">Mémoire utilisée</div>
+                    <div class="stat-value">{{ memory_usage }}%</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-card">
+            <h2>🎯 Fonctionnalités Disponibles</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Modération</h3>
+                    <p>Système complet de modération avancée</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">👮</div>
+                    <h3>Guardian</h3>
+                    <p>Protection utilisateur intelligente</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📝</div>
+                    <h3>Logs</h3>
+                    <p>Enregistrement automatique des actions</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎮</div>
+                    <h3>Jeux</h3>
+                    <p>Mini-jeux et divertissement</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Diagnostic</h3>
+                    <p>Outils de diagnostic système</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>Monitoring</h3>
+                    <p>Surveillance en temps réel</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="status-card">
+            <h2>🔗 API Endpoints</h2>
+            <div class="api-endpoints">
+                <div class="endpoint">GET / - Interface principale</div>
+                <div class="endpoint">GET /health - Vérification de santé</div>
+                <div class="endpoint">GET /status - Statut JSON détaillé</div>
+                <div class="endpoint">GET /version - Informations de version</div>
+                <div class="endpoint">GET /metrics - Métriques système</div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>🚀 SlimBoy Bot - Créé avec ❤️ sur Replit</p>
+            <p>{{ current_time }}</p>
+        </div>
+    </div>
+</body>
+</html>
+"""
 
 @app.route('/')
 def home():
-    """Home page with bot information"""
-    return """
-    <!DOCTYPE html>
-    <html>
-    <head>
-        <title>SlimBoy Discord Bot - Version II</title>
-        <style>
-            body { 
-                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
-                max-width: 900px; 
-                margin: 50px auto; 
-                padding: 30px; 
-                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-                color: white;
-                line-height: 1.6;
-            }
-            .container {
-                background: rgba(255, 255, 255, 0.1);
-                backdrop-filter: blur(10px);
-                border-radius: 20px;
-                padding: 30px;
-                box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-            }
-            .header { text-align: center; color: #ffffff; margin-bottom: 30px; }
-            .header h1 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            .version-badge { 
-                background: #ff6b6b; 
-                color: white; 
-                padding: 8px 16px; 
-                border-radius: 20px; 
-                font-size: 0.9em; 
-                font-weight: bold;
-                display: inline-block;
-                margin-top: 10px;
-            }
-            .status { 
-                background: linear-gradient(45deg, #43b581, #4caf50); 
-                color: white; 
-                padding: 15px; 
-                border-radius: 10px; 
-                text-align: center; 
-                font-size: 1.2em;
-                margin: 20px 0;
-                box-shadow: 0 4px 15px rgba(67, 181, 129, 0.3);
-            }
-            .info { 
-                background: rgba(255, 255, 255, 0.1); 
-                padding: 20px; 
-                border-radius: 15px; 
-                margin: 20px 0; 
-                border-left: 4px solid #7289da;
-            }
-            .info h3 { color: #7289da; margin-bottom: 15px; }
-            .feature-grid {
-                display: grid;
-                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-                gap: 20px;
-                margin: 20px 0;
-            }
-            .feature-card {
-                background: rgba(255, 255, 255, 0.1);
-                padding: 20px;
-                border-radius: 10px;
-                border-left: 4px solid #ff6b6b;
-            }
-            .bonus-section {
-                background: linear-gradient(45deg, #ff6b6b, #ffa726);
-                border-radius: 15px;
-                padding: 20px;
-                margin: 20px 0;
-                text-align: center;
-                animation: pulse 2s infinite;
-            }
-            @keyframes pulse {
-                0% { transform: scale(1); }
-                50% { transform: scale(1.02); }
-                100% { transform: scale(1); }
-            }
-            ul { list-style: none; padding: 0; }
-            li { 
-                background: rgba(255, 255, 255, 0.1); 
-                margin: 8px 0; 
-                padding: 10px 15px; 
-                border-radius: 8px; 
-                border-left: 3px solid #7289da;
-            }
-            .footer {
-                text-align: center; 
-                margin-top: 30px; 
-                padding-top: 20px; 
-                border-top: 1px solid rgba(255, 255, 255, 0.2);
-            }
-            a { color: #7289da; text-decoration: none; }
-            a:hover { color: #5865f2; text-decoration: underline; }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div class="header">
-                <h1>🤖 SlimBoy Discord Bot</h1>
-                <div class="version-badge">Version 2.2 </div>
-                <p>Bot de Modération Avancé avec Commandes Bonus</p>
-            </div>
-
-            <div class="status">✅ Bot opérationnel sur Replit</div>
-
-            <div class="bonus-section">
-                <h3>🎉 NOUVEAUTÉ : Commandes Bonus Disponibles !</h3>
-                <p>En plus des fonctionnalités de modération, découvrez nos commandes fun et utilitaires !</p>
-                <small>Plus de commandes bonus arrivent dans les prochaines versions...</small>
-            </div>
-
-            <div class="feature-grid">
-                <div class="feature-card">
-                    <h4>🛡️ Modération Complète</h4>
-                    <ul>
-                        <li>📝 Liste des bannis paginée</li>
-                        <li>🔍 Recherche avancée</li>
-                        <li>⚡ Ban/Kick/Timeout</li>
-                        <li>⏰ Ban temporaire</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <h4>🎯 Commandes Bonus</h4>
-                    <ul>
-                        <li>🎲 Commandes fun (à venir)</li>
-                        <li>🛠️ Utilitaires serveur</li>
-                        <li>📊 Statistiques avancées</li>
-                        <li>🎮 Mini-jeux (prévu)</li>
-                    </ul>
-                </div>
-
-                <div class="feature-card">
-                    <h4>📋 Système Avancé</h4>
-                    <ul>
-                        <li>📝 Logs configurables</li>
-                        <li>🔔 Notifications GitHub</li>
-                        <li>🎨 Interface française</li>
-                        <li>🌐 Dashboard web (futur)</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="info">
-                <h3>🔗 Endpoints API</h3>
-                <ul>
-                    <li><a href="/status">/status</a> - Statut JSON du bot</li>
-                    <li><a href="/health">/health</a> - Health check pour monitoring</li>
-                    <li><a href="/version">/version</a> - Informations de version</li>
-                </ul>
-            </div>
-
-            <div class="footer">
-                <p><strong>Développé avec ❤️ par @Ninja Iyed</strong></p>
-                <p>Hébergé sur Replit • Version II en développement actif</p>
-            </div>
-        </div>
-    </body>
-    </html>
-    """
-
-
-@app.route('/status')
-def status():
-    """Bot status endpoint for monitoring"""
-    return jsonify({
-        "status": "online",
-        "platform": "Replit",
-        "bot_name": "SlimBoy",
-        "version": "2.2.0",
-        "version_name": "Version 2.2",
-        "author": "@Ninja Iyed",
-        "features": {
-            "moderation": True,
-            "ban_list": True,
-            "bonus_commands": True,
-            "logging_system": True,
-            "update_notifications": True,
-            "dashboard": "planned"
-        },
-        "uptime": "Opérationnel",
-        "environment": "Replit"
-    })
-
+    # Statistiques système
+    memory = psutil.virtual_memory()
+    return render_template_string(HTML_TEMPLATE, 
+        version="Version 2.2.1",
+        memory_usage=round(memory.percent, 1),
+        current_time=datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
+    )
 
 @app.route('/health')
 def health():
-    """Health check endpoint for uptime monitoring"""
-    return "OK", 200
+    return jsonify({
+        "status": "healthy", 
+        "timestamp": datetime.now().isoformat(),
+        "uptime": "En ligne",
+        "memory_usage": f"{psutil.virtual_memory().percent}%",
+        "cpu_usage": f"{psutil.cpu_percent()}%"
+    })
 
+@app.route('/status')
+def status():
+    return jsonify({
+        "bot_status": "online",
+        "version": "2.2.1",
+        "platform": platform.system(),
+        "features": ["moderation", "guardian", "logging", "games", "diagnostics"],
+        "endpoints": ["/", "/health", "/status", "/version", "/metrics"],
+        "system": {
+            "memory_percent": psutil.virtual_memory().percent,
+            "platform": platform.platform()
+        }
+    })
 
 @app.route('/version')
 def version():
-    """Version information endpoint"""
     return jsonify({
-        "version":
-        "2.2.0",
-        "version_name":
-        "Version 2.2",
-        "release_date":
-        "2024-12-22",
-        "changelog": [
-            "🆕 Système de logs configurable",
-            "🔔 Notifications de mise à jour GitHub",
-            "🎯 Commandes bonus (en développement)", "🌐 Dashboard web planifié",
-            "🛡️ Modération avancée améliorée",
-            "🎨 Interface utilisateur enrichie"
-        ],
-        "upcoming_features": [
-            "🎲 Commandes fun et divertissement", "🌐 Dashboard web de gestion",
-            "📊 Statistiques serveur avancées", "🎮 Mini-jeux intégrés",
-            "🤖 IA pour modération automatique"
-        ]
+        "bot_name": "SlimBoy",
+        "version": "2.2.1",
+        "python_version": platform.python_version(),
+        "platform": platform.system(),
+        "description": "Bot Discord de modération avancée"
     })
 
+@app.route('/metrics')
+def metrics():
+    memory = psutil.virtual_memory()
+    disk = psutil.disk_usage('/')
+    
+    return jsonify({
+        "memory": {
+            "total": memory.total,
+            "available": memory.available,
+            "percent": memory.percent,
+            "used": memory.used
+        },
+        "disk": {
+            "total": disk.total,
+            "used": disk.used,
+            "free": disk.free,
+            "percent": (disk.used / disk.total) * 100
+        },
+        "cpu": {
+            "percent": psutil.cpu_percent(interval=1),
+            "count": psutil.cpu_count()
+        },
+        "timestamp": datetime.now().isoformat()
+    })
+
+@app.errorhandler(404)
+def not_found(error):
+    return jsonify({
+        "error": "Not Found",
+        "message": "Endpoint non disponible",
+        "available_endpoints": ["/", "/health", "/status", "/version", "/metrics"]
+    }), 404
+
+def run():
+    try:
+        logger.info("Starting keep-alive server Version II...")
+        app.run(host='0.0.0.0', port=8080, debug=False)
+    except Exception as e:
+        logger.error(f"Error starting keep-alive server: {e}")
 
 def keep_alive():
-    """Start the Flask server in a separate thread"""
-
-    def run():
-        # Get port from Replit environment or default to 5000
-        port = int(os.environ.get('PORT', 5000))
-        logger.info("Starting keep-alive server Version II...")
-        app.run(host='0.0.0.0', port=port, debug=False)
-        logger.info(f"Keep-alive server started on port {port}")
-
-    server = threading.Thread(target=run, daemon=True)
-    server.start()
+    t = Thread(target=run)
+    t.daemon = True
+    t.start()

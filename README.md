@@ -24,12 +24,14 @@
 - **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées personnalisées
 - **🛠️ Modération Premium** - Kick, timeout, clear avec système de permissions
 - **👤 Profils Utilisateurs** - Informations détaillées avec historique
+- **👮 Guardian Protection** - 🆕 Système de protection utilisateur anti-abus
 
 ### 🔥 Systèmes Intelligents
 - **📝 Logs Configurables** - Enregistrement automatique avec choix des événements
 - **🔔 Notifications GitHub** - Alertes Discord automatiques pour mises à jour
-- **🎯 Commandes Bonus** - Système extensible pour jeux et utilitaires
+- **🎮 Jeux & Mini-Jeux** - 🆕 Divertissement intégré pour la communauté
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
+- **🔒 Modération Invisible** - 🆕 Commandes discrètes pour staff
 
 ### 🎨 Interface Premium
 - **🎭 Embeds Designer** - Design professionnel uniforme
@@ -194,6 +196,13 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 /clear 50                         # Suppression messages bulk
 ```
 
+#### 👮 **Système Guardian** (🆕 v2.2.1)
+```bash
+/guardian @user                   # Protéger un utilisateur contre abus
+# Protection automatique : seuls rôles supérieurs + exceptions peuvent agir
+# Commande invisible pour discrétion maximale
+```
+
 ### 📝 Système de Logs (NOUVEAU)
 
 #### ⚙️ **Configuration Logs**
@@ -229,12 +238,14 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 
 ### 🎯 Commandes Bonus (Évolutif)
 
-#### 🎮 **Fun & Divertissement** (En développement)
+#### 🎮 **Jeux & Mini-Jeux** (🆕 v2.2.1)
 ```bash
 /roll 1d20                        # Lancer de dés configurables
 /8ball question                   # Boule magique réponses
 /coinflip                         # Pile ou face
 /randomuser                       # Sélection membre aléatoire
+/rps rock                         # Pierre-papier-ciseaux
+/guess_number                     # Jeu de devinette numérique
 ```
 
 #### 📊 **Statistiques Avancées** (Prévu)
@@ -702,7 +713,7 @@ Le développeur n'est pas responsable de :
 
 **💡 Personnalisez le nom de votre bot selon vos préférences - "SlimBoy" n'est que le nom par défaut !**
 
-**© 2025 SlimBoy Discord Bot - Tous droits réservés • Licence MIT**
+**© 2025 SlimBoy Discord Bot v2.2.1 - Tous droits réservés • Licence MIT**
 
 </div>
 

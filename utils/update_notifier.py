@@ -22,7 +22,7 @@ class UpdateNotifier:
         self.bot = bot
         self.config_file = "update_config.json"
         self.github_repo = "TifouDragon/slimboy-discord-bot"
-        self.current_version = "2.2.0"  # Version 2.2
+        self.current_version = "2.2.1"  # Version 2.2.1
         self.load_config()
         
     def load_config(self):

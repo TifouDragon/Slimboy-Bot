@@ -47,6 +47,15 @@ class ModerationCommands(commands.Cog):
             )
             return
 
+        # Check guardian protection
+        if hasattr(self.bot, 'guardian_system'):
+            can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
+                interaction.guild, interaction.user, user
+            )
+            if not can_moderate:
+                await interaction.response.send_message(error_msg, ephemeral=True)
+                return
+
         # Check bot permissions
         if not interaction.guild.me.guild_permissions.ban_members:
             await interaction.response.send_message(
@@ -142,6 +151,15 @@ class ModerationCommands(commands.Cog):
             )
             return
 
+        # Check guardian protection
+        if hasattr(self.bot, 'guardian_system'):
+            can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
+                interaction.guild, interaction.user, user
+            )
+            if not can_moderate:
+                await interaction.response.send_message(error_msg, ephemeral=True)
+                return
+
         # Check bot permissions
         if not interaction.guild.me.guild_permissions.kick_members:
             await interaction.response.send_message(
@@ -229,6 +247,15 @@ class ModerationCommands(commands.Cog):
                 ephemeral=True
             )
             return
+
+        # Check guardian protection
+        if hasattr(self.bot, 'guardian_system'):
+            can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
+                interaction.guild, interaction.user, user
+            )
+            if not can_moderate:
+                await interaction.response.send_message(error_msg, ephemeral=True)
+                return
 
         # Check bot permissions
         if not interaction.guild.me.guild_permissions.moderate_members:
@@ -1092,7 +1119,7 @@ class ModerationCommands(commands.Cog):
                 return int(duration_str)
         except (ValueError, IndexError):
             return None
-    
+
     def parse_unlimited_duration(self, duration_str):
         """Parse duration string to seconds, supporting 'permanent'"""
         duration_str = duration_str.lower().strip()
@@ -1119,7 +1146,7 @@ class ModerationCommands(commands.Cog):
                 return int(duration_str)
         except (ValueError, IndexError):
             return None
-    
+
     async def perform_extended_mute(self, user: discord.Member, reason: str):
         """Cycles timeout every 28 days to simulate permanent mute."""
         while True:
@@ -1137,7 +1164,7 @@ class ModerationCommands(commands.Cog):
     async def diagnostic(self, interaction: discord.Interaction):
         """Run diagnostics to check bot and server settings."""
         await interaction.response.defer(ephemeral=True)
-        
+
         checks = {
             "Permissions": self.has_moderation_permission(interaction.user),
             "Bot Ban Permissions": interaction.guild.me.guild_permissions.ban_members,
@@ -1147,7 +1174,7 @@ class ModerationCommands(commands.Cog):
         }
 
         results = "\n".join(f"- {check}: {'✅' if value else '❌'}" for check, value in checks.items())
-        
+
         embed = discord.Embed(
             title="🛠️ Diagnostic de Modération",
             description=f"Vérifications effectuées:\n{results}",

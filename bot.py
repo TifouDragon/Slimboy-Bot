@@ -51,6 +51,17 @@ class DiscordBot(commands.Bot):
             from utils.update_notifier import UpdateCommands
             await self.add_cog(UpdateCommands(self))
 
+            # Load games system
+            from commands.games import GamesCommands
+            await self.add_cog(GamesCommands(self))
+
+            # Load guardian system
+            from commands.guardian import GuardianCommands
+            guardian_cog = GuardianCommands(self)
+            await self.add_cog(guardian_cog)
+            # Store reference for moderation commands
+            self.guardian_system = guardian_cog
+
             logger.info("All commands loaded successfully")
 
             # Sync slash commands
