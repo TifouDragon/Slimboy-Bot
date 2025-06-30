@@ -10,18 +10,18 @@ BOT_CONFIG = {
     # Command settings
     "command_prefix": "!",
     "bans_per_page": 5,
-    
+
     # Embed settings
     "embed_color": 0xFF0000,  # Red color for ban embeds
     "success_color": 0x00FF00,  # Green color for success embeds
     "error_color": 0xFF0000,  # Red color for error embeds
-    
+
     # Pagination settings
     "pagination_timeout": 600,  # 10 minutes
-    
+
     # Permission settings
     "required_permissions": ["ban_members"],
-    
+
     # Bot status
     "activity_name": "for banned users",
     "activity_type": "watching",
@@ -67,8 +67,8 @@ FEATURES = {
 VERSION_INFO = {
     "major": 2,
     "minor": 2,
-    "patch": 1,
-    "version_string": "2.2.1",
+    "patch": 2,
+    "version_string": "2.2.2",
     "release_date": "2024-12-29",
     "platform": "Replit",
     "changelog": [

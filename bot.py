@@ -62,6 +62,10 @@ class DiscordBot(commands.Bot):
             # Store reference for moderation commands
             self.guardian_system = guardian_cog
 
+            # Load temporary channels system
+            from commands.temp_channels import TempChannelsCommands
+            await self.add_cog(TempChannelsCommands(self))
+
             logger.info("All commands loaded successfully")
 
             # Sync slash commands

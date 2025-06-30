@@ -18,7 +18,7 @@
 
 ## ✨ Fonctionnalités Principales
 
-### 🛡️ Modération 
+### 🛡️ Modération Nouvelle Génération
 - **📋 Liste Bannis Ultra-Avancée** - Pagination avec recherche intelligente
 - **🔍 Recherche Multi-Critères** - Par pseudo, nom, ID, correspondance partielle
 - **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées personnalisées
@@ -33,7 +33,7 @@
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
 - **🔒 Modération Invisible** - 🆕 Commandes discrètes pour staff
 
-### 🎨 Interface
+### 🎨 Interface Premium
 - **🎭 Embeds Designer** - Design professionnel uniforme
 - **🎮 Navigation Interactive** - Boutons intelligents pour UX fluide
 - **📱 Messages Contextuels** - Erreurs informatives avec suggestions
@@ -329,13 +329,13 @@ BOT_CONFIG = {
     "embed_color": 0xFF0000,         # Couleur principale embeds
     "pagination_timeout": 120,       # Timeout boutons (secondes)
     "watermark_enabled": True,       # Watermark créateur
-    
+
     # Fonctionnalités système
     "enable_logging": True,          # Système logs activé
     "enable_updates": True,          # Notifications GitHub
     "enable_bonus": True,            # Commandes bonus
     "enable_cache": True,            # Cache performances
-    
+
     # Modération avancée
     "max_ban_reason_length": 512,    # Longueur max raison ban
     "auto_delete_ban_messages": 7,   # Jours suppression messages
@@ -716,4 +716,3 @@ Le développeur n'est pas responsable de :
 **© 2025 SlimBoy Discord Bot v2.2.1 - Tous droits réservés • Licence MIT**
 
 </div>
-
