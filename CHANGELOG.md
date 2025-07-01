@@ -1,4 +1,21 @@
 
+# Changelog - Version 2.2.4 (07/01/2025)
+
+## 🐛 Corrections de bugs
+- **Correction critique** : Erreurs de syntaxe dans les commandes Guardian
+- **Fix** : Commande `dev_claim` qui n'apparaissait pas
+- **Fix** : Return statements incorrects dans les vérifications de privilèges
+- **Fix** : Code tronqué dans guardian.py
+
+## 🛠️ Améliorations
+- **Guardian** : Amélioration de la gestion des permissions
+- **Dev Commands** : Optimisation du système de claim
+- **Modération** : Stabilisation des commandes
+
+---
+
+
+
 # 📋 Changelog SlimBoy
 
 

@@ -67,14 +67,15 @@ FEATURES = {
 VERSION_INFO = {
     "major": 2,
     "minor": 2,
-    "patch": 3,  # Mise à jour de patch
-    "version_string": "2.2.3",
-    "release_date": "2024-12-30",  # Date de la nouvelle version
+    "patch": 4,  # Mise à jour de patch
+    "version_string": "2.2.4",
+    "release_date": "2025-01-07",  # Date de la nouvelle version
     "platform": "Replit",
     "changelog": [
-        "Amélioration du système Guardian.",
-        "Ajout de commandes de modération améliorées.",
-        "Correction de diverses erreurs et amélioration de la stabilité.",
-        "Ajout de notifications de mise à jour GitHub."
+        "Correction des erreurs de commandes Guardian.",
+        "Amélioration de la gestion des permissions Guardian.",
+        "Correction de bugs critiques dans le système de claim.",
+        "Optimisation des commandes de modération.",
+        "Stabilisation générale du bot."
     ]
 }

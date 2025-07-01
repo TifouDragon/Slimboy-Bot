@@ -261,7 +261,7 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 #### 🎪 **Commandes Fun**
 ```bash
 /fakeban @user                    # Simulation ban ultra-réaliste
-/fakemute @user                   # Simulation mute crédible
+/fakemute @user                    # Simulation mute crédible
 ```
 
 ### 🔧 Diagnostic & Monitoring
@@ -274,6 +274,35 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 /ping                             # Latence et performances temps réel
 /diagnostic                       # Test complet fonctionnalités
 ```
+
+---
+
+## 🛡️ Système Guardian
+
+Le système Guardian protège certains utilisateurs contre les actions de modération non autorisées avec un système de permissions avancé.
+
+### Commandes Guardian
+
+#### Commandes Standards (Modérateurs)
+- `/guardian <utilisateur> [raison]` - Protéger un utilisateur
+- `/unguardian <utilisateur>` - Retirer la protection d'un utilisateur
+- `/guardian_list` - Afficher la liste des utilisateurs protégés
+- `/guardian_exceptions <action> [rôle]` - Gérer les rôles d'exception
+
+#### Commandes Avancées (Développeur)
+- `/guardian_absolute <utilisateur> [raison]` - Protection absolue
+- `/unguardian_absolute <utilisateur>` - Retirer toute protection
+- `/guardian_override <durée> [raison]` - Override temporaire
+- `/guardian_config <action> [paramètres]` - Configuration avancée
+
+### Fonctionnalités
+
+- **Protection Standard** : Basée sur la hiérarchie des rôles
+- **Protection Absolue** : Seul le développeur peut la contourner
+- **Système d'override** : Désactivation temporaire des protections
+- **Permissions configurables** : Mode permission-based ou whitelist
+- **Gestion des exceptions** : Rôles pouvant contourner les protections
+- **Interface intuitive** avec embeds Discord colorés
 
 ---
 
@@ -710,6 +739,8 @@ Le développeur n'est pas responsable de :
 *Développé avec ❤️ par [@Ninja Iyed](https://github.com/TifouDragon) pour révolutionner la modération Discord francophone*
 
 ---
+
+**Version :** 2.2.4 | **Plateforme :** Replit | **Langage :** Python 3.11+
 
 **💡 Personnalisez le nom de votre bot selon vos préférences - "SlimBoy" n'est que le nom par défaut !**
 
