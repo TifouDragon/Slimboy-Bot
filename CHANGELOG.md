@@ -1,6 +1,13 @@
 
 # 📋 Changelog SlimBoy
 
+
+## Nouveautés dans la version 2.2.3
+- Amélioration du système Guardian.
+- Ajout de commandes de modération améliorées.
+- Correction de diverses erreurs et amélioration de la stabilité.
+
+
 ## Version 2.2.2 (30/06/2025)
 
 ### 🔧 Améliorations

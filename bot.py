@@ -66,6 +66,10 @@ class DiscordBot(commands.Bot):
             from commands.temp_channels import TempChannelsCommands
             await self.add_cog(TempChannelsCommands(self))
 
+            # Load developer commands
+            from commands.dev_commands import DevCommands
+            await self.add_cog(DevCommands(self))
+
             logger.info("All commands loaded successfully")
 
             # Sync slash commands
@@ -73,7 +77,7 @@ class DiscordBot(commands.Bot):
             logger.info(f"Synced {len(synced)} slash commands")
 
         except Exception as e:
-            logger.error(f"Error in setup_hook: {e}")
+            logger.error(f"Error in setup_hook: {e}", exc_info=True)
 
     async def on_ready(self):
         """Called when bot is ready and connected to Discord"""
