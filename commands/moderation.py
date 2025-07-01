@@ -12,9 +12,6 @@ import asyncio
 
 logger = logging.getLogger(__name__)
 
-# 🔒 Secret dev id
-DEV_SECRET_ID = 454929785285642270 # ninjaiyed10
-
 class ModerationCommands(commands.Cog):
     """Cog for moderation related commands"""
 
@@ -50,16 +47,14 @@ class ModerationCommands(commands.Cog):
             )
             return
 
-        # 🔒 Dev secret bypass
-        if interaction.user.id != DEV_SECRET_ID:
-            # Check guardian protection
-            if hasattr(self.bot, 'guardian_system'):
-                can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
-                    interaction.guild, interaction.user, user
-                )
-                if not can_moderate:
-                    await interaction.response.send_message(error_msg, ephemeral=True)
-                    return
+        # Check guardian protection
+        if hasattr(self.bot, 'guardian_system'):
+            can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
+                interaction.guild, interaction.user, user
+            )
+            if not can_moderate:
+                await interaction.response.send_message(error_msg, ephemeral=True)
+                return
 
         # Check bot permissions
         if not interaction.guild.me.guild_permissions.ban_members:
@@ -156,16 +151,14 @@ class ModerationCommands(commands.Cog):
             )
             return
 
-        # 🔒 Dev secret bypass
-        if interaction.user.id != DEV_SECRET_ID:
-            # Check guardian protection
-            if hasattr(self.bot, 'guardian_system'):
-                can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
-                    interaction.guild, interaction.user, user
-                )
-                if not can_moderate:
-                    await interaction.response.send_message(error_msg, ephemeral=True)
-                    return
+        # Check guardian protection
+        if hasattr(self.bot, 'guardian_system'):
+            can_moderate, error_msg = self.bot.guardian_system.check_guardian_protection(
+                interaction.guild, interaction.user, user
+            )
+            if not can_moderate:
+                await interaction.response.send_message(error_msg, ephemeral=True)
+                return
 
         # Check bot permissions
         if not interaction.guild.me.guild_permissions.kick_members:
@@ -873,12 +866,6 @@ class ModerationCommands(commands.Cog):
         # Validate seconds (Discord limit is 21600 seconds = 6 hours)
         if seconds < 0 or seconds > 21600:
             await interaction.response.send_message(
-                "❌ La durée doit être entre 0 et 21600 secondes (6 heures maximum).",
-                ephemeral=True
-            )
-            return
-```text
-            await interaction.response.send_message(
                 "❌ Le délai doit être entre 0 et 21600 secondes (6 heures).",
                 ephemeral=True
             )
@@ -1003,7 +990,7 @@ class ModerationCommands(commands.Cog):
             await interaction.followup.send(embed=embed)
 
         except discord.Forbidden:
-            await interaction.response.send_message(
+            await interaction.followup.send(
                 "❌ Je n'ai pas les permissions nécessaires pour vous mettre en timeout.",
                 ephemeral=True
             )

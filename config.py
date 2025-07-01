@@ -10,18 +10,18 @@ BOT_CONFIG = {
     # Command settings
     "command_prefix": "!",
     "bans_per_page": 5,
-
+    
     # Embed settings
     "embed_color": 0xFF0000,  # Red color for ban embeds
     "success_color": 0x00FF00,  # Green color for success embeds
     "error_color": 0xFF0000,  # Red color for error embeds
-
+    
     # Pagination settings
     "pagination_timeout": 600,  # 10 minutes
-
+    
     # Permission settings
     "required_permissions": ["ban_members"],
-
+    
     # Bot status
     "activity_name": "for banned users",
     "activity_type": "watching",
@@ -67,15 +67,18 @@ FEATURES = {
 VERSION_INFO = {
     "major": 2,
     "minor": 2,
-    "patch": 4,  # Mise à jour de patch
-    "version_string": "2.2.4",
-    "release_date": "2025-01-07",  # Date de la nouvelle version
+    "patch": 1,
+    "version_string": "2.2.1",
+    "release_date": "2024-12-29",
     "platform": "Replit",
     "changelog": [
-        "Correction des erreurs de commandes Guardian.",
-        "Amélioration de la gestion des permissions Guardian.",
-        "Correction de bugs critiques dans le système de claim.",
-        "Optimisation des commandes de modération.",
-        "Stabilisation générale du bot."
+        "Système Guardian de protection utilisateur",
+        "Commandes de jeux et mini-jeux intégrées",
+        "Interface Flask simplifiée et optimisée",
+        "Correction erreurs 404 et amélioration stabilité",
+        "Modération avancée avec Guardian",
+        "Système de logs configurable",
+        "Notifications de mise à jour GitHub",
+        "Architecture modulaire repensée"
     ]
 }

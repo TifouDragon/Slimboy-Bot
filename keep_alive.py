@@ -1,3 +1,4 @@
+
 """
 Keep Alive Server
 Flask server to keep the bot running on Replit and provide monitoring endpoints
@@ -28,37 +29,37 @@ HTML_TEMPLATE = """
             padding: 0;
             box-sizing: border-box;
         }
-
+        
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: #333;
         }
-
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
-
+        
         .header {
             text-align: center;
             color: white;
             margin-bottom: 40px;
         }
-
+        
         .header h1 {
             font-size: 3rem;
             margin-bottom: 10px;
             text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
-
+        
         .header p {
             font-size: 1.2rem;
             opacity: 0.9;
         }
-
+        
         .status-card {
             background: white;
             border-radius: 15px;
@@ -67,25 +68,25 @@ HTML_TEMPLATE = """
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
         }
-
+        
         .status-card:hover {
             transform: translateY(-5px);
         }
-
+        
         .status-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
             margin-top: 30px;
         }
-
+        
         .stat-item {
             background: #f8f9fa;
             padding: 20px;
             border-radius: 10px;
             border-left: 4px solid #667eea;
         }
-
+        
         .stat-label {
             font-weight: bold;
             color: #666;
@@ -93,20 +94,20 @@ HTML_TEMPLATE = """
             text-transform: uppercase;
             letter-spacing: 1px;
         }
-
+        
         .stat-value {
             font-size: 1.5rem;
             font-weight: bold;
             color: #333;
             margin-top: 5px;
         }
-
+        
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
         }
-
+        
         .feature-card {
             background: #f8f9fa;
             padding: 20px;
@@ -115,17 +116,17 @@ HTML_TEMPLATE = """
             border: 2px solid transparent;
             transition: all 0.3s ease;
         }
-
+        
         .feature-card:hover {
             border-color: #667eea;
             transform: scale(1.02);
         }
-
+        
         .feature-icon {
             font-size: 2rem;
             margin-bottom: 10px;
         }
-
+        
         .online-indicator {
             display: inline-block;
             width: 12px;
@@ -135,13 +136,13 @@ HTML_TEMPLATE = """
             margin-right: 8px;
             animation: pulse 2s infinite;
         }
-
+        
         @keyframes pulse {
             0% { opacity: 1; }
             50% { opacity: 0.5; }
             100% { opacity: 1; }
         }
-
+        
         .api-endpoints {
             background: #343a40;
             color: white;
@@ -149,7 +150,7 @@ HTML_TEMPLATE = """
             border-radius: 10px;
             margin-top: 20px;
         }
-
+        
         .endpoint {
             background: rgba(255,255,255,0.1);
             padding: 10px;
@@ -157,7 +158,7 @@ HTML_TEMPLATE = """
             border-radius: 5px;
             font-family: 'Courier New', monospace;
         }
-
+        
         .footer {
             text-align: center;
             color: white;
@@ -172,7 +173,7 @@ HTML_TEMPLATE = """
             <h1>🤖 SlimBoy Bot</h1>
             <p>Interface de Monitoring & Contrôle</p>
         </div>
-
+        
         <div class="status-card">
             <h2><span class="online-indicator"></span>Statut du Bot</h2>
             <div class="status-grid">
@@ -190,7 +191,7 @@ HTML_TEMPLATE = """
                 </div>
             </div>
         </div>
-
+        
         <div class="status-card">
             <h2>🎯 Fonctionnalités Disponibles</h2>
             <div class="features-grid">
@@ -226,7 +227,7 @@ HTML_TEMPLATE = """
                 </div>
             </div>
         </div>
-
+        
         <div class="status-card">
             <h2>🔗 API Endpoints</h2>
             <div class="api-endpoints">
@@ -237,9 +238,9 @@ HTML_TEMPLATE = """
                 <div class="endpoint">GET /metrics - Métriques système</div>
             </div>
         </div>
-
+        
         <div class="footer">
-            <p>🚀 SlimBoy Bot - Créé avec ❤️</p>
+            <p>🚀 SlimBoy Bot - Créé avec ❤️ sur Replit</p>
             <p>{{ current_time }}</p>
         </div>
     </div>
@@ -252,7 +253,7 @@ def home():
     # Statistiques système
     memory = psutil.virtual_memory()
     return render_template_string(HTML_TEMPLATE, 
-        version="Version 2.2.2",
+        version="Version 2.2.1",
         memory_usage=round(memory.percent, 1),
         current_time=datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
     )
@@ -271,7 +272,7 @@ def health():
 def status():
     return jsonify({
         "bot_status": "online",
-        "version": "2.2.2",
+        "version": "2.2.1",
         "platform": platform.system(),
         "features": ["moderation", "guardian", "logging", "games", "diagnostics"],
         "endpoints": ["/", "/health", "/status", "/version", "/metrics"],
@@ -285,7 +286,7 @@ def status():
 def version():
     return jsonify({
         "bot_name": "SlimBoy",
-        "version": "2.2.2",
+        "version": "2.2.1",
         "python_version": platform.python_version(),
         "platform": platform.system(),
         "description": "Bot Discord de modération avancée"
@@ -295,7 +296,7 @@ def version():
 def metrics():
     memory = psutil.virtual_memory()
     disk = psutil.disk_usage('/')
-
+    
     return jsonify({
         "memory": {
             "total": memory.total,

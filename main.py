@@ -11,7 +11,7 @@ from bot import DiscordBot
 from keep_alive import keep_alive
 
 logging.basicConfig(
-    level=logging.DEBUG,
+    level=logging.INFO,
     format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 )
 logger = logging.getLogger(__name__)

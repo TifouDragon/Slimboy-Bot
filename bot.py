@@ -61,36 +61,15 @@ class DiscordBot(commands.Bot):
             await self.add_cog(guardian_cog)
             # Store reference for moderation commands
             self.guardian_system = guardian_cog
-            logger.info("Guardian commands loaded successfully")
-
-            # Load temporary channels system
-            from commands.temp_channels import TempChannelsCommands
-            await self.add_cog(TempChannelsCommands(self))
-
-            # Load developer commands
-            from commands.dev_commands import DevCommands
-            await self.add_cog(DevCommands(self))
 
             logger.info("All commands loaded successfully")
 
-            # Sync slash commands - Force sync to ensure all commands are registered
-            try:
-                synced = await self.tree.sync()
-                logger.info(f"Synced {len(synced)} slash commands")
-                
-                # List all registered commands for debugging
-                all_commands = [cmd.name for cmd in self.tree.get_commands()]
-                logger.info(f"Registered commands: {', '.join(all_commands)}")
-                
-            except Exception as sync_error:
-                logger.error(f"Failed to sync commands: {sync_error}")
-                # Try clearing and resyncing
-                self.tree.clear_commands()
-                synced = await self.tree.sync()
-                logger.info(f"Force resynced {len(synced)} slash commands")
+            # Sync slash commands
+            synced = await self.tree.sync()
+            logger.info(f"Synced {len(synced)} slash commands")
 
         except Exception as e:
-            logger.error(f"Error in setup_hook: {e}", exc_info=True)
+            logger.error(f"Error in setup_hook: {e}")
 
     async def on_ready(self):
         """Called when bot is ready and connected to Discord"""

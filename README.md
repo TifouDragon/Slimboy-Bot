@@ -18,7 +18,7 @@
 
 ## ✨ Fonctionnalités Principales
 
-### 🛡️ Modération Nouvelle Génération
+### 🛡️ Modération 
 - **📋 Liste Bannis Ultra-Avancée** - Pagination avec recherche intelligente
 - **🔍 Recherche Multi-Critères** - Par pseudo, nom, ID, correspondance partielle
 - **⚡ Gestion Complète Bans** - Ban/unban/tempban/ipban avec durées personnalisées
@@ -33,7 +33,7 @@
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
 - **🔒 Modération Invisible** - 🆕 Commandes discrètes pour staff
 
-### 🎨 Interface Premium
+### 🎨 Interface
 - **🎭 Embeds Designer** - Design professionnel uniforme
 - **🎮 Navigation Interactive** - Boutons intelligents pour UX fluide
 - **📱 Messages Contextuels** - Erreurs informatives avec suggestions
@@ -261,7 +261,7 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 #### 🎪 **Commandes Fun**
 ```bash
 /fakeban @user                    # Simulation ban ultra-réaliste
-/fakemute @user                    # Simulation mute crédible
+/fakemute @user                   # Simulation mute crédible
 ```
 
 ### 🔧 Diagnostic & Monitoring
@@ -274,35 +274,6 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 /ping                             # Latence et performances temps réel
 /diagnostic                       # Test complet fonctionnalités
 ```
-
----
-
-## 🛡️ Système Guardian
-
-Le système Guardian protège certains utilisateurs contre les actions de modération non autorisées avec un système de permissions avancé.
-
-### Commandes Guardian
-
-#### Commandes Standards (Modérateurs)
-- `/guardian <utilisateur> [raison]` - Protéger un utilisateur
-- `/unguardian <utilisateur>` - Retirer la protection d'un utilisateur
-- `/guardian_list` - Afficher la liste des utilisateurs protégés
-- `/guardian_exceptions <action> [rôle]` - Gérer les rôles d'exception
-
-#### Commandes Avancées (Développeur)
-- `/guardian_absolute <utilisateur> [raison]` - Protection absolue
-- `/unguardian_absolute <utilisateur>` - Retirer toute protection
-- `/guardian_override <durée> [raison]` - Override temporaire
-- `/guardian_config <action> [paramètres]` - Configuration avancée
-
-### Fonctionnalités
-
-- **Protection Standard** : Basée sur la hiérarchie des rôles
-- **Protection Absolue** : Seul le développeur peut la contourner
-- **Système d'override** : Désactivation temporaire des protections
-- **Permissions configurables** : Mode permission-based ou whitelist
-- **Gestion des exceptions** : Rôles pouvant contourner les protections
-- **Interface intuitive** avec embeds Discord colorés
 
 ---
 
@@ -358,13 +329,13 @@ BOT_CONFIG = {
     "embed_color": 0xFF0000,         # Couleur principale embeds
     "pagination_timeout": 120,       # Timeout boutons (secondes)
     "watermark_enabled": True,       # Watermark créateur
-
+    
     # Fonctionnalités système
     "enable_logging": True,          # Système logs activé
     "enable_updates": True,          # Notifications GitHub
     "enable_bonus": True,            # Commandes bonus
     "enable_cache": True,            # Cache performances
-
+    
     # Modération avancée
     "max_ban_reason_length": 512,    # Longueur max raison ban
     "auto_delete_ban_messages": 7,   # Jours suppression messages
@@ -740,10 +711,9 @@ Le développeur n'est pas responsable de :
 
 ---
 
-**Version :** 2.2.4 | **Plateforme :** Replit | **Langage :** Python 3.11+
-
 **💡 Personnalisez le nom de votre bot selon vos préférences - "SlimBoy" n'est que le nom par défaut !**
 
 **© 2025 SlimBoy Discord Bot v2.2.1 - Tous droits réservés • Licence MIT**
 
 </div>
+
