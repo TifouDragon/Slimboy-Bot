@@ -545,13 +545,6 @@ KNOWN_BOTS = [
 
 ### Commandes Développeur : dev mod CHUUuut
 
-### Sécurité
-- **Mot de passe requis** : `AD2020AC2021NI2025`
-- **Sessions individuelles** : Chaque développeur a sa propre session
-- **Logging complet** : Toutes les actions sont tracées
-- **Visibilité conditionnelle** : Commandes visibles uniquement avec session active
----
-
 ## 🗺️ Roadmap Développement
 
 ### 🎯 Versions Futures
@@ -737,7 +730,7 @@ Le développeur n'est pas responsable de :
 - 📞 Support communauté et documentation
 
 **Contacts :**
-- 💬 Discord : @Ninja Iyed
+- 💬 Discord : @Ninjaiyed10
 - 🐙 GitHub : [@TifouDragon](https://github.com/TifouDragon)
 - 📧 Support : GitHub Issues
 
