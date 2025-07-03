@@ -1,9 +1,0 @@
-{
-  "enabled": false,
-  "notification_channel_id": null,
-  "check_interval": 3600,
-  "notify_prereleases": false,
-  "last_version_notified": null,
-  "auto_check": true,
-  "ping_admins": false
-}
