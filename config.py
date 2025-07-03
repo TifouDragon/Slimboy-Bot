@@ -10,18 +10,18 @@ BOT_CONFIG = {
     # Command settings
     "command_prefix": "!",
     "bans_per_page": 5,
-    
+
     # Embed settings
     "embed_color": 0xFF0000,  # Red color for ban embeds
     "success_color": 0x00FF00,  # Green color for success embeds
     "error_color": 0xFF0000,  # Red color for error embeds
-    
+
     # Pagination settings
     "pagination_timeout": 600,  # 10 minutes
-    
+
     # Permission settings
     "required_permissions": ["ban_members"],
-    
+
     # Bot status
     "activity_name": "for banned users",
     "activity_type": "watching",
@@ -66,9 +66,9 @@ FEATURES = {
 # Version info
 VERSION_INFO = {
     "major": 2,
-    "minor": 2,
-    "patch": 1,
-    "version_string": "2.2.1",
+    "minor": 3,
+    "patch": 0,
+    "version_string": "2.3.0",
     "release_date": "2024-12-29",
     "platform": "Replit",
     "changelog": [
@@ -79,6 +79,8 @@ VERSION_INFO = {
         "Modération avancée avec Guardian",
         "Système de logs configurable",
         "Notifications de mise à jour GitHub",
-        "Architecture modulaire repensée"
+        "Architecture modulaire repensée",
+        "Ajout de la verification des permission pour les commandes",
+        "Ajout d'un mode dev pour les commandes de developpement"
     ]
 }

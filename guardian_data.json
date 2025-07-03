@@ -5,6 +5,18 @@
         "set_by": 1320449565509423220,
         "set_at": "2025-06-29T20:21:10.351591",
         "reason": "Protection guardian"
+      },
+      "1389322209486569503": {
+        "set_by": 1320449565509423220,
+        "set_at": "2025-07-03T21:50:41.286586",
+        "reason": "Protection guardian",
+        "protection_level": "standard"
+      },
+      "582804068372578304": {
+        "set_by": 1320449565509423220,
+        "set_at": "2025-07-03T22:30:29.373507",
+        "reason": "Protection guardian",
+        "protection_level": "standard"
       }
     },
     "exception_roles": []

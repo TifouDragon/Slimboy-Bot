@@ -304,6 +304,29 @@ slimboy-version-2.2/
 ---
 
 ## ⚙️ Configuration Avancée
+## 🔒 Système de Permissions Intelligent
+
+### Visibilité Contextuelle
+- **Commandes de modération** : Visibles uniquement pour les utilisateurs ayant les permissions appropriées
+- **Commandes développeur** : Visibles uniquement avec une session dev active
+- **Permissions natives Discord** : Utilisation d'`@app_commands.default_permissions`
+
+### Permissions Requises par Commande
+| Commande | Permission Discord Requise |
+|----------|---------------------------|
+| `/ban` | `ban_members` |
+| `/kick` | `kick_members` |
+| `/timeout` | `moderate_members` |
+| `/clear` | `manage_messages` |
+| `/slowmode` | `manage_channels` |
+| `/warn` | `kick_members` |
+
+## 🔧 Installation et Configuration
+
+### Prérequis
+- Python 3.8+
+- Token Discord Bot
+- Permissions Discord appropriées
 
 ### 🔧 Variables Environnement
 
@@ -329,13 +352,13 @@ BOT_CONFIG = {
     "embed_color": 0xFF0000,         # Couleur principale embeds
     "pagination_timeout": 120,       # Timeout boutons (secondes)
     "watermark_enabled": True,       # Watermark créateur
-    
+
     # Fonctionnalités système
     "enable_logging": True,          # Système logs activé
     "enable_updates": True,          # Notifications GitHub
     "enable_bonus": True,            # Commandes bonus
     "enable_cache": True,            # Cache performances
-    
+
     # Modération avancée
     "max_ban_reason_length": 512,    # Longueur max raison ban
     "auto_delete_ban_messages": 7,   # Jours suppression messages
@@ -442,6 +465,21 @@ Le bot inclut un serveur Flask intégré qui :
 - 📈 Métriques performances temps réel
 
 ---
+## 🛡️ Système Guardian & Guardian Absolu
+
+### Guardian Standard
+Le système Guardian protège certains utilisateurs contre les actions de modération :
+- **Protection avancée** contre ban, kick, timeout, warn
+- **Gestion des exceptions** par rôles
+- **Interface intuitive** avec commandes slash
+- **Logs détaillés** de toutes les tentatives
+
+### 🔒 Guardian Absolu (Mode Développeur)
+Protection ultime intégrée au système développeur :
+- **Immunité totale** contre toutes les actions de modération
+- **Protection même contre le propriétaire du serveur**
+- **Activation via sessions développeur sécurisées**
+- **Aucune exception possible**
 
 ## 🎯 Fonctionnalités Techniques Détaillées
 
@@ -496,6 +534,22 @@ KNOWN_BOTS = [
 ]
 ```
 
+---
+## 🔧 Mode Développeur 2.0
+
+### Système de Sessions Sécurisées
+- **Sessions personnelles** avec mot de passe unique
+- **Durée configurable** (minutes, heures, jours)
+- **Guardian Absolu** optionnel pour protection totale
+- **Expiration automatique** des sessions
+
+### Commandes Développeur : dev mod CHUUuut
+
+### Sécurité
+- **Mot de passe requis** : `AD2020AC2021NI2025`
+- **Sessions individuelles** : Chaque développeur a sa propre session
+- **Logging complet** : Toutes les actions sont tracées
+- **Visibilité conditionnelle** : Commandes visibles uniquement avec session active
 ---
 
 ## 🗺️ Roadmap Développement
@@ -702,7 +756,10 @@ Le développeur n'est pas responsable de :
 - **Python Community** - Documentation et tutoriels
 
 ---
+## 📊 Informations
 
+- **Version** : 2.3.0
+---
 ## ⭐ Soutenez le projet - Star sur GitHub ! ⭐
 
 [![GitHub stars](https://img.shields.io/github/stars/TifouDragon/slimboy-discord-bot?style=social)](https://github.com/TifouDragon/slimboy-discord-bot)
@@ -716,4 +773,3 @@ Le développeur n'est pas responsable de :
 **© 2025 SlimBoy Discord Bot v2.2.1 - Tous droits réservés • Licence MIT**
 
 </div>
-

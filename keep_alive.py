@@ -253,7 +253,7 @@ def home():
     # Statistiques système
     memory = psutil.virtual_memory()
     return render_template_string(HTML_TEMPLATE, 
-        version="Version 2.2.1",
+        version="Version 2.3.0",
         memory_usage=round(memory.percent, 1),
         current_time=datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
     )

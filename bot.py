@@ -55,12 +55,24 @@ class DiscordBot(commands.Bot):
             from commands.games import GamesCommands
             await self.add_cog(GamesCommands(self))
 
-            # Load guardian system
-            from commands.guardian import GuardianCommands
-            guardian_cog = GuardianCommands(self)
-            await self.add_cog(guardian_cog)
-            # Store reference for moderation commands
-            self.guardian_system = guardian_cog
+            # Load guardian system (if exists)
+            try:
+                from commands.guardian import GuardianCommands
+                guardian_cog = GuardianCommands(self)
+                await self.add_cog(guardian_cog)
+                # Store reference for moderation commands
+                self.guardian_system = guardian_cog
+                logger.info("Guardian system loaded successfully")
+            except ImportError:
+                logger.warning("Guardian system not found, skipping...")
+
+            # Load developer commands
+            try:
+                from commands.developer import DeveloperCommands
+                await self.add_cog(DeveloperCommands(self))
+                logger.info("Developer commands loaded successfully")
+            except Exception as e:
+                logger.error(f"Failed to load developer commands: {e}")
 
             logger.info("All commands loaded successfully")
 

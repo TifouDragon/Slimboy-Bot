@@ -1,5 +1,28 @@
+# Changelog
 
-# 📋 Changelog SlimBoy
+Toutes les modifications notables de ce projet seront documentées dans ce fichier.
+
+## [2.3.0] - 2025-01-03
+
+### 🔒 Sécurité et Permissions
+- **Visibilité des commandes améliorée** : Les commandes de modération ne sont maintenant visibles que par les utilisateurs ayant les permissions appropriées
+- **Commandes développeur sécurisées** : Les commandes dev ne s'affichent que si une session devmode est active
+
+### 🛡️ Système Guardian Absolu
+- **Nouveau système de protection ultime** : Guardian Absolu intégré au mode développeur
+- **Protection totale** : Immunité contre toutes les actions de modération, même du propriétaire du serveur
+- **Sessions personnalisées** : Chaque développeur a sa propre session sécurisée avec mot de passe
+
+### ⚙️ Mode Développeur 2.0
+- **Sessions individuelles** : Système de sessions personnelles avec expiration
+- **Mot de passe sécurisé** : Protection par mot de passe pour l'activation
+- **Commandes complètes** : `/devinfo`, `/devreload`, `/deveval`, `/devlogs`, `/devstats`, `/devguardian`
+- **Interface intuitive** : Embeds informatifs et gestion simplifiée
+
+### 🔧 Améliorations Techniques
+- **Permissions Discord natives** : Utilisation d'`@app_commands.default_permissions`
+- **Interaction checks** : Vérifications automatiques des sessions développeur
+- **Logging amélioré** : Traçabilité complète des actions développeur
 
 ## Version 2.2.1 (29/12/2024)
 
