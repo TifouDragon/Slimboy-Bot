@@ -8,3 +8,7 @@ Flask>=3.1.1
 # Additional utilities
 psutil>=5.9.0
 aiohttp>=3.8.0
+aiohttp
+discord.py
+flask
+psutil

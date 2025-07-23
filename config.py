@@ -67,20 +67,17 @@ FEATURES = {
 VERSION_INFO = {
     "major": 2,
     "minor": 3,
-    "patch": 0,
-    "version_string": "2.3.0",
-    "release_date": "2024-12-29",
+    "patch": 1,
+    "version_string": "2.3.1",
+    "release_date": "2025-01-23",
     "platform": "Replit",
     "changelog": [
-        "Système Guardian de protection utilisateur",
-        "Commandes de jeux et mini-jeux intégrées",
-        "Interface Flask simplifiée et optimisée",
-        "Correction erreurs 404 et amélioration stabilité",
-        "Modération avancée avec Guardian",
-        "Système de logs configurable",
-        "Notifications de mise à jour GitHub",
-        "Architecture modulaire repensée",
-        "Ajout de la verification des permission pour les commandes",
-        "Ajout d'un mode dev pour les commandes de developpement"
+        "Extension majeure du quiz: 150+ questions diversifiées",
+        "Système anti-répétition amélioré pour plus de variété",
+        "Nouvelle commande /say pour faire parler le bot discrètement",
+        "Optimisation de la sélection aléatoire des questions",
+        "Ajout de nouvelles catégories: sciences, technologie, culture",
+        "Amélioration de l'équilibrage des sujets dans le quiz",
+        "Correction de bugs mineurs dans le système de jeux"
     ]
 }

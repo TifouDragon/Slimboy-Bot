@@ -2,6 +2,23 @@
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
 
+## [2.3.1] - 2025-01-23
+
+### 🎮 Amélioration du Système de Quiz
+- **Extension majeure** : Plus de 150 questions diversifiées couvrant de nombreux sujets
+- **Système anti-répétition optimisé** : Mécanisme amélioré pour éviter les questions répétitives
+- **Nouvelles catégories** : Sciences, technologie, culture générale, histoire, géographie
+- **Équilibrage intelligent** : Répartition équilibrée des sujets pour plus de variété
+
+### 🤖 Commande Say Améliorée  
+- **Modération discrète** : Commande /say pour faire parler le bot sans révéler l'auteur
+- **Interface simplifiée** : Utilisation intuitive pour les modérateurs
+
+### 🔧 Corrections et Optimisations
+- **Sélection aléatoire optimisée** : Algorithme amélioré pour la diversité des questions
+- **Corrections de bugs mineurs** : Stabilité accrue du système de jeux
+- **Performance améliorée** : Optimisation de la gestion des questions
+
 ## [2.3.0] - 2025-01-03
 
 ### 🔒 Sécurité et Permissions

@@ -29,7 +29,7 @@
 ### 🔥 Systèmes Intelligents
 - **📝 Logs Configurables** - Enregistrement automatique avec choix des événements
 - **🔔 Notifications GitHub** - Alertes Discord automatiques pour mises à jour
-- **🎮 Jeux & Mini-Jeux** - 🆕 Divertissement intégré pour la communauté
+- **🎮 Jeux & Mini-Jeux** - 🆕 Quiz 150+ questions + divertissements variés
 - **🤖 Détection Bots** - Reconnaissance automatique de 25+ bots populaires
 - **🔒 Modération Invisible** - 🆕 Commandes discrètes pour staff
 
@@ -238,7 +238,7 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 
 ### 🎯 Commandes Bonus (Évolutif)
 
-#### 🎮 **Jeux & Mini-Jeux** (🆕 v2.2.1)
+#### 🎮 **Jeux & Mini-Jeux** (🆕 v2.3.1)
 ```bash
 /roll 1d20                        # Lancer de dés configurables
 /8ball question                   # Boule magique réponses
@@ -246,6 +246,8 @@ https://discord.com/oauth2/authorize?client_id=1384568465326866585&permissions=8
 /randomuser                       # Sélection membre aléatoire
 /rps rock                         # Pierre-papier-ciseaux
 /guess_number                     # Jeu de devinette numérique
+/quiz                             # Quiz 150+ questions diversifiées
+/say message                      # Faire parler le bot discrètement
 ```
 
 #### 📊 **Statistiques Avancées** (Prévu)
@@ -512,6 +514,15 @@ Protection ultime intégrée au système développeur :
 - **🎯 Mentions rôles** responsables serveur configurables
 - **📅 Planification** vérifications périodiques personnalisables
 
+### 🎮 Système de Quiz Avancé
+
+**Caractéristiques intelligentes :**
+- **🎯 150+ questions diversifiées** couvrant sciences, culture, technologie
+- **🔄 Système anti-répétition** évite les mêmes questions
+- **⚖️ Équilibrage automatique** répartition équitable des sujets
+- **🎲 Sélection aléatoire optimisée** pour maximum de variété
+- **📊 Catégories multiples** histoire, géographie, sciences, culture générale
+
 ### 🔍 Recherche Ultra-Intelligente
 
 **Algorithmes avancés :**
@@ -751,7 +762,7 @@ Le développeur n'est pas responsable de :
 ---
 ## 📊 Informations
 
-- **Version** : 2.3.0
+- **Version** : 2.3.1
 ---
 ## ⭐ Soutenez le projet - Star sur GitHub ! ⭐
 

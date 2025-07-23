@@ -1,4 +1,3 @@
-
 """
 Keep Alive Server
 Flask server to keep the bot running on Replit and provide monitoring endpoints
@@ -248,33 +247,40 @@ HTML_TEMPLATE = """
 </html>
 """
 
+
 @app.route('/')
 def home():
     # Statistiques système
     memory = psutil.virtual_memory()
-    return render_template_string(HTML_TEMPLATE, 
-        version="Version 2.3.0",
+    return render_template_string(
+        HTML_TEMPLATE,
+        version="Version 2.3.1",
         memory_usage=round(memory.percent, 1),
-        current_time=datetime.now().strftime("%d/%m/%Y à %H:%M:%S")
-    )
+        current_time=datetime.now().strftime("%d/%m/%Y à %H:%M:%S"))
+
 
 @app.route('/health')
 def health():
     return jsonify({
-        "status": "healthy", 
+        "status": "healthy",
         "timestamp": datetime.now().isoformat(),
         "uptime": "En ligne",
         "memory_usage": f"{psutil.virtual_memory().percent}%",
         "cpu_usage": f"{psutil.cpu_percent()}%"
     })
 
+
 @app.route('/status')
 def status():
     return jsonify({
-        "bot_status": "online",
-        "version": "2.2.1",
-        "platform": platform.system(),
-        "features": ["moderation", "guardian", "logging", "games", "diagnostics"],
+        "bot_status":
+        "online",
+        "version":
+        "2.3.1",
+        "platform":
+        platform.system(),
+        "features":
+        ["moderation", "guardian", "logging", "games", "diagnostics"],
         "endpoints": ["/", "/health", "/status", "/version", "/metrics"],
         "system": {
             "memory_percent": psutil.virtual_memory().percent,
@@ -282,21 +288,23 @@ def status():
         }
     })
 
+
 @app.route('/version')
 def version():
     return jsonify({
         "bot_name": "SlimBoy",
-        "version": "2.2.1",
+        "version": "2.3.1",
         "python_version": platform.python_version(),
         "platform": platform.system(),
         "description": "Bot Discord de modération avancée"
     })
 
+
 @app.route('/metrics')
 def metrics():
     memory = psutil.virtual_memory()
     disk = psutil.disk_usage('/')
-    
+
     return jsonify({
         "memory": {
             "total": memory.total,
@@ -317,13 +325,18 @@ def metrics():
         "timestamp": datetime.now().isoformat()
     })
 
+
 @app.errorhandler(404)
 def not_found(error):
     return jsonify({
-        "error": "Not Found",
-        "message": "Endpoint non disponible",
-        "available_endpoints": ["/", "/health", "/status", "/version", "/metrics"]
+        "error":
+        "Not Found",
+        "message":
+        "Endpoint non disponible",
+        "available_endpoints":
+        ["/", "/health", "/status", "/version", "/metrics"]
     }), 404
+
 
 def run():
     try:
@@ -331,6 +344,7 @@ def run():
         app.run(host='0.0.0.0', port=8080, debug=False)
     except Exception as e:
         logger.error(f"Error starting keep-alive server: {e}")
+
 
 def keep_alive():
     t = Thread(target=run)

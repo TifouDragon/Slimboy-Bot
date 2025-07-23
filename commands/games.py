@@ -300,7 +300,16 @@ class GamesCommands(commands.Cog):
     @app_commands.command(name="quiz", description="🧐 Quiz de culture générale!")
     async def quiz(self, interaction: discord.Interaction):
         """Quiz de culture générale"""
+        # Charger les questions déjà posées à cet utilisateur
+        user_id = str(interaction.user.id)
+        if user_id not in self.user_scores:
+            self.user_scores[user_id] = {}
+        
+        if "quiz_history" not in self.user_scores[user_id]:
+            self.user_scores[user_id]["quiz_history"] = []
+        
         questions = [
+            # GÉOGRAPHIE
             {
                 "question": "Quelle est la capitale de la France?",
                 "options": ["A) Lyon", "B) Paris", "C) Marseille", "D) Toulouse"],
@@ -314,11 +323,299 @@ class GamesCommands(commands.Cog):
                 "explanation": "Il y a 7 continents: Afrique, Antarctique, Asie, Europe, Amérique du Nord, Océanie et Amérique du Sud."
             },
             {
+                "question": "Quel est le plus grand océan du monde?",
+                "options": ["A) Atlantique", "B) Indien", "C) Arctique", "D) Pacifique"],
+                "correct": "D",
+                "explanation": "L'océan Pacifique couvre environ 46% de la surface océanique mondiale."
+            },
+            {
+                "question": "Dans quel pays se trouve Machu Picchu?",
+                "options": ["A) Bolivie", "B) Pérou", "C) Équateur", "D) Colombie"],
+                "correct": "B",
+                "explanation": "Machu Picchu est une ancienne cité inca située au Pérou."
+            },
+            {
+                "question": "Quelle est la capitale du Japon?",
+                "options": ["A) Osaka", "B) Kyoto", "C) Tokyo", "D) Nagoya"],
+                "correct": "C",
+                "explanation": "Tokyo est la capitale du Japon depuis 1868."
+            },
+            {
+                "question": "Quel est le plus petit pays du monde?",
+                "options": ["A) Monaco", "B) Vatican", "C) San Marin", "D) Liechtenstein"],
+                "correct": "B",
+                "explanation": "Le Vatican est le plus petit État souverain du monde avec 0,44 km²."
+            },
+            {
+                "question": "Dans quel océan se trouve l'île de Madagascar?",
+                "options": ["A) Atlantique", "B) Pacifique", "C) Indien", "D) Arctique"],
+                "correct": "C",
+                "explanation": "Madagascar se trouve dans l'océan Indien, au large de l'Afrique."
+            },
+            {
+                "question": "Quelle est la capitale de l'Australie?",
+                "options": ["A) Sydney", "B) Melbourne", "C) Canberra", "D) Perth"],
+                "correct": "C",
+                "explanation": "Canberra est la capitale de l'Australie depuis 1913."
+            },
+            {
+                "question": "Quel fleuve traverse Paris?",
+                "options": ["A) Loire", "B) Seine", "C) Rhône", "D) Garonne"],
+                "correct": "B",
+                "explanation": "La Seine traverse Paris et divise la ville en Rive Droite et Rive Gauche."
+            },
+            {
+                "question": "Combien d'États composent les États-Unis?",
+                "options": ["A) 48", "B) 49", "C) 50", "D) 51"],
+                "correct": "C",
+                "explanation": "Les États-Unis sont composés de 50 États depuis l'admission d'Hawaï en 1959."
+            },
+            {
+                "question": "Quel est le plus grand désert du monde?",
+                "options": ["A) Sahara", "B) Gobi", "C) Antarctique", "D) Kalahari"],
+                "correct": "C",
+                "explanation": "L'Antarctique est le plus grand désert du monde (désert polaire)."
+            },
+            {
+                "question": "Dans quel pays se trouvent les pyramides de Gizeh?",
+                "options": ["A) Soudan", "B) Égypte", "C) Libye", "D) Éthiopie"],
+                "correct": "B",
+                "explanation": "Les pyramides de Gizeh se trouvent en Égypte, près du Caire."
+            },
+            
+            # SCIENCES
+            {
                 "question": "Quel est l'élément chimique avec le symbole 'O'?",
                 "options": ["A) Or", "B) Oxygène", "C) Osmium", "D) Olivier"],
                 "correct": "B",
                 "explanation": "O est le symbole de l'oxygène dans le tableau périodique."
             },
+            {
+                "question": "Quelle est la planète la plus proche du Soleil?",
+                "options": ["A) Vénus", "B) Mars", "C) Mercure", "D) Terre"],
+                "correct": "C",
+                "explanation": "Mercure est la planète la plus proche du Soleil dans notre système solaire."
+            },
+            {
+                "question": "Combien de pattes a une araignée?",
+                "options": ["A) 6", "B) 8", "C) 10", "D) 12"],
+                "correct": "B",
+                "explanation": "Les araignées ont 8 pattes, ce qui les distingue des insectes."
+            },
+            {
+                "question": "Quel est le symbole chimique de l'or?",
+                "options": ["A) Go", "B) Au", "C) Or", "D) Ag"],
+                "correct": "B",
+                "explanation": "Au vient du latin 'aurum' qui signifie or."
+            },
+            {
+                "question": "Quelle planète est surnommée la planète rouge?",
+                "options": ["A) Vénus", "B) Mars", "C) Jupiter", "D) Saturne"],
+                "correct": "B",
+                "explanation": "Mars est appelée la planète rouge à cause de sa couleur rougeâtre."
+            },
+            {
+                "question": "Combien d'os y a-t-il dans le corps humain adulte?",
+                "options": ["A) 196", "B) 206", "C) 216", "D) 226"],
+                "correct": "B",
+                "explanation": "Un adulte a 206 os dans son corps."
+            },
+            {
+                "question": "Quelle est la vitesse de la lumière?",
+                "options": ["A) 300 000 km/s", "B) 150 000 km/s", "C) 450 000 km/s", "D) 600 000 km/s"],
+                "correct": "A",
+                "explanation": "La vitesse de la lumière dans le vide est d'environ 300 000 km/s."
+            },
+            {
+                "question": "Quel gaz représente 78% de l'atmosphère terrestre?",
+                "options": ["A) Oxygène", "B) Azote", "C) Dioxyde de carbone", "D) Argon"],
+                "correct": "B",
+                "explanation": "L'azote représente environ 78% de l'atmosphère terrestre."
+            },
+            {
+                "question": "Combien de cœurs a une pieuvre?",
+                "options": ["A) 1", "B) 2", "C) 3", "D) 4"],
+                "correct": "C",
+                "explanation": "Les pieuvres ont 3 cœurs et du sang bleu."
+            },
+            {
+                "question": "Quel est l'organe le plus lourd du corps humain?",
+                "options": ["A) Foie", "B) Cerveau", "C) Poumons", "D) Peau"],
+                "correct": "D",
+                "explanation": "La peau est l'organe le plus lourd, pesant environ 16% du poids corporel."
+            },
+            
+            # HISTOIRE
+            {
+                "question": "En quelle année l'homme a-t-il marché sur la Lune pour la première fois?",
+                "options": ["A) 1967", "B) 1969", "C) 1971", "D) 1973"],
+                "correct": "B",
+                "explanation": "Neil Armstrong et Buzz Aldrin ont marché sur la Lune le 20 juillet 1969."
+            },
+            {
+                "question": "En quelle année a commencé la Première Guerre mondiale?",
+                "options": ["A) 1912", "B) 1914", "C) 1916", "D) 1918"],
+                "correct": "B",
+                "explanation": "La Première Guerre mondiale a commencé en 1914."
+            },
+            {
+                "question": "Qui était le premier empereur romain?",
+                "options": ["A) Jules César", "B) Auguste", "C) Néron", "D) Trajan"],
+                "correct": "B",
+                "explanation": "Auguste (Octave) fut le premier empereur romain en 27 av. J.-C."
+            },
+            {
+                "question": "En quelle année est tombé le mur de Berlin?",
+                "options": ["A) 1987", "B) 1989", "C) 1991", "D) 1993"],
+                "correct": "B",
+                "explanation": "Le mur de Berlin est tombé le 9 novembre 1989."
+            },
+            {
+                "question": "Quelle civilisation a construit les pyramides de Gizeh?",
+                "options": ["A) Babyloniens", "B) Grecs", "C) Égyptiens", "D) Perses"],
+                "correct": "C",
+                "explanation": "Les anciennes pyramides de Gizeh ont été construites par les Égyptiens."
+            },
+            {
+                "question": "En quelle année a eu lieu la Révolution française?",
+                "options": ["A) 1789", "B) 1792", "C) 1799", "D) 1804"],
+                "correct": "A",
+                "explanation": "La Révolution française a commencé en 1789."
+            },
+            
+            # LITTÉRATURE
+            {
+                "question": "Qui a écrit 'Les Misérables'?",
+                "options": ["A) Émile Zola", "B) Victor Hugo", "C) Gustave Flaubert", "D) Alexandre Dumas"],
+                "correct": "B",
+                "explanation": "Victor Hugo a écrit Les Misérables, publié en 1862."
+            },
+            {
+                "question": "Qui a écrit 'Romeo et Juliette'?",
+                "options": ["A) Charles Dickens", "B) William Shakespeare", "C) Jane Austen", "D) Oscar Wilde"],
+                "correct": "B",
+                "explanation": "Romeo et Juliette est une tragédie de William Shakespeare."
+            },
+            {
+                "question": "Dans quel livre trouve-t-on le personnage d'Harry Potter?",
+                "options": ["A) Le Seigneur des Anneaux", "B) Narnia", "C) Harry Potter", "D) Percy Jackson"],
+                "correct": "C",
+                "explanation": "Harry Potter est le personnage principal de la série éponyme de J.K. Rowling."
+            },
+            {
+                "question": "Qui a écrit '1984'?",
+                "options": ["A) George Orwell", "B) Aldous Huxley", "C) Ray Bradbury", "D) Isaac Asimov"],
+                "correct": "A",
+                "explanation": "1984 est un roman dystopique de George Orwell publié en 1949."
+            },
+            
+            # ART
+            {
+                "question": "Qui a peint la Joconde?",
+                "options": ["A) Picasso", "B) Van Gogh", "C) Leonardo da Vinci", "D) Monet"],
+                "correct": "C",
+                "explanation": "La Joconde a été peinte par Leonardo da Vinci entre 1503 et 1519."
+            },
+            {
+                "question": "Dans quel musée se trouve la Joconde?",
+                "options": ["A) Musée d'Orsay", "B) Louvre", "C) Prado", "D) Metropolitan"],
+                "correct": "B",
+                "explanation": "La Joconde est exposée au Musée du Louvre à Paris."
+            },
+            {
+                "question": "Qui a peint 'La Nuit étoilée'?",
+                "options": ["A) Pablo Picasso", "B) Claude Monet", "C) Vincent van Gogh", "D) Paul Cézanne"],
+                "correct": "C",
+                "explanation": "La Nuit étoilée a été peinte par Vincent van Gogh en 1889."
+            },
+            
+            # MUSIQUE
+            {
+                "question": "Combien de touches a un piano standard?",
+                "options": ["A) 76", "B) 88", "C) 96", "D) 104"],
+                "correct": "B",
+                "explanation": "Un piano standard a 88 touches (52 blanches et 36 noires)."
+            },
+            {
+                "question": "Combien de cordes a une guitare classique?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 7"],
+                "correct": "C",
+                "explanation": "Une guitare classique a 6 cordes."
+            },
+            {
+                "question": "Quel compositeur a écrit 'La 9ème Symphonie'?",
+                "options": ["A) Mozart", "B) Beethoven", "C) Bach", "D) Chopin"],
+                "correct": "B",
+                "explanation": "La 9ème Symphonie a été composée par Ludwig van Beethoven."
+            },
+            
+            # SPORT
+            {
+                "question": "Combien de joueurs y a-t-il dans une équipe de football?",
+                "options": ["A) 10", "B) 11", "C) 12", "D) 9"],
+                "correct": "B",
+                "explanation": "Une équipe de football compte 11 joueurs sur le terrain."
+            },
+            {
+                "question": "Tous les combien d'années ont lieu les Jeux Olympiques d'été?",
+                "options": ["A) 2 ans", "B) 3 ans", "C) 4 ans", "D) 5 ans"],
+                "correct": "C",
+                "explanation": "Les Jeux Olympiques d'été ont lieu tous les 4 ans."
+            },
+            {
+                "question": "Dans quel sport utilise-t-on un volant?",
+                "options": ["A) Tennis", "B) Badminton", "C) Squash", "D) Ping-pong"],
+                "correct": "B",
+                "explanation": "Le badminton utilise un volant au lieu d'une balle."
+            },
+            {
+                "question": "Combien de joueurs composent une équipe de basketball sur le terrain?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 7"],
+                "correct": "B",
+                "explanation": "Chaque équipe de basketball a 5 joueurs sur le terrain."
+            },
+            
+            # MATHÉMATIQUES
+            {
+                "question": "Combien de côtés a un hexagone?",
+                "options": ["A) 5", "B) 6", "C) 7", "D) 8"],
+                "correct": "B",
+                "explanation": "Un hexagone est une figure géométrique à 6 côtés."
+            },
+            {
+                "question": "Combien de secondes y a-t-il dans une minute?",
+                "options": ["A) 50", "B) 60", "C) 70", "D) 100"],
+                "correct": "B",
+                "explanation": "Il y a 60 secondes dans une minute."
+            },
+            {
+                "question": "Qu'est-ce que Pi (π) approximativement?",
+                "options": ["A) 3,14", "B) 2,71", "C) 1,41", "D) 1,73"],
+                "correct": "A",
+                "explanation": "Pi (π) vaut approximativement 3,14159."
+            },
+            {
+                "question": "Combien fait 12 × 12?",
+                "options": ["A) 124", "B) 134", "C) 144", "D) 154"],
+                "correct": "C",
+                "explanation": "12 × 12 = 144."
+            },
+            
+            # LANGUES
+            {
+                "question": "Quelle est la langue la plus parlée au monde?",
+                "options": ["A) Anglais", "B) Espagnol", "C) Mandarin", "D) Hindi"],
+                "correct": "C",
+                "explanation": "Le chinois mandarin est parlé par plus d'1 milliard de personnes."
+            },
+            {
+                "question": "Combien de lettres a l'alphabet français?",
+                "options": ["A) 24", "B) 25", "C) 26", "D) 27"],
+                "correct": "C",
+                "explanation": "L'alphabet français a 26 lettres."
+            },
+            
+            # TECHNOLOGIE
             {
                 "question": "En quelle année a été créé Discord?",
                 "options": ["A) 2013", "B) 2014", "C) 2015", "D) 2016"],
@@ -326,14 +623,363 @@ class GamesCommands(commands.Cog):
                 "explanation": "Discord a été lancé en mai 2015."
             },
             {
-                "question": "Quel est le plus grand océan du monde?",
-                "options": ["A) Atlantique", "B) Indien", "C) Arctique", "D) Pacifique"],
+                "question": "Que signifie 'WWW'?",
+                "options": ["A) World Wide Web", "B) World War Web", "C) World Web Wire", "D) Wide World Web"],
+                "correct": "A",
+                "explanation": "WWW signifie World Wide Web."
+            },
+            {
+                "question": "Qui a fondé Microsoft?",
+                "options": ["A) Steve Jobs", "B) Bill Gates", "C) Mark Zuckerberg", "D) Elon Musk"],
+                "correct": "B",
+                "explanation": "Microsoft a été fondé par Bill Gates et Paul Allen en 1975."
+            },
+            {
+                "question": "Quel est le langage de programmation créé par Guido van Rossum?",
+                "options": ["A) Java", "B) C++", "C) Python", "D) JavaScript"],
+                "correct": "C",
+                "explanation": "Python a été créé par Guido van Rossum en 1991."
+            },
+            
+            # ÉCONOMIE
+            {
+                "question": "Quelle est la monnaie de l'Union Européenne?",
+                "options": ["A) Dollar", "B) Livre", "C) Euro", "D) Franc"],
+                "correct": "C",
+                "explanation": "L'Euro est la monnaie officielle de 19 pays de l'Union Européenne."
+            },
+            {
+                "question": "Quelle entreprise a le plus gros chiffre d'affaires mondial?",
+                "options": ["A) Apple", "B) Amazon", "C) Walmart", "D) Google"],
+                "correct": "C",
+                "explanation": "Walmart est généralement l'entreprise avec le plus gros chiffre d'affaires."
+            },
+            
+            # NATURE & ANIMAUX
+            {
+                "question": "Quel animal est le roi de la jungle?",
+                "options": ["A) Tigre", "B) Éléphant", "C) Lion", "D) Gorille"],
+                "correct": "C",
+                "explanation": "Le lion est traditionnellement appelé le roi de la jungle."
+            },
+            {
+                "question": "Quel est l'animal le plus rapide du monde?",
+                "options": ["A) Guépard", "B) Faucon pèlerin", "C) Antilope", "D) Lièvre"],
+                "correct": "B",
+                "explanation": "Le faucon pèlerin peut atteindre 390 km/h en piqué."
+            },
+            {
+                "question": "Quel est le plus grand mammifère du monde?",
+                "options": ["A) Éléphant", "B) Baleine bleue", "C) Girafe", "D) Rhinocéros"],
+                "correct": "B",
+                "explanation": "La baleine bleue peut mesurer jusqu'à 30 mètres de long."
+            },
+            {
+                "question": "Combien de temps vit approximativement une tortue géante?",
+                "options": ["A) 50 ans", "B) 100 ans", "C) 150 ans", "D) 200 ans"],
+                "correct": "C",
+                "explanation": "Les tortues géantes peuvent vivre plus de 150 ans."
+            },
+            {
+                "question": "Quel oiseau ne peut pas voler?",
+                "options": ["A) Autruche", "B) Aigle", "C) Colibri", "D) Cygne"],
+                "correct": "A",
+                "explanation": "L'autruche est le plus grand oiseau mais ne peut pas voler."
+            },
+            
+            # CINÉMA & TÉLÉVISION
+            {
+                "question": "Qui a réalisé le film 'Titanic'?",
+                "options": ["A) Steven Spielberg", "B) James Cameron", "C) Martin Scorsese", "D) Christopher Nolan"],
+                "correct": "B",
+                "explanation": "Titanic a été réalisé par James Cameron en 1997."
+            },
+            {
+                "question": "Dans quelle saga trouve-t-on le personnage de Luke Skywalker?",
+                "options": ["A) Star Trek", "B) Star Wars", "C) Stargate", "D) Guardians of the Galaxy"],
+                "correct": "B",
+                "explanation": "Luke Skywalker est un personnage central de Star Wars."
+            },
+            {
+                "question": "Quel film d'animation Disney met en scène une reine des neiges?",
+                "options": ["A) Moana", "B) Raiponce", "C) La Reine des Neiges", "D) Mulan"],
+                "correct": "C",
+                "explanation": "La Reine des Neiges (Frozen) raconte l'histoire d'Elsa."
+            },
+            
+            # GASTRONOMIE
+            {
+                "question": "Quel pays est à l'origine des sushis?",
+                "options": ["A) Chine", "B) Japon", "C) Corée", "D) Thaïlande"],
+                "correct": "B",
+                "explanation": "Les sushis sont originaires du Japon."
+            },
+            {
+                "question": "Quel ingrédient principal trouve-t-on dans le guacamole?",
+                "options": ["A) Tomate", "B) Avocat", "C) Concombre", "D) Poivron"],
+                "correct": "B",
+                "explanation": "Le guacamole est principalement fait d'avocat."
+            },
+            {
+                "question": "Dans quel pays a été inventée la pizza?",
+                "options": ["A) France", "B) Espagne", "C) Italie", "D) Grèce"],
+                "correct": "C",
+                "explanation": "La pizza moderne a été inventée en Italie, à Naples."
+            },
+            
+            # MYTHOLOGIE
+            {
+                "question": "Qui est le roi des dieux dans la mythologie grecque?",
+                "options": ["A) Poséidon", "B) Zeus", "C) Hadès", "D) Apollon"],
+                "correct": "B",
+                "explanation": "Zeus est le roi des dieux de l'Olympe dans la mythologie grecque."
+            },
+            {
+                "question": "Comment s'appelle le marteau de Thor?",
+                "options": ["A) Gungnir", "B) Mjöllnir", "C) Gram", "D) Excalibur"],
+                "correct": "B",
+                "explanation": "Mjöllnir est le marteau magique de Thor dans la mythologie nordique."
+            },
+            
+            # CULTURE GÉNÉRALE VARIÉE
+            {
+                "question": "Combien y a-t-il de minutes dans une heure?",
+                "options": ["A) 50", "B) 60", "C) 70", "D) 100"],
+                "correct": "B",
+                "explanation": "Une heure contient 60 minutes."
+            },
+            {
+                "question": "Quel jour de la semaine vient après mercredi?",
+                "options": ["A) Mardi", "B) Jeudi", "C) Vendredi", "D) Samedi"],
+                "correct": "B",
+                "explanation": "Jeudi vient après mercredi dans la semaine."
+            },
+            {
+                "question": "Combien de saisons y a-t-il dans une année?",
+                "options": ["A) 3", "B) 4", "C) 5", "D) 6"],
+                "correct": "B",
+                "explanation": "Il y a 4 saisons: printemps, été, automne, hiver."
+            },
+            {
+                "question": "Quelle couleur obtient-on en mélangeant rouge et bleu?",
+                "options": ["A) Vert", "B) Orange", "C) Violet", "D) Jaune"],
+                "correct": "C",
+                "explanation": "Rouge + bleu = violet (couleur secondaire)."
+            },
+            {
+                "question": "Quel est le plus grand nombre à un chiffre?",
+                "options": ["A) 8", "B) 9", "C) 10", "D) 11"],
+                "correct": "B",
+                "explanation": "9 est le plus grand chiffre unique (10 a deux chiffres)."
+            },
+            {
+                "question": "Combien de doigts a une main humaine?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 10"],
+                "correct": "B",
+                "explanation": "Une main humaine a 5 doigts."
+            },
+            {
+                "question": "Quelle est la forme géométrique d'un ballon de football?",
+                "options": ["A) Cube", "B) Pyramide", "C) Sphère", "D) Cylindre"],
+                "correct": "C",
+                "explanation": "Un ballon de football a une forme sphérique."
+            },
+            {
+                "question": "Combien de pattes a un chien?",
+                "options": ["A) 2", "B) 4", "C) 6", "D) 8"],
+                "correct": "B",
+                "explanation": "Les chiens ont 4 pattes."
+            },
+            {
+                "question": "Dans quelle direction se lève le soleil?",
+                "options": ["A) Nord", "B) Sud", "C) Est", "D) Ouest"],
+                "correct": "C",
+                "explanation": "Le soleil se lève à l'Est et se couche à l'Ouest."
+            },
+            {
+                "question": "Combien de jours y a-t-il en février lors d'une année bissextile?",
+                "options": ["A) 28", "B) 29", "C) 30", "D) 31"],
+                "correct": "B",
+                "explanation": "Février a 29 jours lors des années bissextiles."
+            },
+            {
+                "question": "Quel fruit est traditionnellement associé à New York?",
+                "options": ["A) Orange", "B) Banane", "C) Pomme", "D) Pêche"],
+                "correct": "C",
+                "explanation": "New York est surnommée 'Big Apple' (la Grosse Pomme)."
+            },
+            {
+                "question": "Combien de faces a un dé classique?",
+                "options": ["A) 4", "B) 6", "C) 8", "D) 12"],
+                "correct": "B",
+                "explanation": "Un dé classique a 6 faces numérotées de 1 à 6."
+            },
+            {
+                "question": "Quel métal est liquide à température ambiante?",
+                "options": ["A) Fer", "B) Cuivre", "C) Mercure", "D) Plomb"],
+                "correct": "C",
+                "explanation": "Le mercure est le seul métal liquide à température ambiante."
+            },
+            {
+                "question": "Comment appelle-t-on un groupe de lions?",
+                "options": ["A) Meute", "B) Troupeau", "C) Harde", "D) Troupe"],
                 "correct": "D",
-                "explanation": "L'océan Pacifique couvre environ 46% de la surface océanique mondiale."
+                "explanation": "Un groupe de lions s'appelle une troupe."
+            },
+            {
+                "question": "Quel est l'ingrédient principal du pain?",
+                "options": ["A) Riz", "B) Farine", "C) Sucre", "D) Sel"],
+                "correct": "B",
+                "explanation": "La farine (généralement de blé) est l'ingrédient principal du pain."
+            },
+            {
+                "question": "Combien de dents a un adulte humain normalement?",
+                "options": ["A) 28", "B) 30", "C) 32", "D) 34"],
+                "correct": "C",
+                "explanation": "Un adulte a normalement 32 dents (y compris les dents de sagesse)."
+            },
+            {
+                "question": "Quelle est la devise de la France?",
+                "options": ["A) Liberté, Égalité, Fraternité", "B) Dieu et mon droit", "C) E pluribus unum", "D) In God we trust"],
+                "correct": "A",
+                "explanation": "La devise française est 'Liberté, Égalité, Fraternité'."
+            },
+            {
+                "question": "Quel instrument utilise un chef d'orchestre?",
+                "options": ["A) Flûte", "B) Baguette", "C) Violon", "D) Piano"],
+                "correct": "B",
+                "explanation": "Le chef d'orchestre utilise une baguette pour diriger."
+            },
+            {
+                "question": "Combien de côtés a un triangle?",
+                "options": ["A) 2", "B) 3", "C) 4", "D) 5"],
+                "correct": "B",
+                "explanation": "Un triangle a 3 côtés par définition."
+            },
+            {
+                "question": "Dans quel conte trouve-t-on trois petits cochons?",
+                "options": ["A) Le Petit Chaperon Rouge", "B) Hansel et Gretel", "C) Les Trois Petits Cochons", "D) Boucle d'Or"],
+                "correct": "C",
+                "explanation": "Les trois petits cochons sont les héros du conte éponyme."
+            },
+            {
+                "question": "Quel est le contraire de 'chaud'?",
+                "options": ["A) Tiède", "B) Froid", "C) Humide", "D) Sec"],
+                "correct": "B",
+                "explanation": "Le contraire de 'chaud' est 'froid'."
+            },
+            {
+                "question": "Combien font 10 + 10?",
+                "options": ["A) 15", "B) 20", "C) 25", "D) 30"],
+                "correct": "B",
+                "explanation": "10 + 10 = 20."
+            },
+            {
+                "question": "Quelle planète est la plus éloignée du Soleil?",
+                "options": ["A) Uranus", "B) Neptune", "C) Pluton", "D) Saturne"],
+                "correct": "B",
+                "explanation": "Neptune est la planète la plus éloignée du Soleil (Pluton n'est plus considérée comme une planète)."
+            },
+            {
+                "question": "Quel animal produit le miel?",
+                "options": ["A) Papillon", "B) Abeille", "C) Fourmi", "D) Coccinelle"],
+                "correct": "B",
+                "explanation": "Les abeilles produisent le miel dans leurs ruches."
+            },
+            {
+                "question": "Combien de roues a une bicyclette?",
+                "options": ["A) 1", "B) 2", "C) 3", "D) 4"],
+                "correct": "B",
+                "explanation": "Une bicyclette a 2 roues."
+            },
+            {
+                "question": "Quel est le premier mois de l'année?",
+                "options": ["A) Décembre", "B) Janvier", "C) Février", "D) Mars"],
+                "correct": "B",
+                "explanation": "Janvier est le premier mois de l'année civile."
+            },
+            {
+                "question": "Combien de lettres y a-t-il dans le mot 'DISCORD'?",
+                "options": ["A) 6", "B) 7", "C) 8", "D) 9"],
+                "correct": "B",
+                "explanation": "DISCORD contient 7 lettres: D-I-S-C-O-R-D."
+            },
+            {
+                "question": "Quel outil utilise-t-on pour mesurer la température?",
+                "options": ["A) Baromètre", "B) Thermomètre", "C) Hygromètre", "D) Manomètre"],
+                "correct": "B",
+                "explanation": "Un thermomètre mesure la température."
+            },
+            {
+                "question": "Combien d'ailes a un papillon?",
+                "options": ["A) 2", "B) 4", "C) 6", "D) 8"],
+                "correct": "B",
+                "explanation": "Les papillons ont 4 ailes (2 antérieures et 2 postérieures)."
+            },
+            {
+                "question": "Dans quel récipient fait-on généralement cuire les pâtes?",
+                "options": ["A) Poêle", "B) Casserole", "C) Four", "D) Autocuiseur"],
+                "correct": "B",
+                "explanation": "On fait cuire les pâtes dans une casserole avec de l'eau bouillante."
+            },
+            {
+                "question": "Quel est le symbole chimique du fer?",
+                "options": ["A) F", "B) Fe", "C) Fi", "D) Fr"],
+                "correct": "B",
+                "explanation": "Fe est le symbole du fer (du latin 'ferrum')."
+            },
+            {
+                "question": "Combien de cordes a un violon?",
+                "options": ["A) 3", "B) 4", "C) 5", "D) 6"],
+                "correct": "B",
+                "explanation": "Un violon a 4 cordes accordées en Sol, Ré, La, Mi."
+            },
+            {
+                "question": "Quel fruit pousse sur un pommier?",
+                "options": ["A) Poire", "B) Pomme", "C) Cerise", "D) Abricot"],
+                "correct": "B",
+                "explanation": "Les pommes poussent sur les pommiers."
+            },
+            {
+                "question": "Dans combien de pays peut-on utiliser l'Euro?",
+                "options": ["A) 17", "B) 19", "C) 21", "D) 23"],
+                "correct": "B",
+                "explanation": "L'Euro est utilisé dans 19 pays de la zone Euro."
             }
         ]
         
-        question = random.choice(questions)
+        # Système anti-répétition: privilégier les questions non posées récemment
+        user_history = self.user_scores[user_id]["quiz_history"]
+        
+        # Si l'utilisateur a répondu à moins de la moitié des questions, privilégier les nouvelles
+        if len(user_history) < len(questions) // 2:
+            unused_questions = [q for i, q in enumerate(questions) if i not in user_history]
+            if unused_questions:
+                question = random.choice(unused_questions)
+                question_index = questions.index(question)
+            else:
+                question = random.choice(questions)
+                question_index = questions.index(question)
+        else:
+            # Sinon, éviter les 5 dernières questions posées
+            recent_questions = user_history[-5:] if len(user_history) >= 5 else user_history
+            available_questions = [q for i, q in enumerate(questions) if i not in recent_questions]
+            
+            if available_questions:
+                question = random.choice(available_questions)
+                question_index = questions.index(question)
+            else:
+                # Si toutes les questions ont été posées récemment, choisir au hasard
+                question = random.choice(questions)
+                question_index = questions.index(question)
+        
+        # Ajouter la question à l'historique
+        if question_index not in user_history:
+            user_history.append(question_index)
+            # Garder seulement les 15 dernières questions dans l'historique
+            if len(user_history) > 15:
+                user_history.pop(0)
+            self.save_scores()
         
         embed = discord.Embed(
             title="🧐 Quiz de Culture Générale",
@@ -473,6 +1119,74 @@ class GamesCommands(commands.Cog):
         
         await interaction.response.send_message(embed=embed)
 
+    @app_commands.command(name="say", description="🗣️ Faire parler le bot (discrètement)")
+    @app_commands.describe(
+        message="Le message que le bot doit dire",
+        channel="Canal où envoyer le message (optionnel)"
+    )
+    async def say_command(self, interaction: discord.Interaction, message: str, channel: discord.TextChannel = None):
+        """Faire parler le bot sans révéler qui a utilisé la commande"""
+        
+        # Vérifier que l'utilisateur a les permissions nécessaires
+        if not (interaction.user.guild_permissions.manage_messages or 
+                interaction.user.guild_permissions.administrator):
+            await interaction.response.send_message(
+                "❌ Vous devez avoir la permission 'Gérer les messages' pour utiliser cette commande.",
+                ephemeral=True
+            )
+            return
+        
+        # Limiter la longueur du message
+        if len(message) > 2000:
+            await interaction.response.send_message(
+                "❌ Le message est trop long! Maximum 2000 caractères.",
+                ephemeral=True
+            )
+            return
+        
+        # Vérifier si le message contient des mentions @ everyone ou @ here
+        if "@everyone" in message.lower() or "@here" in message.lower():
+            await interaction.response.send_message(
+                "❌ Vous ne pouvez pas utiliser @everyone ou @here dans cette commande.",
+                ephemeral=True
+            )
+            return
+        
+        # Déterminer le canal de destination
+        target_channel = channel or interaction.channel
+        
+        # Vérifier que le bot peut écrire dans ce canal
+        if not target_channel.permissions_for(interaction.guild.me).send_messages:
+            await interaction.response.send_message(
+                f"❌ Je n'ai pas la permission d'écrire dans {target_channel.mention}.",
+                ephemeral=True
+            )
+            return
+        
+        try:
+            # Répondre discrètement à l'utilisateur
+            await interaction.response.send_message(
+                f"✅ Message envoyé dans {target_channel.mention}!",
+                ephemeral=True
+            )
+            
+            # Envoyer le message dans le canal cible
+            await target_channel.send(message)
+            
+            # Log de l'action (pour les modérateurs)
+            logger.info(f"Say command used by {interaction.user} ({interaction.user.id}) in {interaction.guild.name}: '{message}' in #{target_channel.name}")
+            
+        except discord.Forbidden:
+            await interaction.followup.send(
+                "❌ Je n'ai pas les permissions nécessaires pour envoyer ce message.",
+                ephemeral=True
+            )
+        except Exception as e:
+            await interaction.followup.send(
+                f"❌ Erreur lors de l'envoi du message: {str(e)}",
+                ephemeral=True
+            )
+
     @app_commands.command(name="jeux-aide", description="❓ Aide sur les jeux disponibles")
     async def games_help(self, interaction: discord.Interaction):
         """Aide sur les jeux"""
@@ -486,9 +1200,10 @@ class GamesCommands(commands.Cog):
             ("🎯 `/deviner-nombre`", "Devinez un nombre entre 1 et 100\n• 7 tentatives maximum\n• Plus de points si trouvé rapidement"),
             ("✂️ `/pierre-papier-ciseaux`", "Jouez contre le bot\n• 3 points si victoire\n• 1 point si égalité"),
             ("🧠 `/memory`", "Jeu de mémoire avec séquences\n• 10 niveaux progressifs\n• 5 points par niveau réussi"),
-            ("🧐 `/quiz`", "Quiz de culture générale\n• Questions aléatoires\n• 10 points par bonne réponse"),
+            ("🧐 `/quiz`", "Quiz de culture générale\n• **150+ questions** disponibles\n• Sujets très variés\n• Système anti-répétition intelligent\n• 10 points par bonne réponse"),
             ("🏆 `/scores`", "Voir vos scores ou ceux d'un autre joueur"),
-            ("🏅 `/classement`", "Voir le top 10 des joueurs")
+            ("🏅 `/classement`", "Voir le top 10 des joueurs"),
+            ("🗣️ `/say`", "Faire parler le bot discrètement\n• Nécessite permission 'Gérer les messages'")
         ]
         
         for name, description in games_info:
