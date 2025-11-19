@@ -12,3 +12,5 @@ aiohttp
 discord.py
 flask
 psutil
+aiohttp
+psutil

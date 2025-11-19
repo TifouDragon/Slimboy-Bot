@@ -28,7 +28,7 @@ BOT_CONFIG = {
 }
 
 # Environment variables
-DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+DISCORD_BOT_TOKEN = os.getenv("DISCORD_TOKEN")
 
 # Logging configuration
 LOGGING_CONFIG = {

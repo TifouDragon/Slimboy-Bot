@@ -945,6 +945,480 @@ class GamesCommands(commands.Cog):
                 "options": ["A) 17", "B) 19", "C) 21", "D) 23"],
                 "correct": "B",
                 "explanation": "L'Euro est utilisé dans 19 pays de la zone Euro."
+            },
+            
+            # NOUVELLES QUESTIONS - TECHNOLOGIE
+            {
+                "question": "Qui est le fondateur de Microsoft?",
+                "options": ["A) Steve Jobs", "B) Bill Gates", "C) Mark Zuckerberg", "D) Elon Musk"],
+                "correct": "B",
+                "explanation": "Bill Gates a fondé Microsoft avec Paul Allen en 1975."
+            },
+            {
+                "question": "Que signifie 'HTML'?",
+                "options": ["A) HyperText Markup Language", "B) Home Tool Markup Language", "C) Hyperlinks Text Mark Language", "D) Hypermedia Text Mode Language"],
+                "correct": "A",
+                "explanation": "HTML signifie HyperText Markup Language, le langage de balisage du web."
+            },
+            {
+                "question": "Quel réseau social utilise un oiseau bleu comme logo?",
+                "options": ["A) Facebook", "B) Instagram", "C) Twitter", "D) LinkedIn"],
+                "correct": "C",
+                "explanation": "Twitter utilise un oiseau bleu comme logo (maintenant X)."
+            },
+            {
+                "question": "En quelle année YouTube a-t-il été créé?",
+                "options": ["A) 2003", "B) 2005", "C) 2007", "D) 2009"],
+                "correct": "B",
+                "explanation": "YouTube a été créé en février 2005."
+            },
+            {
+                "question": "Quelle entreprise fabrique l'iPhone?",
+                "options": ["A) Samsung", "B) Google", "C) Apple", "D) Microsoft"],
+                "correct": "C",
+                "explanation": "L'iPhone est fabriqué par Apple depuis 2007."
+            },
+            
+            # SPORT
+            {
+                "question": "Combien de joueurs y a-t-il dans une équipe de football?",
+                "options": ["A) 9", "B) 10", "C) 11", "D) 12"],
+                "correct": "C",
+                "explanation": "Une équipe de football compte 11 joueurs sur le terrain."
+            },
+            {
+                "question": "Dans quel sport utilise-t-on une raquette et une balle jaune?",
+                "options": ["A) Badminton", "B) Tennis", "C) Squash", "D) Ping-pong"],
+                "correct": "B",
+                "explanation": "Le tennis se joue avec une raquette et une balle jaune."
+            },
+            {
+                "question": "Combien de points vaut un panier à 3 points au basket?",
+                "options": ["A) 1", "B) 2", "C) 3", "D) 4"],
+                "correct": "C",
+                "explanation": "Un tir derrière la ligne des 3 points vaut 3 points au basketball."
+            },
+            {
+                "question": "Qui a remporté le plus de Ballon d'Or?",
+                "options": ["A) Cristiano Ronaldo", "B) Lionel Messi", "C) Zinedine Zidane", "D) Pelé"],
+                "correct": "B",
+                "explanation": "Lionel Messi a remporté 8 Ballons d'Or, record absolu."
+            },
+            {
+                "question": "Dans quel sport peut-on marquer un 'home run'?",
+                "options": ["A) Cricket", "B) Baseball", "C) Rugby", "D) Football américain"],
+                "correct": "B",
+                "explanation": "Le home run est un coup au baseball."
+            },
+            
+            # MUSIQUE
+            {
+                "question": "Qui a chanté 'Thriller'?",
+                "options": ["A) Elvis Presley", "B) Michael Jackson", "C) Prince", "D) Freddie Mercury"],
+                "correct": "B",
+                "explanation": "Thriller est une chanson emblématique de Michael Jackson (1982)."
+            },
+            {
+                "question": "Combien de cordes a une guitare classique?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 7"],
+                "correct": "C",
+                "explanation": "Une guitare classique standard a 6 cordes."
+            },
+            {
+                "question": "Qui est surnommé 'The King of Pop'?",
+                "options": ["A) Elvis Presley", "B) Michael Jackson", "C) Prince", "D) Justin Timberlake"],
+                "correct": "B",
+                "explanation": "Michael Jackson est surnommé le 'King of Pop'."
+            },
+            {
+                "question": "Quel instrument de musique a des touches noires et blanches?",
+                "options": ["A) Guitare", "B) Piano", "C) Saxophone", "D) Trompette"],
+                "correct": "B",
+                "explanation": "Le piano a des touches noires et blanches."
+            },
+            {
+                "question": "Combien de notes y a-t-il dans une gamme musicale?",
+                "options": ["A) 5", "B) 7", "C) 8", "D) 12"],
+                "correct": "B",
+                "explanation": "Une gamme musicale contient 7 notes (do ré mi fa sol la si)."
+            },
+            
+            # JEUX VIDÉO
+            {
+                "question": "Quel personnage de jeu vidéo est un plombier italien?",
+                "options": ["A) Sonic", "B) Mario", "C) Link", "D) Crash"],
+                "correct": "B",
+                "explanation": "Mario est un plombier italien, mascotte de Nintendo."
+            },
+            {
+                "question": "Dans Minecraft, quel matériau est le plus solide?",
+                "options": ["A) Diamant", "B) Obsidienne", "C) Bedrock", "D) Netherite"],
+                "correct": "C",
+                "explanation": "Le bedrock (roche-mère) est incassable dans Minecraft."
+            },
+            {
+                "question": "Quel jeu vidéo populaire utilise des 'Pokéballs'?",
+                "options": ["A) Zelda", "B) Pokémon", "C) Final Fantasy", "D) Dragon Quest"],
+                "correct": "B",
+                "explanation": "Les Pokéballs sont utilisées pour capturer des Pokémon."
+            },
+            {
+                "question": "Quelle entreprise a créé la PlayStation?",
+                "options": ["A) Nintendo", "B) Microsoft", "C) Sony", "D) Sega"],
+                "correct": "C",
+                "explanation": "Sony a créé la PlayStation en 1994."
+            },
+            {
+                "question": "Dans quel jeu trouve-t-on les personnages Solid Snake et Big Boss?",
+                "options": ["A) Metal Gear", "B) Resident Evil", "C) Silent Hill", "D) Final Fantasy"],
+                "correct": "A",
+                "explanation": "Solid Snake et Big Boss sont des personnages de Metal Gear."
+            },
+            
+            # CINÉMA SUITE
+            {
+                "question": "Quel acteur joue Iron Man dans les films Marvel?",
+                "options": ["A) Chris Evans", "B) Chris Hemsworth", "C) Robert Downey Jr.", "D) Mark Ruffalo"],
+                "correct": "C",
+                "explanation": "Robert Downey Jr. incarne Tony Stark/Iron Man."
+            },
+            {
+                "question": "Dans quel film trouve-t-on la phrase 'Que la Force soit avec toi'?",
+                "options": ["A) Star Trek", "B) Star Wars", "C) Avatar", "D) Matrix"],
+                "correct": "B",
+                "explanation": "Cette phrase culte vient de Star Wars."
+            },
+            {
+                "question": "Qui a réalisé 'Le Seigneur des Anneaux'?",
+                "options": ["A) Steven Spielberg", "B) Peter Jackson", "C) James Cameron", "D) George Lucas"],
+                "correct": "B",
+                "explanation": "Peter Jackson a réalisé la trilogie du Seigneur des Anneaux."
+            },
+            {
+                "question": "Quel film d'animation Pixar raconte l'histoire d'un rat cuisinier?",
+                "options": ["A) Ratatouille", "B) Cars", "C) Toy Story", "D) Les Indestructibles"],
+                "correct": "A",
+                "explanation": "Ratatouille (2007) raconte l'histoire de Rémy, un rat qui veut cuisiner."
+            },
+            {
+                "question": "Dans quel film trouve-t-on le personnage de Jack Sparrow?",
+                "options": ["A) Pirates", "B) Pirates des Caraïbes", "C) Treasure Island", "D) Hook"],
+                "correct": "B",
+                "explanation": "Jack Sparrow est le personnage principal de Pirates des Caraïbes."
+            },
+            
+            # ANIMAUX SUITE
+            {
+                "question": "Quel est l'animal le plus rapide du monde?",
+                "options": ["A) Lion", "B) Guépard", "C) Faucon pèlerin", "D) Gazelle"],
+                "correct": "B",
+                "explanation": "Le guépard peut atteindre 110-120 km/h sur terre."
+            },
+            {
+                "question": "Combien de bosses a un chameau d'Arabie?",
+                "options": ["A) 0", "B) 1", "C) 2", "D) 3"],
+                "correct": "B",
+                "explanation": "Le dromadaire (chameau d'Arabie) a 1 bosse, le chameau de Bactriane en a 2."
+            },
+            {
+                "question": "Quel animal est connu pour changer de couleur?",
+                "options": ["A) Serpent", "B) Caméléon", "C) Grenouille", "D) Lézard"],
+                "correct": "B",
+                "explanation": "Le caméléon peut changer de couleur pour se camoufler."
+            },
+            {
+                "question": "Quel mammifère marin utilise l'écholocation?",
+                "options": ["A) Requin", "B) Phoque", "C) Dauphin", "D) Baleine à fanons"],
+                "correct": "C",
+                "explanation": "Les dauphins utilisent l'écholocation pour naviguer et chasser."
+            },
+            {
+                "question": "Combien de pattes a une araignée?",
+                "options": ["A) 6", "B) 8", "C) 10", "D) 12"],
+                "correct": "B",
+                "explanation": "Les araignées (arachnides) ont toutes 8 pattes."
+            },
+            
+            # GÉOGRAPHIE SUITE
+            {
+                "question": "Quelle est la capitale de l'Italie?",
+                "options": ["A) Milan", "B) Rome", "C) Venise", "D) Florence"],
+                "correct": "B",
+                "explanation": "Rome est la capitale de l'Italie."
+            },
+            {
+                "question": "Sur quel continent se trouve l'Égypte?",
+                "options": ["A) Asie", "B) Europe", "C) Afrique", "D) Amérique"],
+                "correct": "C",
+                "explanation": "L'Égypte se trouve sur le continent africain."
+            },
+            {
+                "question": "Quelle est la langue la plus parlée au monde?",
+                "options": ["A) Anglais", "B) Espagnol", "C) Mandarin", "D) Hindi"],
+                "correct": "C",
+                "explanation": "Le mandarin est la langue la plus parlée au monde (natifs)."
+            },
+            {
+                "question": "Quel pays a la forme d'une botte?",
+                "options": ["A) Espagne", "B) Italie", "C) Grèce", "D) Portugal"],
+                "correct": "B",
+                "explanation": "L'Italie a une forme caractéristique de botte."
+            },
+            {
+                "question": "Quelle est la capitale de l'Espagne?",
+                "options": ["A) Barcelone", "B) Madrid", "C) Séville", "D) Valence"],
+                "correct": "B",
+                "explanation": "Madrid est la capitale de l'Espagne."
+            },
+            
+            # SCIENCES SUITE
+            {
+                "question": "Combien de temps met la Terre pour faire un tour complet sur elle-même?",
+                "options": ["A) 12 heures", "B) 24 heures", "C) 48 heures", "D) 1 semaine"],
+                "correct": "B",
+                "explanation": "La Terre fait une rotation complète en 24 heures (un jour)."
+            },
+            {
+                "question": "Quel gaz respirons-nous principalement?",
+                "options": ["A) Oxygène", "B) Azote", "C) Dioxyde de carbone", "D) Hydrogène"],
+                "correct": "B",
+                "explanation": "L'air que nous respirons est composé à 78% d'azote."
+            },
+            {
+                "question": "Combien de chromosomes a un être humain?",
+                "options": ["A) 23", "B) 36", "C) 46", "D) 52"],
+                "correct": "C",
+                "explanation": "Un humain a 46 chromosomes (23 paires)."
+            },
+            {
+                "question": "Quel est l'organe qui pompe le sang?",
+                "options": ["A) Poumon", "B) Foie", "C) Cœur", "D) Rein"],
+                "correct": "C",
+                "explanation": "Le cœur pompe le sang dans tout le corps."
+            },
+            {
+                "question": "Quelle est la température d'ébullition de l'eau au niveau de la mer?",
+                "options": ["A) 50°C", "B) 75°C", "C) 100°C", "D) 125°C"],
+                "correct": "C",
+                "explanation": "L'eau bout à 100°C au niveau de la mer."
+            },
+            
+            # HISTOIRE SUITE
+            {
+                "question": "En quelle année la Seconde Guerre mondiale s'est-elle terminée?",
+                "options": ["A) 1943", "B) 1944", "C) 1945", "D) 1946"],
+                "correct": "C",
+                "explanation": "La Seconde Guerre mondiale s'est terminée en 1945."
+            },
+            {
+                "question": "Qui a peint la chapelle Sixtine?",
+                "options": ["A) Leonardo da Vinci", "B) Michel-Ange", "C) Raphaël", "D) Donatello"],
+                "correct": "B",
+                "explanation": "Michel-Ange a peint le plafond de la chapelle Sixtine."
+            },
+            {
+                "question": "Quel pharaon égyptien avait un tombeau célèbre?",
+                "options": ["A) Toutankhamon", "B) Ramsès II", "C) Cléopâtre", "D) Khéops"],
+                "correct": "A",
+                "explanation": "Le tombeau de Toutankhamon a été découvert intact en 1922."
+            },
+            {
+                "question": "Dans quelle ville a été signé le traité de Versailles?",
+                "options": ["A) Paris", "B) Versailles", "C) Londres", "D) Berlin"],
+                "correct": "B",
+                "explanation": "Le traité de Versailles a été signé à Versailles en 1919."
+            },
+            {
+                "question": "Qui a découvert l'Amérique en 1492?",
+                "options": ["A) Amerigo Vespucci", "B) Christophe Colomb", "C) Marco Polo", "D) Vasco de Gama"],
+                "correct": "B",
+                "explanation": "Christophe Colomb a découvert l'Amérique en 1492."
+            },
+            
+            # CULTURE GÉNÉRALE VARIÉE SUITE
+            {
+                "question": "Combien de dents a un adulte?",
+                "options": ["A) 28", "B) 30", "C) 32", "D) 36"],
+                "correct": "C",
+                "explanation": "Un adulte a 32 dents (incluant les dents de sagesse)."
+            },
+            {
+                "question": "Quelle couleur obtient-on en mélangeant jaune et bleu?",
+                "options": ["A) Orange", "B) Vert", "C) Violet", "D) Marron"],
+                "correct": "B",
+                "explanation": "Jaune + bleu = vert."
+            },
+            {
+                "question": "Combien de secondes y a-t-il dans une minute?",
+                "options": ["A) 30", "B) 50", "C) 60", "D) 100"],
+                "correct": "C",
+                "explanation": "Une minute contient 60 secondes."
+            },
+            {
+                "question": "Quel est le contraire de 'chaud'?",
+                "options": ["A) Tiède", "B) Froid", "C) Glacé", "D) Frais"],
+                "correct": "B",
+                "explanation": "Froid est le contraire de chaud."
+            },
+            {
+                "question": "Combien font 5 x 5?",
+                "options": ["A) 20", "B) 25", "C) 30", "D) 35"],
+                "correct": "B",
+                "explanation": "5 × 5 = 25."
+            },
+            
+            # GASTRONOMIE SUITE
+            {
+                "question": "Quel fromage français a des trous?",
+                "options": ["A) Camembert", "B) Brie", "C) Emmental", "D) Roquefort"],
+                "correct": "C",
+                "explanation": "L'emmental est célèbre pour ses trous."
+            },
+            {
+                "question": "Quelle boisson chaude contient de la caféine?",
+                "options": ["A) Thé", "B) Café", "C) Chocolat chaud", "D) Toutes ces réponses"],
+                "correct": "D",
+                "explanation": "Le thé, le café et le chocolat contiennent tous de la caféine."
+            },
+            {
+                "question": "Quel légume fait pleurer quand on le coupe?",
+                "options": ["A) Carotte", "B) Oignon", "C) Tomate", "D) Pomme de terre"],
+                "correct": "B",
+                "explanation": "L'oignon libère des composés sulfurés qui font pleurer."
+            },
+            {
+                "question": "De quel pays vient le sushi?",
+                "options": ["A) Chine", "B) Corée", "C) Japon", "D) Thaïlande"],
+                "correct": "C",
+                "explanation": "Le sushi est originaire du Japon."
+            },
+            {
+                "question": "Quelle est la base de la pâte à pizza traditionnelle?",
+                "options": ["A) Riz", "B) Pomme de terre", "C) Farine de blé", "D) Maïs"],
+                "correct": "C",
+                "explanation": "La pâte à pizza est faite avec de la farine de blé."
+            },
+            
+            # NOUVELLES QUESTIONS ALÉATOIRES
+            {
+                "question": "Combien de mois ont 31 jours?",
+                "options": ["A) 5", "B) 6", "C) 7", "D) 8"],
+                "correct": "C",
+                "explanation": "7 mois ont 31 jours: janvier, mars, mai, juillet, août, octobre, décembre."
+            },
+            {
+                "question": "Quel est le plus grand pays du monde?",
+                "options": ["A) Canada", "B) Chine", "C) États-Unis", "D) Russie"],
+                "correct": "D",
+                "explanation": "La Russie est le plus grand pays du monde en superficie."
+            },
+            {
+                "question": "Quelle est la capitale du Canada?",
+                "options": ["A) Toronto", "B) Vancouver", "C) Ottawa", "D) Montréal"],
+                "correct": "C",
+                "explanation": "Ottawa est la capitale du Canada."
+            },
+            {
+                "question": "Quel animal est le symbole de la sagesse?",
+                "options": ["A) Hibou", "B) Renard", "C) Éléphant", "D) Aigle"],
+                "correct": "A",
+                "explanation": "Le hibou est traditionnellement le symbole de la sagesse."
+            },
+            {
+                "question": "Combien de côtés a un hexagone?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 8"],
+                "correct": "C",
+                "explanation": "Un hexagone a 6 côtés."
+            },
+            {
+                "question": "Quelle est la monnaie du Royaume-Uni?",
+                "options": ["A) Euro", "B) Dollar", "C) Livre Sterling", "D) Franc"],
+                "correct": "C",
+                "explanation": "Le Royaume-Uni utilise la livre sterling (£)."
+            },
+            {
+                "question": "Quel oiseau peut voler en arrière?",
+                "options": ["A) Aigle", "B) Colibri", "C) Hirondelle", "D) Moineau"],
+                "correct": "B",
+                "explanation": "Le colibri est le seul oiseau capable de voler en arrière."
+            },
+            {
+                "question": "Combien d'années y a-t-il dans une décennie?",
+                "options": ["A) 5", "B) 10", "C) 20", "D) 50"],
+                "correct": "B",
+                "explanation": "Une décennie = 10 ans."
+            },
+            {
+                "question": "Quelle planète est surnommée l'étoile du berger?",
+                "options": ["A) Mars", "B) Jupiter", "C) Vénus", "D) Mercure"],
+                "correct": "C",
+                "explanation": "Vénus est appelée l'étoile du berger car très brillante."
+            },
+            {
+                "question": "Quel est le nom du célèbre détective créé par Arthur Conan Doyle?",
+                "options": ["A) Hercule Poirot", "B) Sherlock Holmes", "C) Miss Marple", "D) Colombo"],
+                "correct": "B",
+                "explanation": "Sherlock Holmes est le célèbre détective créé par Conan Doyle."
+            },
+            {
+                "question": "Dans quel pays se trouve la tour Eiffel?",
+                "options": ["A) Belgique", "B) Suisse", "C) France", "D) Italie"],
+                "correct": "C",
+                "explanation": "La tour Eiffel se trouve à Paris, en France."
+            },
+            {
+                "question": "Combien de joueurs y a-t-il dans une équipe de rugby?",
+                "options": ["A) 11", "B) 13", "C) 15", "D) 17"],
+                "correct": "C",
+                "explanation": "Une équipe de rugby à XV compte 15 joueurs."
+            },
+            {
+                "question": "Quel super-héros est aussi appelé l'homme chauve-souris?",
+                "options": ["A) Spider-Man", "B) Superman", "C) Batman", "D) Iron Man"],
+                "correct": "C",
+                "explanation": "Batman signifie 'homme chauve-souris' en anglais."
+            },
+            {
+                "question": "Quelle est la formule chimique de l'eau?",
+                "options": ["A) H2O", "B) CO2", "C) O2", "D) NaCl"],
+                "correct": "A",
+                "explanation": "L'eau a pour formule H2O (2 atomes d'hydrogène, 1 d'oxygène)."
+            },
+            {
+                "question": "Combien de zéros y a-t-il dans un million?",
+                "options": ["A) 4", "B) 5", "C) 6", "D) 7"],
+                "correct": "C",
+                "explanation": "Un million = 1 000 000 (6 zéros)."
+            },
+            {
+                "question": "Quel animal est le roi de la jungle?",
+                "options": ["A) Tigre", "B) Lion", "C) Éléphant", "D) Gorille"],
+                "correct": "B",
+                "explanation": "Le lion est traditionnellement appelé le roi de la jungle."
+            },
+            {
+                "question": "Quelle fête est célébrée le 25 décembre?",
+                "options": ["A) Pâques", "B) Halloween", "C) Noël", "D) Nouvel An"],
+                "correct": "C",
+                "explanation": "Noël est célébré le 25 décembre."
+            },
+            {
+                "question": "Combien de centimètres y a-t-il dans un mètre?",
+                "options": ["A) 10", "B) 50", "C) 100", "D) 1000"],
+                "correct": "C",
+                "explanation": "1 mètre = 100 centimètres."
+            },
+            {
+                "question": "Quel fruit est rouge et pousse sur un arbre?",
+                "options": ["A) Fraise", "B) Pomme", "C) Tomate", "D) Cerise"],
+                "correct": "B",
+                "explanation": "La pomme est rouge et pousse sur un pommier (la cerise aussi, mais la pomme est plus courante)."
+            },
+            {
+                "question": "Quelle est la capitale de la Belgique?",
+                "options": ["A) Bruges", "B) Anvers", "C) Bruxelles", "D) Liège"],
+                "correct": "C",
+                "explanation": "Bruxelles est la capitale de la Belgique."
             }
         ]
         

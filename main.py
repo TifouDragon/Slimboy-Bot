@@ -8,7 +8,7 @@ import logging
 import os
 import threading
 from bot import DiscordBot
-from keep_alive import keep_alive
+import keep_alive
 
 logging.basicConfig(
     level=logging.INFO,
@@ -20,15 +20,18 @@ async def main():
     """Main function to start the Discord bot"""
     try:
         # Get bot token from environment variables
-        bot_token = os.getenv("DISCORD_BOT_TOKEN")
+        bot_token = os.getenv("DISCORD_TOKEN")
         
         if not bot_token:
-            logger.error("DISCORD_BOT_TOKEN environment variable is not set")
-            logger.error("Please add your Discord bot token in Railway environment variables")
+            logger.error("DISCORD_TOKEN environment variable is not set")
+            logger.error("Please add your Discord bot token in Replit Secrets")
             return
         
         # Create and start the bot
         bot = DiscordBot()
+        
+        # Set bot instance for Flask panel
+        keep_alive.bot_instance = bot
         
         logger.info("Starting Discord bot...")
         await bot.start(bot_token)
@@ -39,8 +42,8 @@ async def main():
         logger.info("Bot shutdown complete")
 
 if __name__ == "__main__":
-    # Start the keep-alive server for Railway
-    keep_alive()
+    # Start the keep-alive server
+    keep_alive.keep_alive()
     
     try:
         asyncio.run(main())

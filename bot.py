@@ -71,8 +71,10 @@ class DiscordBot(commands.Bot):
                 from commands.developer import DeveloperCommands
                 await self.add_cog(DeveloperCommands(self))
                 logger.info("Developer commands loaded successfully")
+            except ImportError:
+                logger.warning("Developer commands not found, skipping...")
             except Exception as e:
-                logger.error(f"Failed to load developer commands: {e}")
+                logger.warning(f"Failed to load developer commands: {e}")
 
             logger.info("All commands loaded successfully")
 

@@ -1,6 +1,17 @@
 # Changelog
 
 Toutes les modifications notables de ce projet seront documentées dans ce fichier.
+## [2.4] - 2028-11-19
+
+### patch réparation des api
+certain endpoints on été corrigé
+
+### rajout d'un panel admin en beta
+dans l'interface web un panel admin a été rajouté
+
+### quelle peitit nouveauté
+plus de question dans le quiz et bien d'autre
+
 
 ## [2.3.1] - 2025-01-23
 
