@@ -4,7 +4,7 @@
 [![Discord.py](https://img.shields.io/badge/discord.py-2.5.2+-green.svg)](https://discordpy.readthedocs.io/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> 🚀 Bot Discord révolutionnaire avec modération intelligente, système de logs configurable, notifications automatiques et commandes bonus ! Interface française premium avec pagination interactive optimisée pour Replit.
+> 🚀 Bot Discord révolutionnaire avec modération intelligente, système de logs configurable, notifications automatiques et commandes bonus ! Interface française premium avec pagination interactive.
 
 <div align="center">
 
